@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "knowledge",
+    "name": "个人知识服务",
+    "summary": "本地运行的私有知识库问答：混合检索、流式问答，回答都带可回溯的来源。",
+    "status": "intro",
+    "link": {"type": "page"},
+    "tags": ["RAG", "FastAPI", "SQLite FTS5", "Chroma"]
+  },
+  {
+    "slug": "alpha-research",
+    "name": "WorldQuant Alpha 研究工具",
+    "summary": "把 WorldQuant BRAIN 的 Alpha 研究流程工程化：候选生成、多指标评估、人工确认提交。",
+    "status": "intro",
+    "link": {"type": "page"},
+    "tags": ["Python", "LangGraph", "量化研究"]
+  },
+  {
+    "slug": "langchain-learning",
+    "name": "AI 应用开发学习仓库",
+    "summary": "AI 应用开发的学习与阶段项目：LangChain、RAG、LangGraph、评测和工程化实践。",
+    "status": "open",
+    "link": {"type": "external", "href": "https://github.com/loonslo/langchain-learning", "label": "GitHub"},
+    "tags": ["LangChain", "RAG", "LangGraph", "评测"]
+  },
+  {
+    "slug": "finunity",
+    "name": "FinUnity Web + Server",
+    "summary": "个人资产账本的 Web 与服务端：账户、持仓和资金流共用账本快照，分币种计算并支持持仓截图识别。",
+    "status": "intro",
+    "link": {"type": "page"},
+    "tags": ["React", "TypeScript", "FastAPI", "OCR"]
+  }
+]

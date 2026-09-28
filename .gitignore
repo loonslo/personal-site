@@ -1,0 +1,13 @@
+dist/
+.vercel/
+__pycache__/
+*.pyc
+.pytest_cache/
+.pytest-tmp/
+.pytest-security-audit/
+.venv/
+.claude/
+blocklist.txt
+
+.vercel
+.env*

@@ -1,0 +1,318 @@
+from __future__ import annotations
+
+import json
+import socket
+from html.parser import HTMLParser
+from pathlib import Path
+
+import pytest
+
+import build
+from sitegen import checks, content, icons, render
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+class _MetadataParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.description = ""
+        self.json_ld: list[str] = []
+        self.script_types: list[str | None] = []
+        self._in_json_ld = False
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attributes = dict(attrs)
+        if tag == "meta" and attributes.get("name") == "description":
+            self.description = attributes.get("content") or ""
+        if tag == "script":
+            self.script_types.append(attributes.get("type"))
+            self._in_json_ld = attributes.get("type") == "application/ld+json"
+            if self._in_json_ld:
+                self.json_ld.append("")
+
+    def handle_data(self, data: str) -> None:
+        if self._in_json_ld:
+            self.json_ld[-1] += data
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "script":
+            self._in_json_ld = False
+
+
+def test_real_content_is_valid() -> None:
+    site = content.load_site(ROOT / "content" / "site.json")
+    projects = content.load_projects(ROOT / "content" / "projects.json", ROOT / "content" / "projects")
+    assert site["name"] == "半開"
+    assert {p.status for p in projects} <= set(content.STATUSES)
+    assert len({p.slug for p in projects}) == len(projects)
+
+
+def _write_site_config(path: Path, *, base_url: str = "https://example.com", account_href: str = "") -> None:
+    path.write_text(
+        json.dumps(
+            {
+                "name": "Site",
+                "tagline": "Tagline",
+                "poem": ["line"],
+                "identity": "identity",
+                "intro": "intro",
+                "about_brief": "about",
+                "job": "job",
+                "description": "description",
+                "base_url": base_url,
+                "email": "",
+                "accounts": [{"label": "account", "handle": "user", "href": account_href}],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
+@pytest.mark.parametrize(
+    "href",
+    [
+        "javascript:alert(1)",
+        "data:text/html,alert(1)",
+        "http://example.com/",
+        "https://user:password@example.com/",
+        "https://bad host.example/",
+        "https://127.0.0.1/",
+    ],
+)
+def test_site_rejects_unsafe_account_links(tmp_path: Path, href: str) -> None:
+    path = tmp_path / "site.json"
+    _write_site_config(path, account_href=href)
+    with pytest.raises(content.ContentError, match="HTTPS"):
+        content.load_site(path)
+
+
+def test_site_base_url_must_be_an_https_origin(tmp_path: Path) -> None:
+    path = tmp_path / "site.json"
+    _write_site_config(path, base_url="https://example.com/private")
+    with pytest.raises(content.ContentError, match="base_url"):
+        content.load_site(path)
+
+
+@pytest.mark.parametrize("skills", ["Python", [""], ["   "], [None], [42]])
+def test_site_rejects_invalid_skills(tmp_path: Path, skills: object) -> None:
+    path = tmp_path / "site.json"
+    _write_site_config(path)
+    site = json.loads(path.read_text(encoding="utf-8"))
+    site["skills"] = skills
+    path.write_text(json.dumps(site), encoding="utf-8")
+    with pytest.raises(content.ContentError, match="skills"):
+        content.load_site(path)
+
+
+def test_external_checker_rejects_private_dns_without_connecting(monkeypatch: pytest.MonkeyPatch) -> None:
+    def resolve_private(*args, **kwargs):
+        return [(socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP, "", ("127.0.0.1", 443))]
+
+    def fail_connect(*args, **kwargs):
+        pytest.fail("private addresses must be rejected before a socket is opened")
+
+    monkeypatch.setattr(checks.socket, "getaddrinfo", resolve_private)
+    monkeypatch.setattr(checks.socket, "socket", fail_connect)
+    errors = checks.check_external({"https://attacker.example/"})
+    assert len(errors) == 1
+    assert "非公网地址" in errors[0]
+
+
+def test_external_checker_rejects_non_web_ports_before_resolving(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def fail_resolve(*args, **kwargs):
+        pytest.fail("non-web ports must be rejected before DNS resolution")
+
+    monkeypatch.setattr(checks.socket, "getaddrinfo", fail_resolve)
+    errors = checks.check_external({"https://example.com:22/"})
+    assert len(errors) == 1
+    assert "仅允许 HTTP 80 和 HTTPS 443 端口" in errors[0]
+
+
+@pytest.mark.parametrize(
+    ("item", "message"),
+    [
+        ({"slug": "Bad_Slug", "status": "open", "link": {"type": "external", "href": "https://x.y"}}, "slug"),
+        ({"slug": "a", "status": "done", "link": {"type": "none"}}, "status"),
+        ({"slug": "a", "status": "open", "link": {"type": "external", "href": "http://x.y"}}, "https://"),
+        ({"slug": "a", "status": "intro", "link": {"type": "page"}}, "缺少介绍页"),
+        ({"slug": "a", "status": "open", "link": {"type": "none"}}, "建设中"),
+    ],
+)
+def test_project_validation_rejects_bad_items(tmp_path: Path, item: dict, message: str) -> None:
+    data = [{"name": "名称", "summary": "一句话", **item}]
+    path = tmp_path / "projects.json"
+    path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    with pytest.raises(content.ContentError, match=message):
+        content.load_projects(path, tmp_path)
+
+
+def test_duplicate_slug_is_rejected(tmp_path: Path) -> None:
+    item = {"slug": "a", "name": "名称", "summary": "一句话", "status": "building", "link": {"type": "none"}}
+    path = tmp_path / "projects.json"
+    path.write_text(json.dumps([item, item], ensure_ascii=False), encoding="utf-8")
+    with pytest.raises(content.ContentError, match="重复"):
+        content.load_projects(path, tmp_path)
+
+
+def test_frontmatter_keeps_colons_in_values() -> None:
+    meta, body = content.parse_frontmatter("---\ntitle: A: B\ndraft: true\n---\n正文\n")
+    assert meta == {"title": "A: B", "draft": "true"}
+    assert body == "正文\n"
+
+
+def test_frontmatter_without_end_marker_fails() -> None:
+    with pytest.raises(content.ContentError):
+        content.parse_frontmatter("---\ntitle: A\n正文")
+
+
+def test_markdown_escapes_raw_html_and_wraps_tables() -> None:
+    html = content.render_markdown("<script>x</script>\n\n| a | b |\n| - | - |\n| 1 | 2 |\n")
+    assert "<script>" not in html
+    assert '<div class="table-wrap"><table>' in html
+
+
+def test_each_status_has_a_distinct_moon() -> None:
+    shapes = {icons.moon(s) for s in content.STATUSES}
+    assert len(shapes) == len(content.STATUSES)
+
+
+def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
+    out = build.build(ROOT, tmp_path / "dist")
+    for rel in ["index.html", "about/index.html", "projects/knowledge/index.html",
+                "projects/alpha-research/index.html", "projects/finunity/index.html",
+                "404.html", "sitemap.xml", "robots.txt",
+                "favicon.svg", "_headers"]:
+        assert (out / rel).exists(), rel
+    assert not (out / "writing").exists()
+    index = (out / "index.html").read_text(encoding="utf-8")
+    assert "文章" not in index.split("<main")[0]
+    assert '<script src="/site.js" defer></script>' in index
+    assert "<script>" not in index
+    assert "<title>半開｜AI 应用与全栈开发作品集</title>" in index
+    assert '<h1 class="hero__lead">' in index
+    assert "十年互联网经验" in index
+    assert "从软件工程走向 AI 应用开发" in index
+    assert "做过软件测试、Python 开发和产品工作。" in index
+    assert "关注 AI Agent、自动化工作流" in index
+    assert "RAG 服务与 LangGraph 工作流" in index
+    assert "React、TypeScript" in index
+    assert "20 个正例中有 19 个" in index
+    assert "不等于答案准确率" in index
+    names = ["个人知识服务", "WorldQuant Alpha 研究工具", "AI 应用开发学习仓库", "FinUnity Web + Server"]
+    assert [index.index(name) for name in names] == sorted(index.index(name) for name in names)
+    assert "其他个人项目" not in index
+    assert "角色设定卡" not in index
+    about = (out / "about" / "index.html").read_text(encoding="utf-8")
+    assert "经历与求职方向 · 半開" in about
+    assert "职业经历与角色" in about
+    assert 'id="contact"' in about
+    assert (out / "site.js").exists()
+    assert "Content-Security-Policy" in (out / "_headers").read_text(encoding="utf-8")
+
+    preview = build.build(ROOT, tmp_path / "preview", drafts=True)
+    assert (preview / "writing" / "index.html").exists()
+    assert (preview / "feed.xml").exists()
+
+
+def test_built_person_schema_and_page_descriptions(tmp_path: Path) -> None:
+    site = content.load_site(ROOT / "content" / "site.json")
+    about = content.load_doc(ROOT / "content" / "about.md")
+    out = build.build(ROOT, tmp_path / "dist", drafts=True)
+    descriptions = {}
+    schemas = []
+    for path in out.rglob("*.html"):
+        parser = _MetadataParser()
+        parser.feed(path.read_text(encoding="utf-8"))
+        assert parser.script_types == [None, "application/ld+json"]
+        assert len(parser.json_ld) == 1
+        person = json.loads(parser.json_ld[0])
+        assert person["@context"] == "https://schema.org"
+        assert person["@type"] == "Person"
+        assert person["@id"] == site["base_url"] + "/#person"
+        assert person["url"] == site["base_url"] + "/"
+        assert person["name"] == site["name"]
+        assert person["description"] == site["identity"]
+        assert person["knowsAbout"] == site["skills"]
+        assert person["email"] == site["email"]
+        assert person["sameAs"] == [a["href"] for a in site["accounts"] if a["href"]]
+        assert all(person["sameAs"])
+        schemas.append(person)
+        descriptions[path.relative_to(out).as_posix()] = parser.description
+    assert all(person == schemas[0] for person in schemas)
+    assert descriptions["index.html"] == site["description"]
+    assert descriptions["about/index.html"] == about.meta["summary"]
+    assert descriptions["index.html"] != descriptions["about/index.html"]
+    assert "19/20" in descriptions["about/index.html"]
+    assert "历史后端 35 项" in descriptions["about/index.html"]
+
+
+def test_person_schema_omits_unfilled_public_fields() -> None:
+    site = content.load_site(ROOT / "content" / "site.json")
+    site = {**site, "email": "", "skills": [], "accounts": [{"href": ""}]}
+    ctx = render.Context(site, False, "/styles.css", 2026)
+    parser = _MetadataParser()
+    parser.feed(render.not_found(ctx))
+    person = json.loads(parser.json_ld[0])
+    assert "email" not in person
+    assert "sameAs" not in person
+    assert "knowsAbout" not in person
+
+
+def test_person_schema_cannot_close_script_element() -> None:
+    site = content.load_site(ROOT / "content" / "site.json")
+    hostile = '</ScRiPt><script>alert("x")</script>&<!--'
+    site = {**site, "name": hostile, "identity": hostile, "skills": [hostile]}
+    ctx = render.Context(site, False, "/styles.css", 2026)
+    parser = _MetadataParser()
+    parser.feed(render.not_found(ctx))
+    assert parser.script_types == [None, "application/ld+json"]
+    assert len(parser.json_ld) == 1
+    assert "<" not in parser.json_ld[0]
+    person = json.loads(parser.json_ld[0])
+    assert person["name"] == hostile
+    assert person["description"] == hostile
+    assert person["knowsAbout"] == [hostile]
+
+
+def test_build_refuses_to_delete_foreign_directory(tmp_path: Path) -> None:
+    foreign = tmp_path / "dist"
+    foreign.mkdir()
+    (foreign / "keep.txt").write_text("不是构建产物", encoding="utf-8")
+    with pytest.raises(build.BuildError):
+        build.build(ROOT, foreign)
+    assert (foreign / "keep.txt").exists()
+
+
+def test_built_site_has_no_broken_internal_links(tmp_path: Path) -> None:
+    out = build.build(ROOT, tmp_path / "dist", drafts=True)
+    assert checks.check_internal(out, checks.scan_pages(out)) == []
+
+
+def test_internal_check_reports_missing_file_and_anchor(tmp_path: Path) -> None:
+    (tmp_path / "index.html").write_text(
+        '<a href="/missing/">x</a><a href="/#nowhere">y</a><a href="#top">z</a><p id="top"></p>',
+        encoding="utf-8",
+    )
+    errors = checks.check_internal(tmp_path, checks.scan_pages(tmp_path))
+    assert any("/missing/" in e for e in errors)
+    assert any("#nowhere" in e for e in errors)
+    assert not any("#top" in e for e in errors)
+
+
+def test_blocklist_scan_is_case_insensitive(tmp_path: Path) -> None:
+    dist = tmp_path / "dist"
+    dist.mkdir()
+    (dist / "index.html").write_text("<p>Hello ACME team</p>", encoding="utf-8")
+    words = tmp_path / "words.txt"
+    words.write_text("# 注释\nacme\n不存在的词\n", encoding="utf-8")
+    hits = checks.scan_blocklist(dist, checks.load_blocklist(words))
+    assert hits == ["index.html: 出现禁用词「acme」"]
+
+
+def test_placeholders_are_reported() -> None:
+    site = {"email": "", "base_url": "https://example.pages.dev", "accounts": [{"label": "小红书", "href": ""}]}
+    notes = checks.placeholders(site)
+    assert len(notes) == 3
