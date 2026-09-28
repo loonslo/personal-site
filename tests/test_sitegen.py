@@ -197,10 +197,8 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
     assert "从软件工程走向 AI 应用开发" in index
     assert "做过软件测试、Python 开发和产品工作。" in index
     assert "关注 AI Agent、自动化工作流" in index
-    assert "RAG 服务与 LangGraph 工作流" in index
-    assert "React、TypeScript" in index
-    assert "20 个正例中有 19 个" in index
-    assert "不等于答案准确率" in index
+    assert "项目页写清楚了方法、验证和还没做完的部分" in index
+    assert "先说边界，再看结果" in index
     names = ["个人知识服务", "WorldQuant Alpha 研究工具", "AI 应用开发学习仓库", "FinUnity Web + Server"]
     assert [index.index(name) for name in names] == sorted(index.index(name) for name in names)
     assert "其他个人项目" not in index
