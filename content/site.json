@@ -1,0 +1,25 @@
+{
+  "name": "半開",
+  "tagline": "花看半开，酒饮微醉。",
+  "poem": [
+    "花看半开，月看未圆，",
+    "半遮半掩处，最惹人心动。",
+    "酒饮微醉，话留余地，",
+    "留几分清醒，也留几分回味。",
+    "人生不必十分，",
+    "意犹未尽，刚刚好。"
+  ],
+  "identity": "十年互联网经验，从软件工程走向 AI 应用开发。",
+  "intro": "做过软件测试、Python 开发和产品工作。\n关注 AI Agent、自动化工作流，以及 AI 时代的软件开发方式。",
+  "about_brief": "用 Python、FastAPI 构建 RAG 服务与 LangGraph 工作流，用 React、TypeScript 开发 Web 界面。个人知识服务在旧 wiki 词法检索基线的保留集上，20 个正例中有 19 个在前 5 个片段命中预期文档；这是召回指标，不等于答案准确率。",
+  "job": "求职方向：AI 应用开发 / 全栈开发，也关注 AI 测试与评测。简历可邮件索取。",
+  "description": "半開的 AI 应用与全栈开发作品集：个人知识服务、WorldQuant Alpha 研究工具与 FinUnity 资产账本，使用 RAG、LangGraph、FastAPI、React 和 TypeScript，附项目方案与验证记录。",
+  "skills": ["Python", "RAG", "LangGraph", "FastAPI", "React", "TypeScript"],
+  "home_title": "半開｜AI 应用与全栈开发作品集",
+  "base_url": "https://baikai.site",
+  "email": "alanswill2007@gmail.com",
+  "accounts": [
+    {"label": "GitHub", "handle": "loonslo", "href": "https://github.com/loonslo"},
+    {"label": "小红书", "handle": "测试阿甲", "href": ""}
+  ]
+}

@@ -1,0 +1,16 @@
+[project]
+name = "personal-site"
+version = "0.1.0"
+description = "半開的个人站：纯静态，所有项目的总入口"
+requires-python = ">=3.12"
+dependencies = ["mistune==3.3.4"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+images = ["pillow>=10"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+# 本机系统临时目录下的 pytest-of-<user> 无访问权限，测试临时文件放在项目内
+addopts = "--basetemp=.pytest-tmp -p no:cacheprovider"
