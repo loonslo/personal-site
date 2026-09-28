@@ -263,7 +263,6 @@ def project_page(ctx: Context, p: Project, doc: Doc) -> str:
 
 def about_page(ctx: Context, doc: Doc) -> str:
     site = ctx.site
-    poem = "".join(f'<span class="poem__line">{_e(line)}</span>' for line in site["poem"])
     email = site.get("email", "")
     contacts = [("邮箱", f'<a href="mailto:{_e(email)}">{_e(email)}</a>' if email else '<span class="muted">待补</span>')]
     for a in site["accounts"]:
@@ -271,17 +270,19 @@ def about_page(ctx: Context, doc: Doc) -> str:
         value = f'<a href="{_e(a["href"])}" rel="me">{handle}</a>' if a.get("href") else f"<span>{handle}</span>"
         contacts.append((_e(a["label"]), value))
     contact_html = "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in contacts)
+    # 右侧竖排诗句挂轴（呼应首页 hero 的品牌记忆点）按需求移除展示，只注释、不删除。
+    # 恢复时：article 类名改回 "wrap about"，用 <div class="about__text"> 包住下面这段内容，
+    # 并在 </div> 和 </article> 之间加回：
+    #   <p class="poem">{poem}{seal("poem__seal")}</p>
+    # 其中 poem = "".join(f'<span class="poem__line">{_e(line)}</span>' for line in site["poem"])
     body = f"""
-<article class="wrap about">
-  <div class="about__text">
-    <header class="page-head"><h1 class="page-title">{_e(doc.title)}</h1></header>
-    <div class="prose">{doc.html}</div>
-    <h2 class="about__heading">正在找工作</h2>
-    <p class="job"><span class="job__dot" aria-hidden="true"></span>{_e(site["job"])}</p>
-    <h2 class="about__heading" id="contact">联系与账号</h2>
-    <dl class="contact">{contact_html}</dl>
-  </div>
-  <p class="poem">{poem}{seal("poem__seal")}</p>
+<article class="wrap page">
+  <header class="page-head"><h1 class="page-title">{_e(doc.title)}</h1></header>
+  <div class="prose">{doc.html}</div>
+  <h2 class="about__heading">正在找工作</h2>
+  <p class="job"><span class="job__dot" aria-hidden="true"></span>{_e(site["job"])}</p>
+  <h2 class="about__heading" id="contact">联系与账号</h2>
+  <dl class="contact">{contact_html}</dl>
 </article>"""
     return layout(ctx, title=doc.title, description=doc.meta.get("summary", site["description"]), path="/about/", body=body, active="about")
 
