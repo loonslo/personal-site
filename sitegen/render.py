@@ -70,10 +70,17 @@ def layout(ctx: Context, *, title: str, description: str, path: str, body: str, 
         if path == "/" else f"{title} · {name}"
     )
     url, og_image = ctx.base + path, ctx.base + "/og-image.png"
-    nav_items = [("作品", "/#projects", "projects"), ("文章", "/writing/", "writing"), ("经历", "/about/", "about")]
+    nav_items = [
+        ("作品", "/#projects", "projects", False),
+        ("文章", "/writing/", "writing", False),
+        ("经历", "/about/", "about", False),
+        ("特价AI会员", "https://prodclub.xyz/r/2QFJWC", "", True),
+    ]
     nav = "".join(
-        f'<a href="{href}"{" aria-current=\"page\"" if key == active else ""}>{label}</a>'
-        for label, href, key in nav_items
+        f'<a href="{_e(href)}"{" aria-current=\"page\"" if key == active else ""}'
+        f'{" target=\"_blank\" rel=\"noopener\"" if external else ""}>{_e(label)}'
+        f'{"<span class=\"sr-only\">（在新窗口打开）</span>" if external else ""}</a>'
+        for label, href, key, external in nav_items
         if key != "writing" or ctx.show_writing
     )
     feed_link = (
@@ -271,18 +278,20 @@ def about_page(ctx: Context, doc: Doc) -> str:
         contacts.append((_e(a["label"]), value))
     contact_html = "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in contacts)
     # 右侧竖排诗句挂轴（呼应首页 hero 的品牌记忆点）按需求移除展示，只注释、不删除。
-    # 恢复时：article 类名改回 "wrap about"，用 <div class="about__text"> 包住下面这段内容，
-    # 并在 </div> 和 </article> 之间加回：
+    # 右栏现在放求职与联系：宽屏时在正文右侧并随滚动吸附，窄屏落到正文之后（见 styles.css“关于页”）。
+    # 恢复挂轴时，把下面这段放进 .about__aside 顶部（.poem 样式仍保留在 styles.css）：
     #   <p class="poem">{poem}{seal("poem__seal")}</p>
     # 其中 poem = "".join(f'<span class="poem__line">{_e(line)}</span>' for line in site["poem"])
     body = f"""
-<article class="wrap page">
+<article class="wrap page about">
   <header class="page-head"><h1 class="page-title">{_e(doc.title)}</h1></header>
   <div class="prose">{doc.html}</div>
-  <h2 class="about__heading">正在找工作</h2>
-  <p class="job"><span class="job__dot" aria-hidden="true"></span>{_e(site["job"])}</p>
-  <h2 class="about__heading" id="contact">联系与账号</h2>
-  <dl class="contact">{contact_html}</dl>
+  <aside class="about__aside" aria-label="求职与联系">
+    <h2 class="about__heading">正在找工作</h2>
+    <p class="job"><span class="job__dot" aria-hidden="true"></span>{_e(site["job"])}</p>
+    <h2 class="about__heading" id="contact">联系与账号</h2>
+    <dl class="contact">{contact_html}</dl>
+  </aside>
 </article>"""
     return layout(ctx, title=doc.title, description=doc.meta.get("summary", site["description"]), path="/about/", body=body, active="about")
 
