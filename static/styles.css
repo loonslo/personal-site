@@ -72,7 +72,8 @@ body {
 .phrase { display: inline-block; }
 
 /* 短句只在标点和空格处换行，避免“测试出/身”这类断词 */
-.hero__lead, .hero__intro, .hero__job, .page-title, .page-lead, .section__desc, .index__name, .index__summary {
+.hero__lead, .hero__intro, .hero__job, .page-title, .page-lead, .section__desc, .index__name, .index__summary,
+.about__aside .job {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
@@ -619,13 +620,8 @@ a.index__row:hover .index__tags, a.index__row:focus-visible .index__tags { color
 
 /* ---------- 关于页 ---------- */
 
-.about {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  column-gap: var(--s9);
-  padding-top: var(--s6);
-}
+/* 默认单列：标题、正文、求职与联系依次排下来；宽屏的两栏见文末“宽屏” */
+.about { padding-top: var(--s6); }
 
 .about__heading {
   margin: var(--s7) 0 var(--s4);
@@ -719,19 +715,40 @@ a.index__row:hover .index__tags, a.index__row:focus-visible .index__tags { color
   *, *::before, *::after { transition-duration: 0.01ms !important; }
 }
 
+/* ---------- 宽屏 ---------- */
+
+/* 经历页：标题通栏，正文在左，求职与联系在右并随滚动吸附，右侧不再整块留空 */
+@media (min-width: 1024px) {
+  .about {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    align-items: start;
+    column-gap: var(--s7);
+  }
+  .about .page-head { grid-column: 1 / -1; }
+  .about__aside { position: sticky; top: var(--s5); }
+  .about__aside > :first-child { margin-top: 0; }
+  .about__aside .job { font-size: 15px; text-wrap: pretty; }
+  .about__aside .contact { column-gap: var(--s5); }
+  .about__aside .contact dd { overflow-wrap: anywhere; }
+}
+
+@media (min-width: 1280px) {
+  .about { grid-template-columns: minmax(0, 1fr) 300px; column-gap: var(--s9); }
+}
+
 /* ---------- 平板 ---------- */
 
 @media (max-width: 900px) {
   .hero__grid { column-gap: var(--s6); }
   .index__row { grid-template-columns: 48px minmax(0, 1fr) 200px; }
-  .about { column-gap: var(--s7); }
 }
 
 /* ---------- 手机 ---------- */
 
 @media (max-width: 680px) {
   body { font-size: 16px; }
-  .nav { gap: var(--s5); }
+  .nav { gap: var(--s4); }
 
   .hero { padding-block: var(--s4) var(--s7); }
   .hero::before { top: calc(-1 * var(--s7)); right: -40vw; width: 110vw; }
@@ -753,7 +770,6 @@ a.index__row:hover .index__tags, a.index__row:focus-visible .index__tags { color
   .flow li { flex-direction: column; align-items: flex-start; }
   .flow li + li::before { width: 1px; height: var(--s3); margin-left: var(--s5); }
 
-  .about { grid-template-columns: 1fr; row-gap: var(--s6); }
   .poem { justify-self: end; margin-top: var(--s4); font-size: 17px; }
   .poem__seal { width: 32px; height: 32px; }
 }

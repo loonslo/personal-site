@@ -215,6 +215,23 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
     assert (preview / "feed.xml").exists()
 
 
+def test_about_page_puts_job_and_contact_in_side_column(tmp_path: Path) -> None:
+    site = content.load_site(ROOT / "content" / "site.json")
+    out = build.build(ROOT, tmp_path / "dist")
+    about = (out / "about" / "index.html").read_text(encoding="utf-8")
+    assert '<article class="wrap page about">' in about
+    _, aside_open, rest = about.partition('<aside class="about__aside"')
+    assert aside_open, "求职与联系应放在侧栏里"
+    aside, _, tail = rest.partition("</aside>")
+    assert "正在找工作" in aside
+    assert site["job"] in aside
+    assert 'id="contact"' in aside
+    assert site["email"] in aside
+    # 侧栏在正文之后：窄屏单列时仍是 标题 → 正文 → 求职与联系
+    assert about.index('class="prose"') < about.index('<aside class="about__aside"')
+    assert tail.lstrip().startswith("</article>")
+
+
 def test_built_person_schema_and_page_descriptions(tmp_path: Path) -> None:
     site = content.load_site(ROOT / "content" / "site.json")
     about = content.load_doc(ROOT / "content" / "about.md")
