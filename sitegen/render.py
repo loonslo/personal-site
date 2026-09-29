@@ -225,17 +225,7 @@ def home(ctx: Context, projects: list[Project], posts: list[Doc]) -> str:
     <ol class="index">{rows}</ol>
   </div>
 </section>
-{writing}
-<section class="section section--about" aria-labelledby="about-title">
-  <div class="wrap about-brief">
-    <h2 class="section__title" id="about-title">经历与联系</h2>
-    <div class="about-brief__body">
-      <p>{_e(site["about_brief"])}</p>
-      <p class="job"><span class="job__dot" aria-hidden="true"></span>{_e(site["job"])}</p>
-      <p><a class="text-link" href="/about/">查看经历与联系方式</a></p>
-    </div>
-  </div>
-</section>"""
+{writing}"""
     return layout(ctx, title=site["name"], description=site["description"], path="/", body=body, active="projects")
 
 

@@ -18,7 +18,7 @@ STATUS_LABELS = {"building": "建设中", "intro": "仅介绍", "open": "开源"
 LINK_TYPES = ("page", "external", "none")
 _SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 _SITE_KEYS = (
-    "name", "tagline", "poem", "identity", "intro", "about_brief", "job",
+    "name", "tagline", "poem", "identity", "intro", "job",
     "description", "base_url", "email", "accounts",
 )
 _URL_CONTROL_OR_SPACE = re.compile(r"[\x00-\x20\x7f\\]")

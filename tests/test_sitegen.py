@@ -57,7 +57,6 @@ def _write_site_config(path: Path, *, base_url: str = "https://example.com", acc
                 "poem": ["line"],
                 "identity": "identity",
                 "intro": "intro",
-                "about_brief": "about",
                 "job": "job",
                 "description": "description",
                 "base_url": base_url,
@@ -197,8 +196,10 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
     assert "从软件工程走向 AI 应用开发" in index
     assert "做过软件测试、Python 开发和产品工作。" in index
     assert "关注 AI Agent、自动化工作流" in index
-    assert "项目页写清楚了方法、验证和还没做完的部分" in index
-    assert "先说边界，再看结果" in index
+    # 首页不再有底部“经历与联系”区块；进入经历页靠导航和首屏链接
+    assert 'id="about-title"' not in index
+    assert "先说边界，再看结果" not in index
+    assert '<a class="text-link" href="/about/">经历与联系</a>' in index
     names = ["个人知识服务", "WorldQuant Alpha 研究工具", "AI 应用开发学习仓库", "FinUnity Web + Server"]
     assert [index.index(name) for name in names] == sorted(index.index(name) for name in names)
     assert "其他个人项目" not in index

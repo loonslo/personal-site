@@ -11,7 +11,6 @@
   ],
   "identity": "十年互联网经验，从软件工程走向 AI 应用开发。",
   "intro": "做过软件测试、Python 开发和产品工作。\n关注 AI Agent、自动化工作流，以及 AI 时代的软件开发方式。",
-  "about_brief": "项目页写清楚了方法、验证和还没做完的部分；先说边界，再看结果，是我一贯的做事方式。",
   "job": "求职方向：AI 应用开发 / 全栈开发，也关注 AI 测试与评测。简历可邮件索取。",
   "description": "半開的 AI 应用与全栈开发作品集：个人知识服务、WorldQuant Alpha 研究工具与 FinUnity 资产账本，使用 RAG、LangGraph、FastAPI、React 和 TypeScript，附项目方案与验证记录。",
   "skills": ["Python", "RAG", "LangGraph", "FastAPI", "React", "TypeScript"],
