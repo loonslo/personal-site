@@ -15,7 +15,7 @@ py -3 -m http.server 8787 --bind 127.0.0.1 --directory dist
 
 | 要改什么 | 改哪里 |
 | --- | --- |
-| 名字、诗句、首页职业定位、技术栈、验证摘要、求职、邮箱、账号、首页搜索标题 | `content/site.json` |
+| 名字、诗句、首页职业定位、技术栈、求职、邮箱、账号、首页搜索标题 | `content/site.json` |
 | 项目目录 | `content/projects.json` |
 | 私有项目的介绍页 | `content/projects/<slug>.md` |
 | 经历与求职方向页正文 | `content/about.md` |
@@ -25,7 +25,7 @@ py -3 -m http.server 8787 --bind 127.0.0.1 --directory dist
 
 ### 首页、经历页与结构化数据
 
-- `identity` 是简短职业定位的唯一文案来源；`intro` 写职业经历与关注方向，支持用 `\n` 分行；`about_brief` 写具体技术栈与带验证边界的结果摘要。首页 `description` 介绍代表作品；经历页的 frontmatter `summary` 介绍职责、证据与联系入口。
+- `identity` 是简短职业定位的唯一文案来源；`intro` 写职业经历与关注方向，支持用 `\n` 分行。首页 `description` 介绍代表作品；经历页的 frontmatter `summary` 介绍职责、证据与联系入口。
 - 技术栈列表在 `site.json` 的 `skills` 维护，与页面可见技术栈同步更新。验证数据沿用项目介绍页的口径，保留题集、历史记录和未完成验收的边界。
 - 每页静态 HTML 的 `<head>` 输出同一个 Person JSON-LD 实体，使用稳定的 `base_url/#person` 标识。姓名、身份、`knowsAbout`、邮箱与 `sameAs` 复用公开配置；未填写的邮箱和账号链接会被省略。
 - 小红书须填写核实过的 HTTPS 个人主页链接；仅凭昵称无法确认唯一账号。填入 `accounts[].href` 后，`rel="me"` 与 `sameAs` 自动同步。

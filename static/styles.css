@@ -452,10 +452,7 @@ a.index__row:hover .index__tags, a.index__row:focus-visible .index__tags { color
 .post-row:hover .post-row__title { color: var(--cinnabar); }
 .post-row__summary { margin-top: var(--s1); color: var(--ink-2); font-size: 15px; line-height: 1.75; }
 
-/* ---------- 首页“关于” ---------- */
-
-.about-brief { display: grid; grid-template-columns: 200px minmax(0, 1fr); column-gap: var(--s5); }
-.about-brief__body { max-width: var(--measure); display: grid; gap: var(--s4); }
+/* ---------- 求职状态（经历页侧栏） ---------- */
 
 .job { display: flex; align-items: baseline; gap: var(--s3); color: var(--ink); }
 .job__dot {
@@ -763,8 +760,6 @@ a.index__row:hover .index__tags, a.index__row:focus-visible .index__tags { color
 
   .post-row { grid-template-columns: 1fr; padding-inline: var(--s2); }
   .post-row time { grid-row: auto; }
-
-  .about-brief { grid-template-columns: 1fr; row-gap: var(--s4); }
 
   .flow { flex-direction: column; align-items: flex-start; }
   .flow li { flex-direction: column; align-items: flex-start; }
