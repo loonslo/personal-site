@@ -19,7 +19,7 @@ LINK_TYPES = ("page", "external", "none")
 _SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 _SITE_KEYS = (
     "name", "tagline", "poem", "identity", "intro", "job",
-    "description", "base_url", "email", "accounts",
+    "description", "base_url", "project_links", "email", "accounts",
 )
 _URL_CONTROL_OR_SPACE = re.compile(r"[\x00-\x20\x7f\\]")
 _DNS_LABEL = re.compile(r"^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$", re.IGNORECASE)
@@ -175,6 +175,16 @@ def load_site(path: Path) -> dict[str, Any]:
             raise ContentError(f"{path}: accounts 第 {i} 项的 href 必须是字符串")
         if href and not _valid_https_url(href):
             raise ContentError(f"{path}: accounts 第 {i} 项的 href 必须是有效的 HTTPS 链接")
+    if not isinstance(site["project_links"], list):
+        raise ContentError(f"{path}: project_links 必须是列表")
+    for i, link in enumerate(site["project_links"], start=1):
+        if not isinstance(link, dict):
+            raise ContentError(f"{path}: project_links 第 {i} 项必须是对象")
+        label, href = link.get("label"), link.get("href")
+        if not isinstance(label, str) or not label.strip():
+            raise ContentError(f"{path}: project_links 第 {i} 项的 label 必须是非空字符串")
+        if not isinstance(href, str) or not _valid_https_url(href):
+            raise ContentError(f"{path}: project_links 第 {i} 项的 href 必须是有效的 HTTPS 链接")
     return site
 
 

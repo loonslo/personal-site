@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "knowledge",
+    "name": "Private Knowledge Assistant",
+    "summary": "A locally run assistant for private knowledge: hybrid retrieval, streaming answers, and traceable sources.",
+    "status": "intro",
+    "link": {"type": "page"},
+    "tags": ["RAG", "FastAPI", "SQLite FTS5", "Chroma"]
+  },
+  {
+    "slug": "alpha-research",
+    "name": "WorldQuant Alpha Research Toolkit",
+    "summary": "An engineered workflow for WorldQuant BRAIN Alpha research: candidate generation, multi-metric evaluation, and human-approved submissions.",
+    "status": "intro",
+    "link": {"type": "page"},
+    "tags": ["Python", "LangGraph", "Quantitative Research"]
+  },
+  {
+    "slug": "langchain-learning",
+    "name": "AI Application Development Study Repo",
+    "summary": "Learning notes and milestone projects in AI application development: LangChain, RAG, LangGraph, evaluation, and engineering practice.",
+    "status": "open",
+    "link": {"type": "external", "href": "https://github.com/loonslo/langchain-learning", "label": "GitHub"},
+    "tags": ["LangChain", "RAG", "LangGraph", "Evaluation"]
+  },
+  {
+    "slug": "finunity",
+    "name": "FinUnity Web + Server",
+    "summary": "A personal finance ledger with a web client and server: accounts, holdings, and cash flows share one ledger snapshot, with per-currency calculations and screenshot-based position entry.",
+    "status": "intro",
+    "link": {"type": "page"},
+    "tags": ["React", "TypeScript", "FastAPI", "OCR"]
+  }
+]
