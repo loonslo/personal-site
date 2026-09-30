@@ -60,6 +60,7 @@ def _write_site_config(path: Path, *, base_url: str = "https://example.com", acc
                 "job": "job",
                 "description": "description",
                 "base_url": base_url,
+                "project_links": [{"label": "project", "href": "https://project.example.com"}],
                 "email": "",
                 "accounts": [{"label": "account", "handle": "user", "href": account_href}],
             }
@@ -90,6 +91,17 @@ def test_site_base_url_must_be_an_https_origin(tmp_path: Path) -> None:
     path = tmp_path / "site.json"
     _write_site_config(path, base_url="https://example.com/private")
     with pytest.raises(content.ContentError, match="base_url"):
+        content.load_site(path)
+
+
+@pytest.mark.parametrize("href", ["javascript:alert(1)", "http://project.example.com", "https://127.0.0.1/"])
+def test_site_rejects_unsafe_project_links(tmp_path: Path, href: str) -> None:
+    path = tmp_path / "site.json"
+    _write_site_config(path)
+    site = json.loads(path.read_text(encoding="utf-8"))
+    site["project_links"][0]["href"] = href
+    path.write_text(json.dumps(site), encoding="utf-8")
+    with pytest.raises(content.ContentError, match="project_links.*HTTPS"):
         content.load_site(path)
 
 
@@ -214,6 +226,17 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
     preview = build.build(ROOT, tmp_path / "preview", drafts=True)
     assert (preview / "writing" / "index.html").exists()
     assert (preview / "feed.xml").exists()
+
+
+def test_project_navigation_links_open_in_new_tabs(tmp_path: Path) -> None:
+    site = content.load_site(ROOT / "content" / "site.json")
+    out = build.build(ROOT, tmp_path / "dist")
+    index = (out / "index.html").read_text(encoding="utf-8")
+    for link in site["project_links"]:
+        assert (
+            f'<a href="{link["href"]}" target="_blank" rel="noopener">'
+            f'{link["label"]}<span class="sr-only">（在新窗口打开）</span>'
+        ) in index
 
 
 def test_about_page_puts_job_and_contact_in_side_column(tmp_path: Path) -> None:

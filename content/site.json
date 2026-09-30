@@ -16,6 +16,11 @@
   "skills": ["Python", "RAG", "LangGraph", "FastAPI", "React", "TypeScript"],
   "home_title": "半開｜AI 应用与全栈开发作品集",
   "base_url": "https://baikai.site",
+  "project_links": [
+    {"label": "角色设定", "href": "https://character.baikai.site"},
+    {"label": "知识库演示", "href": "https://knowledge.baikai.site"},
+    {"label": "FinUnity", "href": "https://finunity.baikai.site"}
+  ],
   "email": "alanswill2007@gmail.com",
   "accounts": [
     {"label": "GitHub", "handle": "loonslo", "href": "https://github.com/loonslo"},

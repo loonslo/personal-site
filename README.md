@@ -15,13 +15,12 @@ py -3 -m http.server 8787 --bind 127.0.0.1 --directory dist
 
 | 要改什么 | 改哪里 |
 | --- | --- |
-| 名字、诗句、首页职业定位、技术栈、求职、邮箱、账号、首页搜索标题 | `content/site.json` |
-| 项目目录 | `content/projects.json` |
-| 私有项目的介绍页 | `content/projects/<slug>.md` |
-| 经历与求职方向页正文 | `content/about.md` |
-| 文章 | `content/writing/<slug>.md` |
+| 中文站点信息、项目目录、介绍页、经历页与文章 | `content/site.json`、`content/projects.json`、`content/projects/`、`content/about.md`、`content/writing/` |
+| 英文站点信息、项目目录、介绍页、经历页与文章译文 | `content/en/site.json`、`content/en/projects.json`、`content/en/projects/`、`content/en/about.md`、`content/en/writing/` |
 
 首页“个人项目”按 `content/projects.json` 的顺序展示，目前依次为 knowledge、WorldQuant、langchain-learning、FinUnity Web + Server。企业项目案例在核实职责和脱敏边界后再加入。
+
+中文使用根路径（例如 `/about/`），英文使用 `/en/` 前缀（例如 `/en/about/`）。页眉语言入口会切换到对应页面；新增或发布中文项目/文章时，应同步添加英文内容并保留相同 slug。草稿仍不进入默认构建。
 
 ### 首页、经历页与结构化数据
 
@@ -29,6 +28,7 @@ py -3 -m http.server 8787 --bind 127.0.0.1 --directory dist
 - 技术栈列表在 `site.json` 的 `skills` 维护，与页面可见技术栈同步更新。验证数据沿用项目介绍页的口径，保留题集、历史记录和未完成验收的边界。
 - 每页静态 HTML 的 `<head>` 输出同一个 Person JSON-LD 实体，使用稳定的 `base_url/#person` 标识。姓名、身份、`knowsAbout`、邮箱与 `sameAs` 复用公开配置；未填写的邮箱和账号链接会被省略。
 - 小红书须填写核实过的 HTTPS 个人主页链接；仅凭昵称无法确认唯一账号。填入 `accounts[].href` 后，`rel="me"` 与 `sameAs` 自动同步。
+- 右上角在线项目入口维护在 `project_links`；每项使用名称与 HTTPS 地址，在全站导航中以新标签页打开。
 - JSON-LD 是不可执行的数据块，现有 `script-src 'self'` 保持不变。本地验收 CSP 时需使用带安全响应头的预览服务；上面的普通 `http.server` 不会应用 `_headers` 或 `vercel.json`。
 
 ### 项目字段
@@ -110,7 +110,6 @@ npx vercel --prod
 ## 上线前待补
 
 - `site.json` 的小红书链接（需核实个人主页；邮箱已填写）
-- FinUnity Web 端的外部链接（公开部署后再加，并标“需登录”）；目前使用站内介绍页
 - 禁用词清单
 
 ## 字体与图片
