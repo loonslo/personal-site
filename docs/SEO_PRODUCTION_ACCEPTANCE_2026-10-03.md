@@ -19,3 +19,13 @@ Vercel Production READY，部署 dpl_9gVMLoveTQ3dJKQFtHFHmuN3aRhS，正式别名
 搜索基线为整个域名资源，Search type Web，页面选择 3 months，但图表及日期对话框实际可用范围为 2026-09-27～2026-09-29；页面显示 last update 14.5 hours ago。汇总 clicks 0、impressions 0、CTR 0%、average position 0，查询表和页面表均 No data。无展示时平均排名/CTR 没有有效样本；不能将汇总零值拆成本站已独立测量的零值，也不据此判断新发布效果。目标国家、品牌/非品牌样本及业务转化均未测量。
 
 五站合计三份 sitemap Success（角色 6、Knowledge 6、看板 5），个人站/FinUnity 两份 Couldn't fetch；五个代表页实时抓取均可用，实际均未索引。本批不创建提醒，不反复点击提交或把实时测试当作收录；2026-10-31/2026-11-28 复盘必须以届时真实数据为准。
+
+## 2026-10-03 后续完整性补查
+
+本站 16 个公开页补查单个非空 H1、单个非空 description、HTML 语言、HTML MIME、无额外跳转和普通导航链接，全通过。五站合计 45 页。最初补查脚本错误地对每个提供商统一要求五种安全头；按实际源配置重核：个人/角色/FinUnity 已有五头仍存在，Knowledge 原线上 550695c 仅定义 CSP/nosniff，两者保留；看板原 wrangler/资源构建未定义这组头，不能把其缺失当成 SEO 回归。没有改安全策略，原响应头缺项清单保留为观察记录，不冒充所有站原本都有五种头。辅助脚本首次用 Windows 默认编码读取清单失败，显式 UTF-8 后执行；随后一个机器人文件请求发生 TLS EOF，中止后做有界重试，最终获取四个响应，未关闭证书验证。
+
+当前配置已出现 personal-site remote，核对远端 main 为 1338e67。在独立克隆中只从已提交 e193d31 的 personal-site 子树导出 50 个项目文件，18 个变化文件按精确清单提交，41 pytest 和 build.py check 通过，整个导出树与已提交子树规范化字节一致；普通快进推送到 https://github.com/loonslo/personal-site.git main，提交 2c0788520204003df57e9bdc3b628dc4a1c5b6db，远端 SHA 再读一致。没有推送父工作区历史/笔记/密钥，未覆盖其他本地未提交改动；上文无 remote 是当时快照，本节更新为已推送。
+
+Google 首页 https://baikai.site/ 已 indexed，最后抓取 2026-10-02 23:55:11，用户 canonical 为自身，Google 为 Inspected URL。当前版本 10:59 实时测试 available，实际 HTML 元数据及手机渲染首屏已查看。既有首页收录不能当作本批新文章已收录或流量增长。10:19 的 RAG 文章缓存测试补展开：抓取允许/获取成功/允许索引通过，用户 canonical 自身，Google canonical Only determined after indexing；Google 获取的 HTML 与手机首屏实际查看，文章仍未索引。
+
+按 Google 官方 sitemap 排查流程直接测试 XML：10:54:39 sitemap.xml Crawl allowed Yes、Page fetch Successful。公网 Googlebot-UA robots/XML 200、正确 MIME、16 URL；域名人工处置报告 No issues detected。sitemap 表仍 Couldn't fetch，当前原因不能归为文件不可访问，也不能宣称 sitemap 已读取成功。未反复提交；后续以正常重试后的报告为准。
