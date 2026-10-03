@@ -197,9 +197,16 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
                 "404.html", "sitemap.xml", "robots.txt",
                 "favicon.svg", "_headers"]:
         assert (out / rel).exists(), rel
-    assert not (out / "writing").exists()
+    assert (out / "writing/index.html").exists()
+    for locale in ("", "en/"):
+        for slug in ("rag-hybrid-search", "testing-to-ai-development"):
+            assert (out / f"{locale}writing/{slug}/index.html").exists()
+        assert not (out / f"{locale}writing/ui-testing-ten-years/index.html").exists()
+        feed = (out / f"{locale}feed.xml").read_text(encoding="utf-8")
+        assert feed.count("<entry>") == 2
+        assert "ui-testing-ten-years" not in feed
     index = (out / "index.html").read_text(encoding="utf-8")
-    assert "文章" not in index.split("<main")[0]
+    assert "文章" in index.split("<main")[0]
     assert '<script src="/site.js" defer></script>' in index
     assert "<script>" not in index
     assert "<title>半開｜AI 应用与全栈开发作品集</title>" in index
@@ -284,8 +291,9 @@ def test_built_person_schema_and_page_descriptions(tmp_path: Path) -> None:
     assert descriptions["index.html"] == site["description"]
     assert descriptions["about/index.html"] == about.meta["summary"]
     assert descriptions["index.html"] != descriptions["about/index.html"]
-    assert "19/20" in descriptions["about/index.html"]
-    assert "历史后端 35 项" in descriptions["about/index.html"]
+    assert "AI 应用项目经历" in descriptions["about/index.html"]
+    assert "19/20" not in descriptions["about/index.html"]
+    assert "19 个" in (out / "about/index.html").read_text(encoding="utf-8")
 
 
 def test_person_schema_omits_unfilled_public_fields() -> None:
@@ -298,6 +306,30 @@ def test_person_schema_omits_unfilled_public_fields() -> None:
     assert "email" not in person
     assert "sameAs" not in person
     assert "knowsAbout" not in person
+
+
+def test_not_found_page_is_not_indexed_or_canonicalized() -> None:
+    site = content.load_site(ROOT / "content" / "site.json")
+    ctx = render.Context(site, False, "/styles.css", 2026)
+    page = render.not_found(ctx)
+    assert '<meta name="robots" content="noindex">' in page
+    assert 'rel="canonical"' not in page
+    assert 'hreflang=' not in page.split("</head>", 1)[0]
+
+
+def test_public_seo_manifest_matches_default_build(tmp_path: Path) -> None:
+    out = build.build(ROOT, tmp_path / "dist")
+    pages = json.loads((ROOT / "docs/seo-pages.json").read_text(encoding="utf-8"))["pages"]
+    sitemap = (out / "sitemap.xml").read_text(encoding="utf-8")
+    for page in pages:
+        html = (out / page["source"]).read_text(encoding="utf-8")
+        assert page["canonical"] in sitemap
+        assert f'<link rel="canonical" href="{page["canonical"]}">' in html
+        parser = _MetadataParser()
+        parser.feed(html)
+        assert parser.description
+        assert '<meta name="robots" content="noindex">' not in html
+    assert "404.html" not in sitemap
 
 
 def test_person_schema_cannot_close_script_element() -> None:

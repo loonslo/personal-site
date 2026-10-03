@@ -1,6 +1,6 @@
 ---
 status_note: Runnable prototype; in a personal pilot
-updated: 2026-09-24
+updated: 2026-10-03
 flow: Snapshot and parse sources | Keyword index + semantic index | Hybrid retrieval | Evidence window | Cited streaming answer
 ---
 
@@ -30,4 +30,9 @@ Separated source parsing, retrieval, answering, and citations into verifiable st
 
 - **Available:** keyword retrieval, hybrid search, streaming multi-turn Q&A, source citations and invalidation notices, personal notes, and backup export and recovery.
 - **Still incomplete:** end-to-end validation of semantic retrieval, automatic ingestion of images with OCR, MCP integration with a real client, and installation checks on a clean computer.
-- **Not open source yet:** licensing and model distribution terms have not been settled.
+- **Distribution and licence:** PolyForm Noncommercial 1.0.0; the source remains private and no public download Release is available. The portable base package is for internal acceptance and includes no local models. Semantic retrieval and generation require ready dependencies and models.
+- **Online entry:** a separate anonymous read-only demo. Search remains disabled while its examples are unapproved. It accepts no uploads and generates no conversations; it is separate from the complete local application.
+
+## Read more
+
+See [hybrid RAG retrieval](/en/writing/rag-hybrid-search/) for the retrieval chain, failure diagnosis and a synthetic ranking example, and [moving from testing to AI development](/en/writing/testing-to-ai-development/) for project validation. The [public explanation and demo status](https://knowledge.baikai.site/en/) describes the current distribution boundaries.
