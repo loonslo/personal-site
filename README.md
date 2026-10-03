@@ -122,3 +122,21 @@ npx vercel --prod
 
 - Python 3.12 及以上，`mistune` 3.3.4（Vercel 构建使用带 SHA-256 校验的 `requirements.lock`）
 - 测试：`pytest`；生成图片：`pillow`
+
+## 2026-10-03 SEO 第一批
+
+任务：修复公开页抓取、页面元数据和路由状态，不扩大业务资料公开范围。
+
+经历页摘要改为职业能力与项目入口；404 HTML 输出 noindex，移除 canonical；保留此前未发布的六项个人项目及衡仓新文案。
+
+实际验证：41 项 pytest 通过；隔离目录默认构建 11 个 HTML（10 个公开页与 404），站内链接错误 0；10 个公开页 SEO 元数据和双向 hreflang 校验通过。
+
+验收正本：`docs/acceptance/2026-10-03-seo-phase1.md`；路由契约：`docs/SEO.md` 与 `docs/seo-pages.json`。本批本地实现完成，生产发布与线上验收仍待执行。
+
+## 2026-10-03 SEO 正式发布
+
+本批提交 4c8100b，五站已发布，公开路由与权限边界通过。验收正本 `docs/SEO_PRODUCTION_ACCEPTANCE_2026-10-03.md`；站长处理/收录和后续流量复盘单独跟进，不等于已增长。
+
+### 2026-10-03 站长实测
+
+本站 sitemap Couldn't fetch，发现 0 页；代表页 Google 实时抓取可用但尚未索引。域名总搜索基线无展示，无法拆分站点流量；详见 `docs/SEO_PRODUCTION_ACCEPTANCE_2026-10-03.md` 最新追加。

@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "pages": [
+    {
+      "path": "/",
+      "language": "zh-CN",
+      "title": "半開｜AI 应用与全栈开发作品集",
+      "canonical": "https://baikai.site/",
+      "index": true,
+      "expected_status": 200,
+      "source": "index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/",
+        "en": "https://baikai.site/en/",
+        "x-default": "https://baikai.site/"
+      }
+    },
+    {
+      "path": "/about/",
+      "language": "zh-CN",
+      "title": "经历与求职方向 · 半開",
+      "canonical": "https://baikai.site/about/",
+      "index": true,
+      "expected_status": 200,
+      "source": "about/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/about/",
+        "en": "https://baikai.site/en/about/",
+        "x-default": "https://baikai.site/about/"
+      }
+    },
+    {
+      "path": "/projects/knowledge/",
+      "language": "zh-CN",
+      "title": "个人知识服务 · 半開",
+      "canonical": "https://baikai.site/projects/knowledge/",
+      "index": true,
+      "expected_status": 200,
+      "source": "projects/knowledge/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/projects/knowledge/",
+        "en": "https://baikai.site/en/projects/knowledge/",
+        "x-default": "https://baikai.site/projects/knowledge/"
+      }
+    },
+    {
+      "path": "/projects/alpha-research/",
+      "language": "zh-CN",
+      "title": "WorldQuant Alpha 研究工具 · 半開",
+      "canonical": "https://baikai.site/projects/alpha-research/",
+      "index": true,
+      "expected_status": 200,
+      "source": "projects/alpha-research/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/projects/alpha-research/",
+        "en": "https://baikai.site/en/projects/alpha-research/",
+        "x-default": "https://baikai.site/projects/alpha-research/"
+      }
+    },
+    {
+      "path": "/projects/finunity/",
+      "language": "zh-CN",
+      "title": "FinUnity Web + Server · 半開",
+      "canonical": "https://baikai.site/projects/finunity/",
+      "index": true,
+      "expected_status": 200,
+      "source": "projects/finunity/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/projects/finunity/",
+        "en": "https://baikai.site/en/projects/finunity/",
+        "x-default": "https://baikai.site/projects/finunity/"
+      }
+    },
+    {
+      "path": "/writing/",
+      "language": "zh-CN",
+      "title": "文章 · 半開",
+      "canonical": "https://baikai.site/writing/",
+      "index": true,
+      "expected_status": 200,
+      "source": "writing/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/writing/",
+        "en": "https://baikai.site/en/writing/",
+        "x-default": "https://baikai.site/writing/"
+      }
+    },
+    {
+      "path": "/writing/rag-hybrid-search/",
+      "language": "zh-CN",
+      "title": "RAG 混合检索怎么做：关键词、向量与引用溯源 · 半開",
+      "canonical": "https://baikai.site/writing/rag-hybrid-search/",
+      "index": true,
+      "expected_status": 200,
+      "source": "writing/rag-hybrid-search/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/writing/rag-hybrid-search/",
+        "en": "https://baikai.site/en/writing/rag-hybrid-search/",
+        "x-default": "https://baikai.site/writing/rag-hybrid-search/"
+      }
+    },
+    {
+      "path": "/writing/testing-to-ai-development/",
+      "language": "zh-CN",
+      "title": "测试工程师转 AI 应用开发：项目怎么选、怎么验证 · 半開",
+      "canonical": "https://baikai.site/writing/testing-to-ai-development/",
+      "index": true,
+      "expected_status": 200,
+      "source": "writing/testing-to-ai-development/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/writing/testing-to-ai-development/",
+        "en": "https://baikai.site/en/writing/testing-to-ai-development/",
+        "x-default": "https://baikai.site/writing/testing-to-ai-development/"
+      }
+    },
+    {
+      "path": "/en/",
+      "language": "en",
+      "title": "半開 | AI Applications & Full-Stack Development Portfolio",
+      "canonical": "https://baikai.site/en/",
+      "index": true,
+      "expected_status": 200,
+      "source": "en/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/",
+        "en": "https://baikai.site/en/",
+        "x-default": "https://baikai.site/"
+      }
+    },
+    {
+      "path": "/en/about/",
+      "language": "en",
+      "title": "Experience & Career Direction · 半開",
+      "canonical": "https://baikai.site/en/about/",
+      "index": true,
+      "expected_status": 200,
+      "source": "en/about/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/about/",
+        "en": "https://baikai.site/en/about/",
+        "x-default": "https://baikai.site/about/"
+      }
+    },
+    {
+      "path": "/en/projects/knowledge/",
+      "language": "en",
+      "title": "Private Knowledge Assistant · 半開",
+      "canonical": "https://baikai.site/en/projects/knowledge/",
+      "index": true,
+      "expected_status": 200,
+      "source": "en/projects/knowledge/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/projects/knowledge/",
+        "en": "https://baikai.site/en/projects/knowledge/",
+        "x-default": "https://baikai.site/projects/knowledge/"
+      }
+    },
+    {
+      "path": "/en/projects/alpha-research/",
+      "language": "en",
+      "title": "WorldQuant Alpha Research Toolkit · 半開",
+      "canonical": "https://baikai.site/en/projects/alpha-research/",
+      "index": true,
+      "expected_status": 200,
+      "source": "en/projects/alpha-research/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/projects/alpha-research/",
+        "en": "https://baikai.site/en/projects/alpha-research/",
+        "x-default": "https://baikai.site/projects/alpha-research/"
+      }
+    },
+    {
+      "path": "/en/projects/finunity/",
+      "language": "en",
+      "title": "FinUnity Web + Server · 半開",
+      "canonical": "https://baikai.site/en/projects/finunity/",
+      "index": true,
+      "expected_status": 200,
+      "source": "en/projects/finunity/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/projects/finunity/",
+        "en": "https://baikai.site/en/projects/finunity/",
+        "x-default": "https://baikai.site/projects/finunity/"
+      }
+    },
+    {
+      "path": "/en/writing/",
+      "language": "en",
+      "title": "Writing · 半開",
+      "canonical": "https://baikai.site/en/writing/",
+      "index": true,
+      "expected_status": 200,
+      "source": "en/writing/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/writing/",
+        "en": "https://baikai.site/en/writing/",
+        "x-default": "https://baikai.site/writing/"
+      }
+    },
+    {
+      "path": "/en/writing/rag-hybrid-search/",
+      "language": "en",
+      "title": "Building hybrid RAG retrieval with keywords, vectors and traceable citations · 半開",
+      "canonical": "https://baikai.site/en/writing/rag-hybrid-search/",
+      "index": true,
+      "expected_status": 200,
+      "source": "en/writing/rag-hybrid-search/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/writing/rag-hybrid-search/",
+        "en": "https://baikai.site/en/writing/rag-hybrid-search/",
+        "x-default": "https://baikai.site/writing/rag-hybrid-search/"
+      }
+    },
+    {
+      "path": "/en/writing/testing-to-ai-development/",
+      "language": "en",
+      "title": "From software testing to AI application development: choosing and validating projects · 半開",
+      "canonical": "https://baikai.site/en/writing/testing-to-ai-development/",
+      "index": true,
+      "expected_status": 200,
+      "source": "en/writing/testing-to-ai-development/index.html",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/writing/testing-to-ai-development/",
+        "en": "https://baikai.site/en/writing/testing-to-ai-development/",
+        "x-default": "https://baikai.site/writing/testing-to-ai-development/"
+      }
+    }
+  ]
+}

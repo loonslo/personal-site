@@ -184,7 +184,7 @@ def layout(ctx: Context, *, title: str, description: str, path: str, body: str, 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{_e(full_title)}</title>
 <meta name="description" content="{_e(description)}">
-<link rel="canonical" href="{_e(url)}">
+{('<meta name="robots" content="noindex">' if path == '/404.html' else f'<link rel="canonical" href="{_e(url)}">')}
 {alternates}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{_e(name)}">
