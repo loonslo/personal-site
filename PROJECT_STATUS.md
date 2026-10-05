@@ -3,8 +3,8 @@ project_id: personal-site
 updated: 2026-10-06
 status: active
 overview: 纯静态中英文个人作品与职业经历站，展示求职方向、代表项目和验证过程。
-progress: "主站内容、导航、域名与可靠性改动已同步独立发布工作树；本机测试和构建检查通过，提交推送与生产验收进行中。旧验收保留原日期，不作为本次复测。"
-next: "完成发布并核对线上版本和 CI；监控通知送达、真实用户访问与 Search Console 复盘仍待验收。"
+progress: "主站内容与可靠性改动已通过独立发布工作树提交推送，生产部署命令成功并返回 READY。按用户要求停止额外测试和上线验证；历史验收仍保留原日期。"
+next: "CI、监控通知送达、真实用户访问与 Search Console 复盘按后续任务推进。"
 evidence:
 - DESIGN.md
 - README.md

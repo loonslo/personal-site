@@ -35,3 +35,7 @@
 ## 提交前复查（2026-10-06）
 
 开发目录已同步到独立发布工作树；Windows / Python 3.14 下 64 项 pytest 通过，build.py check 生成 17 页，站内链接与待补问题为 0。小红书主页地址、禁用词清单及外链检查仍未提供或执行；没有触发 webhook 通知。生产发布结果另行追加。
+
+## 提交与生产发布（2026-10-06）
+
+源提交 f33841b 已推送 personal-site/main。Vercel CLI 生产部署返回成功，部署 dpl_4FupNLXxMumGVeVQBLCJ4zV574XN 为 READY，已绑定 https://halfopen.dev；上传仅预构建静态产物（27 文件，约 466.9 KB 压缩包）。按用户本次要求停止额外测试和上线验证；CI 和监控的后续执行状态未再查询。
