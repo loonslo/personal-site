@@ -7,7 +7,7 @@ draft: false
 
 A fluent answer without a source and a missing exact version number are different failures. I investigate the retrieval chain before changing the prompt: keep an explainable keyword baseline, add semantic retrieval, and retain a path from each answer citation to the original text.
 
-This walkthrough uses the approach behind my local [Knowledge project](/en/projects/knowledge/). Documents and questions below are fictional. The code demonstrates rank fusion only; it performs neither embedding nor answer generation. The [online read-only demo](https://knowledge.baikai.site/en/) is separate from the local application: public search stays disabled while examples are unapproved or its index is not ready.
+This walkthrough uses the approach behind my local [Knowledge project](/en/projects/knowledge/). Documents and questions below are fictional. The code demonstrates rank fusion only; it performs neither embedding nor answer generation. The [online read-only demo](https://knowledge.halfopen.dev/en/) is separate from the local application: public search stays disabled while examples are unapproved or its index is not ready.
 
 ## 1. Define the question and the accessible corpus
 

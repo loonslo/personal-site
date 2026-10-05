@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 import os
 import shutil
 import sys
@@ -43,6 +44,21 @@ def _prepare_output(out: Path) -> None:
 def _write(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8", newline="\n")
+
+
+def _write_version(out: Path) -> None:
+    """Record which commit produced this build, so a live site can be traced to its source.
+
+    Only environment variables are used: CI sets GIT_SHA/GITHUB_SHA and Vercel's Git integration
+    sets VERCEL_GIT_COMMIT_SHA. A local `git rev-parse` is deliberately not used because this
+    folder sits inside a larger repository whose commits are not the published history. For a
+    Vercel CLI deploy pass it explicitly: `vercel deploy --prod --build-env GIT_SHA=<sha>`."""
+    sha = (os.environ.get("GIT_SHA") or os.environ.get("VERCEL_GIT_COMMIT_SHA")
+           or os.environ.get("GITHUB_SHA") or "unknown")
+    info = {"service": "personal-site", "git_sha": sha}
+    if os.environ.get("BUILD_TIME"):
+        info["build_time"] = os.environ["BUILD_TIME"]
+    _write(out / "version.json", json.dumps(info, ensure_ascii=False, indent=2) + "\n")
 
 
 def build(root: Path = ROOT, out: Path | None = None, drafts: bool = False) -> Path:
@@ -125,6 +141,7 @@ def build(root: Path = ROOT, out: Path | None = None, drafts: bool = False) -> P
                                  year=date.today().year, locale="zh", other_paths=frozenset(en_paths), person_site=site)
     _write(out / "sitemap.xml", render.sitemap(sitemap_ctx, paths))
     _write(out / "robots.txt", render.robots(sitemap_ctx))
+    _write_version(out)
     return out
 
 

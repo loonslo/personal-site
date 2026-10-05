@@ -12,14 +12,15 @@
   "identity": "10 years in tech, moving from software engineering into AI application development.",
   "intro": "My work spans software testing, Python development, and product management.\nI focus on AI agents, workflow automation, and how software is built in the age of AI.",
   "job": "Seeking roles in AI application or full-stack development, with an interest in AI testing and evaluation. Resume available by email.",
-  "description": "半開's portfolio of AI applications and full-stack work: a private knowledge assistant, WorldQuant Alpha research tools, and a personal finance ledger built with RAG, LangGraph, FastAPI, React, and TypeScript, with project plans and validation notes.",
+  "description": "半開's portfolio of AI applications and full-stack work: a private knowledge assistant, WorldQuant Alpha research tools, the Hengcang asset ledger, investment dashboards, and a character profile studio, built with RAG, LangGraph, FastAPI, React, and Kotlin, with project plans and validation notes.",
   "skills": ["Python", "RAG", "LangGraph", "FastAPI", "React", "TypeScript"],
   "home_title": "半開 | AI Applications & Full-Stack Development Portfolio",
-  "base_url": "https://baikai.site",
+  "base_url": "https://halfopen.dev",
   "project_links": [
-    {"label": "Character Profiles", "href": "https://character.baikai.site"},
-    {"label": "Knowledge Base Demo", "href": "https://knowledge.baikai.site"},
-    {"label": "FinUnity", "href": "https://finunity.baikai.site"}
+    {"label": "Character Profiles", "href": "https://character.halfopen.dev"},
+    {"label": "Knowledge Base Demo", "href": "https://knowledge.halfopen.dev"},
+    {"label": "Hengcang", "href": "https://finunity.halfopen.dev"},
+    {"label": "Investment Dashboards", "href": "https://dashboards.halfopen.dev"}
   ],
   "email": "alanswill2007@gmail.com",
   "accounts": [

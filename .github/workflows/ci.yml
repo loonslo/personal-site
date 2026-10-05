@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Weekly (Monday 05:27 Asia/Shanghai): the hash-locked dependency and the toolchain drift even when nobody pushes.
+    - cron: "27 21 * * 0"
+
+permissions:
+  contents: read
+
+jobs:
+  site:
+    name: Tests and site build checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.14"
+
+      - name: Install hash-locked dependencies and the test runner
+        run: |
+          python -m pip install --require-hashes -r requirements.lock
+          python -m pip install "pytest>=8"
+
+      - name: Tests
+        run: python -m pytest -q
+
+      - name: Build and check internal links
+        run: python build.py check
+        env:
+          GIT_SHA: ${{ github.sha }}
+          BUILD_TIME: ${{ github.event.head_commit.timestamp }}

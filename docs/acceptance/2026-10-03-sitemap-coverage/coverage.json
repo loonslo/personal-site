@@ -1,0 +1,383 @@
+{
+  "date": "2026-10-03",
+  "environment": "Windows / Python 3.14 / anonymous public GET and HEAD",
+  "host": "baikai.site",
+  "namespace": "http://www.sitemaps.org/schemas/sitemap/0.9",
+  "xml_utf8": "pass",
+  "url_count": 16,
+  "source_inventory_count": 16,
+  "manifest_count": 16,
+  "missing_local": [],
+  "missing_online": [],
+  "duplicates": [],
+  "extra_indexable_links": [],
+  "excluded_files_and_routes": [
+    "404.html"
+  ],
+  "checks": [
+    {
+      "url": "https://baikai.site/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/",
+      "noindex": false,
+      "html_lang": "zh-CN",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/",
+        "en": "https://baikai.site/en/",
+        "x-default": "https://baikai.site/"
+      },
+      "same_host_links": [
+        "https://baikai.site/",
+        "https://baikai.site/about/",
+        "https://baikai.site/en/",
+        "https://baikai.site/feed.xml",
+        "https://baikai.site/projects/alpha-research/",
+        "https://baikai.site/projects/finunity/",
+        "https://baikai.site/projects/knowledge/",
+        "https://baikai.site/writing/",
+        "https://baikai.site/writing/rag-hybrid-search/",
+        "https://baikai.site/writing/testing-to-ai-development/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/about/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/about/",
+      "noindex": false,
+      "html_lang": "zh-CN",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/about/",
+        "en": "https://baikai.site/en/about/",
+        "x-default": "https://baikai.site/about/"
+      },
+      "same_host_links": [
+        "https://baikai.site/",
+        "https://baikai.site/about/",
+        "https://baikai.site/en/about/",
+        "https://baikai.site/feed.xml",
+        "https://baikai.site/projects/alpha-research/",
+        "https://baikai.site/projects/finunity/",
+        "https://baikai.site/projects/knowledge/",
+        "https://baikai.site/writing/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/projects/knowledge/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/projects/knowledge/",
+      "noindex": false,
+      "html_lang": "zh-CN",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/projects/knowledge/",
+        "en": "https://baikai.site/en/projects/knowledge/",
+        "x-default": "https://baikai.site/projects/knowledge/"
+      },
+      "same_host_links": [
+        "https://baikai.site/",
+        "https://baikai.site/about/",
+        "https://baikai.site/en/projects/knowledge/",
+        "https://baikai.site/feed.xml",
+        "https://baikai.site/projects/knowledge/",
+        "https://baikai.site/writing/",
+        "https://baikai.site/writing/rag-hybrid-search/",
+        "https://baikai.site/writing/testing-to-ai-development/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/projects/alpha-research/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/projects/alpha-research/",
+      "noindex": false,
+      "html_lang": "zh-CN",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/projects/alpha-research/",
+        "en": "https://baikai.site/en/projects/alpha-research/",
+        "x-default": "https://baikai.site/projects/alpha-research/"
+      },
+      "same_host_links": [
+        "https://baikai.site/",
+        "https://baikai.site/about/",
+        "https://baikai.site/en/projects/alpha-research/",
+        "https://baikai.site/feed.xml",
+        "https://baikai.site/projects/alpha-research/",
+        "https://baikai.site/writing/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/projects/finunity/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/projects/finunity/",
+      "noindex": false,
+      "html_lang": "zh-CN",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/projects/finunity/",
+        "en": "https://baikai.site/en/projects/finunity/",
+        "x-default": "https://baikai.site/projects/finunity/"
+      },
+      "same_host_links": [
+        "https://baikai.site/",
+        "https://baikai.site/about/",
+        "https://baikai.site/en/projects/finunity/",
+        "https://baikai.site/feed.xml",
+        "https://baikai.site/projects/finunity/",
+        "https://baikai.site/writing/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/writing/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/writing/",
+      "noindex": false,
+      "html_lang": "zh-CN",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/writing/",
+        "en": "https://baikai.site/en/writing/",
+        "x-default": "https://baikai.site/writing/"
+      },
+      "same_host_links": [
+        "https://baikai.site/",
+        "https://baikai.site/about/",
+        "https://baikai.site/en/writing/",
+        "https://baikai.site/feed.xml",
+        "https://baikai.site/writing/",
+        "https://baikai.site/writing/rag-hybrid-search/",
+        "https://baikai.site/writing/testing-to-ai-development/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/writing/rag-hybrid-search/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/writing/rag-hybrid-search/",
+      "noindex": false,
+      "html_lang": "zh-CN",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/writing/rag-hybrid-search/",
+        "en": "https://baikai.site/en/writing/rag-hybrid-search/",
+        "x-default": "https://baikai.site/writing/rag-hybrid-search/"
+      },
+      "same_host_links": [
+        "https://baikai.site/",
+        "https://baikai.site/about/",
+        "https://baikai.site/en/writing/rag-hybrid-search/",
+        "https://baikai.site/feed.xml",
+        "https://baikai.site/projects/knowledge/",
+        "https://baikai.site/writing/",
+        "https://baikai.site/writing/rag-hybrid-search/",
+        "https://baikai.site/writing/testing-to-ai-development/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/writing/testing-to-ai-development/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/writing/testing-to-ai-development/",
+      "noindex": false,
+      "html_lang": "zh-CN",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/writing/testing-to-ai-development/",
+        "en": "https://baikai.site/en/writing/testing-to-ai-development/",
+        "x-default": "https://baikai.site/writing/testing-to-ai-development/"
+      },
+      "same_host_links": [
+        "https://baikai.site/",
+        "https://baikai.site/about/",
+        "https://baikai.site/en/writing/testing-to-ai-development/",
+        "https://baikai.site/feed.xml",
+        "https://baikai.site/projects/alpha-research/",
+        "https://baikai.site/projects/knowledge/",
+        "https://baikai.site/writing/",
+        "https://baikai.site/writing/rag-hybrid-search/",
+        "https://baikai.site/writing/testing-to-ai-development/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/en/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/en/",
+      "noindex": false,
+      "html_lang": "en",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/",
+        "en": "https://baikai.site/en/",
+        "x-default": "https://baikai.site/"
+      },
+      "same_host_links": [
+        "https://baikai.site/",
+        "https://baikai.site/en/",
+        "https://baikai.site/en/about/",
+        "https://baikai.site/en/feed.xml",
+        "https://baikai.site/en/projects/alpha-research/",
+        "https://baikai.site/en/projects/finunity/",
+        "https://baikai.site/en/projects/knowledge/",
+        "https://baikai.site/en/writing/",
+        "https://baikai.site/en/writing/rag-hybrid-search/",
+        "https://baikai.site/en/writing/testing-to-ai-development/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/en/about/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/en/about/",
+      "noindex": false,
+      "html_lang": "en",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/about/",
+        "en": "https://baikai.site/en/about/",
+        "x-default": "https://baikai.site/about/"
+      },
+      "same_host_links": [
+        "https://baikai.site/about/",
+        "https://baikai.site/en/",
+        "https://baikai.site/en/about/",
+        "https://baikai.site/en/feed.xml",
+        "https://baikai.site/en/projects/alpha-research/",
+        "https://baikai.site/en/projects/finunity/",
+        "https://baikai.site/en/projects/knowledge/",
+        "https://baikai.site/en/writing/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/en/projects/knowledge/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/en/projects/knowledge/",
+      "noindex": false,
+      "html_lang": "en",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/projects/knowledge/",
+        "en": "https://baikai.site/en/projects/knowledge/",
+        "x-default": "https://baikai.site/projects/knowledge/"
+      },
+      "same_host_links": [
+        "https://baikai.site/en/",
+        "https://baikai.site/en/about/",
+        "https://baikai.site/en/feed.xml",
+        "https://baikai.site/en/projects/knowledge/",
+        "https://baikai.site/en/writing/",
+        "https://baikai.site/en/writing/rag-hybrid-search/",
+        "https://baikai.site/en/writing/testing-to-ai-development/",
+        "https://baikai.site/projects/knowledge/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/en/projects/alpha-research/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/en/projects/alpha-research/",
+      "noindex": false,
+      "html_lang": "en",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/projects/alpha-research/",
+        "en": "https://baikai.site/en/projects/alpha-research/",
+        "x-default": "https://baikai.site/projects/alpha-research/"
+      },
+      "same_host_links": [
+        "https://baikai.site/en/",
+        "https://baikai.site/en/about/",
+        "https://baikai.site/en/feed.xml",
+        "https://baikai.site/en/projects/alpha-research/",
+        "https://baikai.site/en/writing/",
+        "https://baikai.site/projects/alpha-research/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/en/projects/finunity/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/en/projects/finunity/",
+      "noindex": false,
+      "html_lang": "en",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/projects/finunity/",
+        "en": "https://baikai.site/en/projects/finunity/",
+        "x-default": "https://baikai.site/projects/finunity/"
+      },
+      "same_host_links": [
+        "https://baikai.site/en/",
+        "https://baikai.site/en/about/",
+        "https://baikai.site/en/feed.xml",
+        "https://baikai.site/en/projects/finunity/",
+        "https://baikai.site/en/writing/",
+        "https://baikai.site/projects/finunity/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/en/writing/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/en/writing/",
+      "noindex": false,
+      "html_lang": "en",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/writing/",
+        "en": "https://baikai.site/en/writing/",
+        "x-default": "https://baikai.site/writing/"
+      },
+      "same_host_links": [
+        "https://baikai.site/en/",
+        "https://baikai.site/en/about/",
+        "https://baikai.site/en/feed.xml",
+        "https://baikai.site/en/writing/",
+        "https://baikai.site/en/writing/rag-hybrid-search/",
+        "https://baikai.site/en/writing/testing-to-ai-development/",
+        "https://baikai.site/writing/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/en/writing/rag-hybrid-search/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/en/writing/rag-hybrid-search/",
+      "noindex": false,
+      "html_lang": "en",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/writing/rag-hybrid-search/",
+        "en": "https://baikai.site/en/writing/rag-hybrid-search/",
+        "x-default": "https://baikai.site/writing/rag-hybrid-search/"
+      },
+      "same_host_links": [
+        "https://baikai.site/en/",
+        "https://baikai.site/en/about/",
+        "https://baikai.site/en/feed.xml",
+        "https://baikai.site/en/projects/knowledge/",
+        "https://baikai.site/en/writing/",
+        "https://baikai.site/en/writing/rag-hybrid-search/",
+        "https://baikai.site/en/writing/testing-to-ai-development/",
+        "https://baikai.site/writing/rag-hybrid-search/"
+      ]
+    },
+    {
+      "url": "https://baikai.site/en/writing/testing-to-ai-development/",
+      "get": 200,
+      "head": 200,
+      "canonical": "https://baikai.site/en/writing/testing-to-ai-development/",
+      "noindex": false,
+      "html_lang": "en",
+      "hreflang": {
+        "zh-CN": "https://baikai.site/writing/testing-to-ai-development/",
+        "en": "https://baikai.site/en/writing/testing-to-ai-development/",
+        "x-default": "https://baikai.site/writing/testing-to-ai-development/"
+      },
+      "same_host_links": [
+        "https://baikai.site/en/",
+        "https://baikai.site/en/about/",
+        "https://baikai.site/en/feed.xml",
+        "https://baikai.site/en/projects/alpha-research/",
+        "https://baikai.site/en/projects/knowledge/",
+        "https://baikai.site/en/writing/",
+        "https://baikai.site/en/writing/rag-hybrid-search/",
+        "https://baikai.site/en/writing/testing-to-ai-development/",
+        "https://baikai.site/writing/testing-to-ai-development/"
+      ]
+    }
+  ]
+}

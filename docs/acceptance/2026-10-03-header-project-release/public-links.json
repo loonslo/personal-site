@@ -1,0 +1,55 @@
+[
+  {
+    "url": "https://github.com/loonslo",
+    "status": 200,
+    "title": "loonslo (半開Ajar) · GitHub",
+    "readiness": null
+  },
+  {
+    "url": "https://github.com/loonslo/FinUnity",
+    "status": 200,
+    "title": "GitHub - loonslo/FinUnity · GitHub",
+    "readiness": null
+  },
+  {
+    "url": "https://github.com/loonslo/langchain-learning",
+    "status": 200,
+    "title": "GitHub - loonslo/langchain-learning · GitHub",
+    "readiness": null
+  },
+  {
+    "url": "https://finunity.baikai.site/",
+    "status": 200,
+    "title": "FinUnity Web · 个人资产工作台",
+    "readiness": null
+  },
+  {
+    "url": "https://dashboards.baikai.site/",
+    "status": 200,
+    "title": "投资观察与 A 股 ETF 资金看板｜半開",
+    "readiness": null
+  },
+  {
+    "url": "https://character.baikai.site/",
+    "status": 200,
+    "title": "角色设定卡工具｜整理人物背景、性格与参考图",
+    "readiness": null
+  },
+  {
+    "url": "https://knowledge.baikai.site/",
+    "status": 200,
+    "title": "Knowledge 本地知识库｜Windows 原文检索与来源定位",
+    "readiness": null
+  },
+  {
+    "url": "https://knowledge.baikai.site/health/ready",
+    "status": 503,
+    "readiness": {
+      "status": "not_ready",
+      "checks": {
+        "sqlite": false,
+        "demo_manifest": false
+      }
+    }
+  }
+]

@@ -25,10 +25,26 @@
   },
   {
     "slug": "finunity",
-    "name": "FinUnity Web + Server",
-    "summary": "A personal finance ledger with a web client and server: accounts, holdings, and cash flows share one ledger snapshot, with per-currency calculations and screenshot-based position entry.",
-    "status": "intro",
+    "name": "Hengcang",
+    "summary": "A multi-currency household asset ledger: an Android app and a web workbench share one ledger service, tracking accounts, holdings, and cash flows across a three-bucket plan. The web workbench requires sign-in.",
+    "status": "live",
     "link": {"type": "page"},
-    "tags": ["React", "TypeScript", "FastAPI", "OCR"]
+    "tags": ["Kotlin", "Jetpack Compose", "FastAPI", "React"]
+  },
+  {
+    "slug": "dashboards",
+    "name": "Investment Dashboards",
+    "summary": "Two public read-only dashboards: index allocation and recurring-investment watch, plus A-share short-term money flow. Scheduled jobs refresh the data snapshots that ship with the code.",
+    "status": "live",
+    "link": {"type": "external", "href": "https://dashboards.halfopen.dev", "label": "Open dashboards"},
+    "tags": ["Python", "SQLite", "Cloudflare Workers"]
+  },
+  {
+    "slug": "character",
+    "name": "Character Profiles",
+    "summary": "A workspace for character creation material: text profiles, reference images, and shared pose or expression templates in one place, with optional local LLM help for prompt refinement and image generation.",
+    "status": "live",
+    "link": {"type": "external", "href": "https://character.halfopen.dev", "label": "Open site"},
+    "tags": ["Python", "SQLite", "LLM"]
   }
 ]

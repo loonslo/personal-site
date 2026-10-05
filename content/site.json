@@ -12,14 +12,15 @@
   "identity": "十年互联网经验，从软件工程走向 AI 应用开发。",
   "intro": "做过软件测试、Python 开发和产品工作。\n关注 AI Agent、自动化工作流，以及 AI 时代的软件开发方式。",
   "job": "求职方向：AI 应用开发 / 全栈开发，也关注 AI 测试与评测。简历可邮件索取。",
-  "description": "半開的 AI 应用与全栈开发作品集：个人知识服务、WorldQuant Alpha 研究工具与 FinUnity 资产账本，使用 RAG、LangGraph、FastAPI、React 和 TypeScript，附项目方案与验证记录。",
+  "description": "半開的 AI 应用与全栈开发作品集：个人知识服务、WorldQuant Alpha 研究工具、衡仓资产账本、投资看板与角色设定卡，使用 RAG、LangGraph、FastAPI、React 和 Kotlin，附项目方案与验证记录。",
   "skills": ["Python", "RAG", "LangGraph", "FastAPI", "React", "TypeScript"],
   "home_title": "半開｜AI 应用与全栈开发作品集",
-  "base_url": "https://baikai.site",
+  "base_url": "https://halfopen.dev",
   "project_links": [
-    {"label": "角色设定", "href": "https://character.baikai.site"},
-    {"label": "知识库演示", "href": "https://knowledge.baikai.site"},
-    {"label": "FinUnity", "href": "https://finunity.baikai.site"}
+    {"label": "角色设定", "href": "https://character.halfopen.dev"},
+    {"label": "知识库演示", "href": "https://knowledge.halfopen.dev"},
+    {"label": "衡仓", "href": "https://finunity.halfopen.dev"},
+    {"label": "投资看板", "href": "https://dashboards.halfopen.dev"}
   ],
   "email": "alanswill2007@gmail.com",
   "accounts": [

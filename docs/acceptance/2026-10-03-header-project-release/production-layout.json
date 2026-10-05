@@ -1,0 +1,845 @@
+{
+  "base": "https://baikai.site",
+  "checks": 88,
+  "results": [
+    {
+      "colorScheme": "light",
+      "route": "/",
+      "width": 320,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/",
+      "width": 375,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/",
+      "width": 680,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/",
+      "width": 681,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/",
+      "width": 768,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/",
+      "width": 900,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/",
+      "width": 1024,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/",
+      "width": 1100,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/",
+      "width": 1280,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/",
+      "width": 1440,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/",
+      "width": 1920,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/",
+      "width": 320,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/",
+      "width": 375,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/",
+      "width": 680,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/",
+      "width": 681,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/",
+      "width": 768,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/",
+      "width": 900,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/",
+      "width": 1024,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/",
+      "width": 1100,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/",
+      "width": 1280,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/",
+      "width": 1440,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/",
+      "width": 1920,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/about/",
+      "width": 320,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/about/",
+      "width": 375,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/about/",
+      "width": 680,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/about/",
+      "width": 681,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/about/",
+      "width": 768,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/about/",
+      "width": 900,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/about/",
+      "width": 1024,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/about/",
+      "width": 1100,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/about/",
+      "width": 1280,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/about/",
+      "width": 1440,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/about/",
+      "width": 1920,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/projects/finunity/",
+      "width": 320,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/projects/finunity/",
+      "width": 375,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/projects/finunity/",
+      "width": 680,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/projects/finunity/",
+      "width": 681,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/projects/finunity/",
+      "width": 768,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/projects/finunity/",
+      "width": 900,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/projects/finunity/",
+      "width": 1024,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/projects/finunity/",
+      "width": 1100,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/projects/finunity/",
+      "width": 1280,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/projects/finunity/",
+      "width": 1440,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "light",
+      "route": "/en/projects/finunity/",
+      "width": 1920,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/",
+      "width": 320,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/",
+      "width": 375,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/",
+      "width": 680,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/",
+      "width": 681,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/",
+      "width": 768,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/",
+      "width": 900,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/",
+      "width": 1024,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/",
+      "width": 1100,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/",
+      "width": 1280,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/",
+      "width": 1440,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/",
+      "width": 1920,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/",
+      "width": 320,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/",
+      "width": 375,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/",
+      "width": 680,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/",
+      "width": 681,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/",
+      "width": 768,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/",
+      "width": 900,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/",
+      "width": 1024,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/",
+      "width": 1100,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/",
+      "width": 1280,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/",
+      "width": 1440,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/",
+      "width": 1920,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 6,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/about/",
+      "width": 320,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/about/",
+      "width": 375,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/about/",
+      "width": 680,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/about/",
+      "width": 681,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/about/",
+      "width": 768,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/about/",
+      "width": 900,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/about/",
+      "width": 1024,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/about/",
+      "width": 1100,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/about/",
+      "width": 1280,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/about/",
+      "width": 1440,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/about/",
+      "width": 1920,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/projects/finunity/",
+      "width": 320,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/projects/finunity/",
+      "width": 375,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/projects/finunity/",
+      "width": 680,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/projects/finunity/",
+      "width": 681,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/projects/finunity/",
+      "width": 768,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/projects/finunity/",
+      "width": 900,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/projects/finunity/",
+      "width": 1024,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/projects/finunity/",
+      "width": 1100,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/projects/finunity/",
+      "width": 1280,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/projects/finunity/",
+      "width": 1440,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    },
+    {
+      "colorScheme": "dark",
+      "route": "/en/projects/finunity/",
+      "width": 1920,
+      "brandHeight": 37,
+      "navLinks": 9,
+      "projects": 0,
+      "failures": []
+    }
+  ],
+  "focused": [
+    {
+      "tag": "A",
+      "href": "#main"
+    },
+    {
+      "tag": "A",
+      "href": "/en/"
+    },
+    {
+      "tag": "A",
+      "href": "/en/#projects"
+    },
+    {
+      "tag": "A",
+      "href": "/en/writing/"
+    },
+    {
+      "tag": "A",
+      "href": "/en/about/"
+    },
+    {
+      "tag": "A",
+      "href": "https://prodclub.xyz/r/2QFJWC"
+    },
+    {
+      "tag": "A",
+      "href": "https://character.baikai.site"
+    },
+    {
+      "tag": "A",
+      "href": "https://knowledge.baikai.site"
+    },
+    {
+      "tag": "A",
+      "href": "https://finunity.baikai.site"
+    },
+    {
+      "tag": "A",
+      "href": "https://dashboards.baikai.site"
+    },
+    {
+      "tag": "A",
+      "href": "/"
+    }
+  ],
+  "errors": []
+}

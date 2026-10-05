@@ -219,10 +219,11 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
     assert 'id="about-title"' not in index
     assert "先说边界，再看结果" not in index
     assert '<a class="text-link" href="/about/">经历与联系</a>' in index
-    names = ["个人知识服务", "WorldQuant Alpha 研究工具", "AI 应用开发学习仓库", "FinUnity Web + Server"]
-    assert [index.index(name) for name in names] == sorted(index.index(name) for name in names)
+    names = ["个人知识服务", "WorldQuant Alpha 研究工具", "AI 应用开发学习仓库", "衡仓", "投资看板", "角色设定卡"]
+    # 只在项目列表内比较顺序：站点 description 里也会出现项目名
+    listing = index.split('<ol class="index">')[1].split("</ol>")[0]
+    assert [listing.index(name) for name in names] == sorted(listing.index(name) for name in names)
     assert "其他个人项目" not in index
-    assert "角色设定卡" not in index
     about = (out / "about" / "index.html").read_text(encoding="utf-8")
     assert "经历与求职方向 · 半開" in about
     assert "职业经历与角色" in about

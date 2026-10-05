@@ -35,4 +35,4 @@ flow: 资料快照与解析 | 关键词索引 + 语义索引 | 混合召回 | �
 
 ## 继续了解
 
-检索链路、失败定位与合成排名示例见[RAG 混合检索实践](/writing/rag-hybrid-search/)；开发和验收方式见[测试工程师转 AI 应用开发](/writing/testing-to-ai-development/)。[公开说明与演示状态](https://knowledge.baikai.site/)提供当前分发和演示边界。
+检索链路、失败定位与合成排名示例见[RAG 混合检索实践](/writing/rag-hybrid-search/)；开发和验收方式见[测试工程师转 AI 应用开发](/writing/testing-to-ai-development/)。[公开说明与演示状态](https://knowledge.halfopen.dev/)提供当前分发和演示边界。

@@ -25,10 +25,26 @@
   },
   {
     "slug": "finunity",
-    "name": "FinUnity Web + Server",
-    "summary": "个人资产账本的 Web 与服务端：账户、持仓和资金流共用账本快照，分币种计算并支持持仓截图识别。",
-    "status": "intro",
+    "name": "衡仓",
+    "summary": "多币种家庭资产账本：Android 应用与 Web 工作台共用一套账本服务，按三桶规划跟踪账户、持仓和资金流。Web 端需登录。",
+    "status": "live",
     "link": {"type": "page"},
-    "tags": ["React", "TypeScript", "FastAPI", "OCR"]
+    "tags": ["Kotlin", "Jetpack Compose", "FastAPI", "React"]
+  },
+  {
+    "slug": "dashboards",
+    "name": "投资看板",
+    "summary": "两块公开只读看板：指数配置与定投观察，以及 A 股短线资金流。数据由定时任务刷新成快照，随代码一起发布。",
+    "status": "live",
+    "link": {"type": "external", "href": "https://dashboards.halfopen.dev", "label": "打开看板"},
+    "tags": ["Python", "SQLite", "Cloudflare Workers"]
+  },
+  {
+    "slug": "character",
+    "name": "角色设定卡",
+    "summary": "整理角色创作资料的工作台：文字设定、参考图和共享的姿势表情模板放在一处，本机可接大模型做提示词完善与出图。",
+    "status": "live",
+    "link": {"type": "external", "href": "https://character.halfopen.dev", "label": "打开站点"},
+    "tags": ["Python", "SQLite", "LLM"]
   }
 ]

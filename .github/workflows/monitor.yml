@@ -1,0 +1,40 @@
+name: Monitor
+
+# Uptime, health-probe and certificate check for the five halfopen.dev sites (tools/monitor.py).
+# A failed run emails the repository owner and can push to GitHub Mobile. Optional secret
+# ALERT_WEBHOOK_URL additionally receives the failures as JSON.
+#
+# Limits worth knowing: GitHub's cron is best effort (runs can start late or be skipped), the
+# runners are in the US, and this says nothing about speed for visitors in mainland China.
+# In a public repository GitHub disables scheduled workflows after 60 days without repository
+# activity; a commit (or re-enabling the workflow under the Actions tab) turns it back on, so a
+# silent monitor is itself a sign to check.
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: monitor
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Sites, health probes and certificates
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.14"
+
+      - name: Run the checks
+        run: python tools/monitor.py
+        env:
+          ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}

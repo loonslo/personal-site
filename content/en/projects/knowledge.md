@@ -35,4 +35,4 @@ Separated source parsing, retrieval, answering, and citations into verifiable st
 
 ## Read more
 
-See [hybrid RAG retrieval](/en/writing/rag-hybrid-search/) for the retrieval chain, failure diagnosis and a synthetic ranking example, and [moving from testing to AI development](/en/writing/testing-to-ai-development/) for project validation. The [public explanation and demo status](https://knowledge.baikai.site/en/) describes the current distribution boundaries.
+See [hybrid RAG retrieval](/en/writing/rag-hybrid-search/) for the retrieval chain, failure diagnosis and a synthetic ranking example, and [moving from testing to AI development](/en/writing/testing-to-ai-development/) for project validation. The [public explanation and demo status](https://knowledge.halfopen.dev/en/) describes the current distribution boundaries.

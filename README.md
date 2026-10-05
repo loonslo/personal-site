@@ -18,7 +18,7 @@ py -3 -m http.server 8787 --bind 127.0.0.1 --directory dist
 | 中文站点信息、项目目录、介绍页、经历页与文章 | `content/site.json`、`content/projects.json`、`content/projects/`、`content/about.md`、`content/writing/` |
 | 英文站点信息、项目目录、介绍页、经历页与文章译文 | `content/en/site.json`、`content/en/projects.json`、`content/en/projects/`、`content/en/about.md`、`content/en/writing/` |
 
-首页“个人项目”按 `content/projects.json` 的顺序展示，目前依次为 knowledge、WorldQuant、langchain-learning、FinUnity Web + Server。企业项目案例在核实职责和脱敏边界后再加入。
+首页“个人项目”按 `content/projects.json` 的顺序展示，目前依次为 knowledge、WorldQuant、langchain-learning、衡仓、投资看板、角色设定卡。企业项目案例在核实职责和脱敏边界后再加入。
 
 中文使用根路径（例如 `/about/`），英文使用 `/en/` 前缀（例如 `/en/about/`）。页眉语言入口会切换到对应页面；新增或发布中文项目/文章时，应同步添加英文内容并保留相同 slug。草稿仍不进入默认构建。
 
@@ -133,6 +133,24 @@ npx vercel --prod
 
 验收正本：`docs/acceptance/2026-10-03-seo-phase1.md`；路由契约：`docs/SEO.md` 与 `docs/seo-pages.json`。本批本地实现完成，生产发布与线上验收仍待执行。
 
+## 2026-10-03 第一批本地提交
+
+第一批已按用户要求提交为 `9d0ee7a`。仅提交本批明确文件或文件内 SEO 改动；此前其他未提交修改继续保留。上文“未提交”指第一批实现时的验收快照，本节更新其提交状态。本次没有 push 或生产部署，线上和站长数据尚未复验。
+
+## 2026-10-03 SEO 第二批内容
+
+第二批 SEO-06：新增 RAG 混合检索、测试转 AI 开发两篇文章及同 slug 英文译文，共 4 篇；原 UI 测试文章仍为草稿。更新双语 Knowledge 案例的许可与下载边界，补齐文章入口。41 项 pytest 通过，隔离构建 17 个 HTML（16 个公开页与 404）、站内链接错误 0，16 页元数据/双向 hreflang 校验通过；两语言代码示例实际执行及空输入/重复项检查通过，4 篇文章 375px 排版核对正常。
+
+验收正本：`docs/acceptance/2026-10-03-seo-phase2.md`；任务本地实现完成，第二批尚未提交、推送或部署。
+
+## 2026-10-03 SEO 站长与发布准备
+
+已整理本项目 sitemap、URL Inspection 样本、最小事件边界与 4/8 周复盘口径，见 `docs/SEO_RELEASE_CHECKLIST.md`。实际 Search Console 会话/数据不可读，本次未验证资源、写 DNS、提交 sitemap 或接入统计。
+
+## 2026-10-03 SEO 发布候选检查
+
+隔离候选构建/41 pytest 通过；9 文件精确源差异可应用到 HEAD，保留未提交项目/品牌改动。 验收：`docs/SEO_RELEASE_CANDIDATE_ACCEPTANCE.md`；未提交、推送或发布，真实暂存区为空。
+
 ## 2026-10-03 SEO 正式发布
 
 本批提交 4c8100b，五站已发布，公开路由与权限边界通过。验收正本 `docs/SEO_PRODUCTION_ACCEPTANCE_2026-10-03.md`；站长处理/收录和后续流量复盘单独跟进，不等于已增长。
@@ -146,3 +164,19 @@ npx vercel --prod
 本站公开页补查 H1/description/HTML 语言/MIME/链接与已有安全头配置通过；新证据及未决事项见 `docs/SEO_PRODUCTION_ACCEPTANCE_2026-10-03.md` 最新追加。
 
 Personal-site-only remote fast-forward push completed: 2c07885 (main); parent workspace history excluded.
+
+## 2026-10-03 页眉与六项目列表发布
+
+页眉的衡仓与投资看板入口、双语首页六项目列表已发布到 https://baikai.site。页眉按内容宽度换行，品牌保持单行；修复了 320px 英文项目状态行与流程条溢出。双语衡仓案例补上核实过的 Android 开源仓库与 Web 入口，并区分历史测试数字与本次公开入口复核。
+
+41 项 pytest、16 个公开页元数据及链接检查、88 组本地明暗模式／宽度布局检查通过。生产部署 `dpl_56SbT7SWEDe9VRGYiqjEtWnnPgHY` 为 READY，正式 16 页及 CSS、robots、sitemap 与已验收产物一致。验收正本：`docs/acceptance/2026-10-03-header-project-release.md`。小红书完整主页链接及脱敏企业案例仍等待用户提供；本批没有 Git 提交或推送。
+
+## 2026-10-03 halfopen.dev 域名迁移
+
+
+主站已迁移到 halfopen.dev；四个子站导航均使用新域名，旧根域名及旧 www HTTPS 301 保留路径与查询，新 www 308 至新根。Vercel 最终 Production/READY dpl_HWA7wkVF17Mz2ZHiHX8vnwxJv6mv；16 公开页与 self-canonical 通过。Google 主站及旧 www 地址变更已确认，sitemap 报表 Success，发现 16 页；后续页面收录待 Google。 详见 [迁移记录](docs/DOMAIN_MIGRATION_2026-10-03.md)。
+
+
+## 2026-10-03 Vercel 前端迁移验收
+
+2026-10-03 前端统一 Vercel：主站与四个子站正式 HTTPS 页面均由 Vercel 提供，45 公开页及应用入口、旧域名跳转、API 权限/缓存共 171 项线上检查通过。Cloudflare 看板公开域名与 workers.dev/预览入口均关闭，定时发布改为 Vercel；后端留在原 Ubuntu，未改账号数据或模型权限。 实现与检查范围见 [验收正本](docs/VERCEL_FRONTEND_MIGRATION_2026-10-03.md)。

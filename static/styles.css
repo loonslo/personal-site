@@ -146,26 +146,39 @@ main { flex: 1; }
 
 .site-header__inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: var(--s3) var(--s6);
   padding-block: var(--s5);
 }
 
 .brand {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   gap: var(--s3);
   font-family: var(--serif);
   font-size: 20px;
   letter-spacing: 0.14em;
+  white-space: nowrap;
 }
 
-.nav { display: flex; gap: var(--s6); font-size: 15px; letter-spacing: 0.14em; }
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 100%;
+  gap: var(--s3) var(--s6);
+  font-size: 15px;
+  letter-spacing: 0.14em;
+}
 
 .nav a {
   position: relative;
   padding-block: var(--s1);
   color: var(--ink-2);
+  white-space: nowrap;
   transition: color 0.2s var(--ease);
 }
 .nav a::after {
@@ -746,9 +759,8 @@ a.index__row:hover .index__tags, a.index__row:focus-visible .index__tags { color
 
 @media (max-width: 680px) {
   body { font-size: 16px; }
-  .site-header__inner { flex-wrap: wrap; row-gap: var(--s2); }
-  .nav { width: 100%; flex-wrap: wrap; justify-content: flex-start; gap: var(--s3) var(--s4); }
-  .nav a { white-space: nowrap; }
+  .site-header__inner { row-gap: var(--s2); }
+  .nav { width: 100%; justify-content: flex-start; gap: var(--s3) var(--s4); }
 
   .hero { padding-block: var(--s4) var(--s7); }
   .hero::before { top: calc(-1 * var(--s7)); right: -40vw; width: 110vw; }
@@ -759,13 +771,15 @@ a.index__row:hover .index__tags, a.index__row:focus-visible .index__tags { color
 
   .section { padding-block: var(--s7); }
   .index__row { grid-template-columns: 36px minmax(0, 1fr); padding: var(--s5) var(--s2); }
-  .index__aside { grid-column: 2; justify-content: flex-start; gap: var(--s5); margin-top: var(--s3); }
+  .index__aside { grid-column: 2; flex-wrap: wrap; justify-content: flex-start; gap: var(--s3) var(--s5); margin-top: var(--s3); }
 
   .post-row { grid-template-columns: 1fr; padding-inline: var(--s2); }
   .post-row time { grid-row: auto; }
 
   .flow { flex-direction: column; align-items: flex-start; }
-  .flow li { flex-direction: column; align-items: flex-start; }
+  .flow li { max-width: 100%; flex-direction: column; align-items: flex-start; }
+  .flow span { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+  .flow span::before { flex: none; }
   .flow li + li::before { width: 1px; height: var(--s3); margin-left: var(--s5); }
 
   .poem { justify-self: end; margin-top: var(--s4); font-size: 17px; }

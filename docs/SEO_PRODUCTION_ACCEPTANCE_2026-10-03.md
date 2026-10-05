@@ -29,3 +29,19 @@ Vercel Production READY，部署 dpl_9gVMLoveTQ3dJKQFtHFHmuN3aRhS，正式别名
 Google 首页 https://baikai.site/ 已 indexed，最后抓取 2026-10-02 23:55:11，用户 canonical 为自身，Google 为 Inspected URL。当前版本 10:59 实时测试 available，实际 HTML 元数据及手机渲染首屏已查看。既有首页收录不能当作本批新文章已收录或流量增长。10:19 的 RAG 文章缓存测试补展开：抓取允许/获取成功/允许索引通过，用户 canonical 自身，Google canonical Only determined after indexing；Google 获取的 HTML 与手机首屏实际查看，文章仍未索引。
 
 按 Google 官方 sitemap 排查流程直接测试 XML：10:54:39 sitemap.xml Crawl allowed Yes、Page fetch Successful。公网 Googlebot-UA robots/XML 200、正确 MIME、16 URL；域名人工处置报告 No issues detected。sitemap 表仍 Couldn't fetch，当前原因不能归为文件不可访问，也不能宣称 sitemap 已读取成功。未反复提交；后续以正常重试后的报告为准。
+
+## 2026-10-03 用户截图后的 sitemap 诊断
+
+用户截图显示个人站与 FinUnity 的 sitemap 为 Unknown／Couldn't fetch，发现页数 0，最后读取日期为空；Knowledge 与角色站为 Success，各发现 6 页。截图是用户提供的状态证据，本轮没有重新读取登录后的 Search Console 报表。
+
+本轮在 Windows／Python 3.14 对 `https://baikai.site/sitemap.xml`、`https://finunity.baikai.site/sitemap.xml` 及各自 robots.txt 执行匿名 GET／HEAD；普通浏览器 UA 与 Googlebot UA 两组共 16 个请求全部 HTTP 200，无 URL 跳转。两个 sitemap MIME 分别为 application/xml、text/xml，均能解析为标准 sitemap urlset，个人站 16 条、FinUnity 12 条 URL；无 X-Robots-Tag 或挑战响应。robots 允许根路径并声明正确的 sitemap 地址。保持 TLS 证书验证，没有修改服务器、DNS、安全策略或站点代码，没有重提交 sitemap。
+
+普通网络请求使用 Googlebot UA 不等于来自真实 Google 抓取服务器，不能排除来源 IP、区域、瞬时网络或 Google 调度相关差异。本轮没有复测 Google XML 实时抓取；上文 10:54:39 的个人站 XML 实时测试成功仍是当时的验收记录，FinUnity 代表 HTML 页可用也不能当作 XML 已实测成功。
+
+结论：目前未复现 XML 格式或公开可达性故障，根因尚未确认；不能仅凭截图判断为 Google 延迟，也不能报告 sitemap 已成功处理。下一步打开失败行详细信息，用报告中的完整 XML 地址执行 URL Inspection → Test live URL，关注 Crawl allowed = Yes 与 Page fetch = Successful。若实时抓取成功，观察 Google 后续重试；若失败，依据具体错误排查。Google 官方说明抓取失败后会重试数日，持续失败则停止，届时修复已确认问题后再提交，不进行反复删除重加。
+
+依据：[Google Sitemaps report](https://support.google.com/webmasters/answer/7451001?hl=en)。HTTP 正本为 `docs/acceptance/2026-10-03-sitemap-fetch-diagnosis/http-checks.json`。本轮只检查截图中公开域名，未访问 FinUnity 本地项目或修改其状态文件；未执行业务测试，也未以诊断替代收录验收。
+
+## 2026-10-03 XML 完整性核对追加
+
+用户随后明确要求检查两个项目 XML、缺失则补充。本轮对个人站实际默认构建 HTML、机器清单、本地与线上 XML 做精确集合比较，16 URL 一致，无缺失；16 页 GET／HEAD、canonical、索引及同域链接核对通过，2 项相关 pytest 通过。没有需要补写的必需字段或 URL，未更改或重发布 XML；详细验收见 `docs/acceptance/2026-10-03-sitemap-coverage.md`。按本次跨项目检查授权，衡仓 Web 自身也保存了独立验收及状态更新；未访问 Server 或 Android 本地项目。
