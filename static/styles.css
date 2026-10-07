@@ -700,25 +700,33 @@ a.index__row:hover .index__tags, a.index__row:focus-visible .index__tags { color
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .scroll__name { animation: ink 1.2s var(--ease) 0.1s both; }
-  .scroll__line { animation: ink 1.1s var(--ease) 0.55s both; }
-  .scroll__line + .scroll__line { animation-delay: 0.75s; }
-  .scroll__seal { animation: stamp 0.5s var(--ease) 1.3s both; }
-  .hero__text > * { animation: rise 0.8s var(--ease) both; }
-  .hero__text > :nth-child(1) { animation-delay: 0.3s; }
-  .hero__text > :nth-child(2) { animation-delay: 0.42s; }
-  .hero__text > :nth-child(3) { animation-delay: 0.54s; }
-  .page-head { animation: rise 0.8s var(--ease) both; }
-  .page-head ~ * { animation: rise 0.8s var(--ease) 0.12s both; }
-  .poem { animation: rise 0.9s var(--ease) 0.25s both; }
+  /* 入场编排只在本会话首次访问时播放（boot.js 给 <html> 加 .seen）；
+     站内再翻页由下面的跨页过渡接手。没有 JS 时不会有 .seen，始终播放。 */
+  html:not(.seen) .scroll__name { animation: ink 1.2s var(--ease) 0.1s both; }
+  html:not(.seen) .scroll__line { animation: ink 1.1s var(--ease) 0.55s both; }
+  html:not(.seen) .scroll__line + .scroll__line { animation-delay: 0.75s; }
+  html:not(.seen) .scroll__seal { animation: stamp 0.5s var(--ease) 1.3s both; }
+  html:not(.seen) .hero__text > * { animation: rise 0.8s var(--ease) both; }
+  html:not(.seen) .hero__text > :nth-child(1) { animation-delay: 0.3s; }
+  html:not(.seen) .hero__text > :nth-child(2) { animation-delay: 0.42s; }
+  html:not(.seen) .hero__text > :nth-child(3) { animation-delay: 0.54s; }
+  html:not(.seen) .page-head { animation: rise 0.8s var(--ease) both; }
+  html:not(.seen) .page-head ~ * { animation: rise 0.8s var(--ease) 0.12s both; }
+  html:not(.seen) .poem { animation: rise 0.9s var(--ease) 0.25s both; }
 
-  .js [data-reveal] {
+  /* 滚动显现：site.js 只给首屏以下的块加 .is-pending，进入视口后再加 .is-visible */
+  [data-reveal].is-pending {
     opacity: 0;
     transform: translateY(14px);
     transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
     transition-delay: var(--d, 0ms);
   }
-  .js [data-reveal].is-visible { opacity: 1; transform: none; }
+  [data-reveal].is-pending.is-visible { opacity: 1; transform: none; }
+
+  /* 跨页过渡：同源页面之间切换时由浏览器做淡入淡出，旧页面一直保持到新页面可以显示，
+     不再先闪空白。默认 0.25s 偏拖，缩到 0.15s；不支持的浏览器照常整页跳转。 */
+  @view-transition { navigation: auto; }
+  ::view-transition-group(root) { animation-duration: 0.15s; }
 }
 
 @media (prefers-reduced-motion: reduce) {

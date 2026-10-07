@@ -1,11 +1,12 @@
 ---
 project_id: personal-site
-updated: 2026-10-07
+updated: 2026-10-08
 status: active
 overview: 纯静态中英文个人作品与职业经历站，展示求职方向、代表项目和验证过程。
 progress: "双域公开前端已上线，页面与 API 边界通过；本项目构建域名参数和发布说明已更新，Git 持续双发布待完成。"
 next: "审阅并发布双域构建配置，完成同版本双项目发布自动化；后续观察 Google 重新抓取与收录。"
 evidence:
+- docs/RELEASE_CACHE_NAVIGATION_2026-10-08.md
 - DESIGN.md
 - README.md
 - docs/acceptance/2026-09-28-seo-geo.md
@@ -65,3 +66,7 @@ Vercel Production 部署 dpl_AxFoSJwpMhxUhNh2iZ1YAksNJ3D6 已 READY，生产别�
 ## 2026-10-05 可靠性改造
 
 本机改动，未提交、未部署。新增线上监控、版本记录与 CI。本机验证与未验证项见 [验收记录](docs/acceptance/2026-10-05-reliability.md)。
+
+## 2026-10-08 缓存与导航优化发布
+
+本批按用户要求提交、推送并发布两域前端；本轮跳过测试与生产业务验收。实际发布结果见 docs/RELEASE_CACHE_NAVIGATION_2026-10-08.md。

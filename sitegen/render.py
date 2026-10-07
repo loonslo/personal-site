@@ -22,6 +22,9 @@ class Context:
     locale: str = "zh"
     other_paths: frozenset[str] = frozenset()
     person_site: dict[str, Any] | None = None
+    # 脚本地址带内容哈希（?v=），vercel.json 才能对它们放心设置 immutable；单测里直接构造 Context 时用默认值
+    boot_href: str = "/boot.js"
+    site_js_href: str = "/site.js"
 
     @property
     def base(self) -> str:
@@ -197,8 +200,9 @@ def layout(ctx: Context, *, title: str, description: str, path: str, body: str, 
 <meta name="theme-color" content="#161513" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script src="{_e(ctx.boot_href)}"></script>
 <link rel="stylesheet" href="{_e(ctx.css_href)}">
-<script src="/site.js" defer></script>{feed_link}
+<script src="{_e(ctx.site_js_href)}" defer></script>{feed_link}
 {_person_json_ld(ctx)}
 </head>
 <body>

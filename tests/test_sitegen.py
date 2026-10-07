@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import hashlib
 import json
+import re
+import shutil
 import socket
 from html.parser import HTMLParser
 from pathlib import Path
@@ -207,7 +210,7 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
         assert "ui-testing-ten-years" not in feed
     index = (out / "index.html").read_text(encoding="utf-8")
     assert "文章" in index.split("<main")[0]
-    assert '<script src="/site.js" defer></script>' in index
+    assert re.search(r'<script src="/site\.js\?v=[0-9a-f]{10}" defer></script>', index)
     assert "<script>" not in index
     assert "<title>半開｜AI 应用与全栈开发作品集</title>" in index
     assert '<h1 class="hero__lead">' in index
@@ -273,7 +276,8 @@ def test_built_person_schema_and_page_descriptions(tmp_path: Path) -> None:
     for path in out.rglob("*.html"):
         parser = _MetadataParser()
         parser.feed(path.read_text(encoding="utf-8"))
-        assert parser.script_types == [None, "application/ld+json"]
+        # boot.js 与 site.js 两个外置脚本，加上唯一的 JSON-LD；页面里没有任何内联脚本
+        assert parser.script_types == [None, None, "application/ld+json"]
         assert len(parser.json_ld) == 1
         person = json.loads(parser.json_ld[0])
         assert person["@context"] == "https://schema.org"
@@ -340,7 +344,8 @@ def test_person_schema_cannot_close_script_element() -> None:
     ctx = render.Context(site, False, "/styles.css", 2026)
     parser = _MetadataParser()
     parser.feed(render.not_found(ctx))
-    assert parser.script_types == [None, "application/ld+json"]
+    # boot.js 与 site.js 两个外置脚本，加上唯一的 JSON-LD；页面里没有任何内联脚本
+    assert parser.script_types == [None, None, "application/ld+json"]
     assert len(parser.json_ld) == 1
     assert "<" not in parser.json_ld[0]
     person = json.loads(parser.json_ld[0])
@@ -388,3 +393,78 @@ def test_placeholders_are_reported() -> None:
     site = {"email": "", "base_url": "https://example.pages.dev", "accounts": [{"label": "小红书", "href": ""}]}
     notes = checks.placeholders(site)
     assert len(notes) == 3
+
+
+def _vercel_header_rules() -> dict[str, dict]:
+    config = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
+    return {rule["source"]: rule for rule in config["headers"]}
+
+
+def test_scripts_are_versioned_by_content_and_ordered_for_first_paint(tmp_path: Path) -> None:
+    out = build.build(ROOT, tmp_path / "dist")
+    for name in ("boot.js", "site.js"):
+        digest = hashlib.sha256((out / name).read_bytes()).hexdigest()[:10]
+        for page in ("index.html", "about/index.html", "en/index.html", "projects/finunity/index.html", "404.html"):
+            html = (out / page).read_text(encoding="utf-8")
+            assert f'src="/{name}?v={digest}"' in html, (name, page)
+            assert f'src="/{name}"' not in html, (name, page)
+    index = (out / "index.html").read_text(encoding="utf-8")
+    # boot.js 同步执行、在样式表之前；site.js 延迟执行，不挡首屏
+    boot, css, site = (index.index(s) for s in ('<script src="/boot.js?v=', '<link rel="stylesheet"', '<script src="/site.js?v='))
+    assert boot < css < site
+    assert re.search(r'<script src="/boot\.js\?v=[0-9a-f]{10}"></script>', index)
+    assert re.search(r'<script src="/site\.js\?v=[0-9a-f]{10}" defer></script>', index)
+
+
+def test_script_version_changes_when_the_file_changes(tmp_path: Path) -> None:
+    root = tmp_path / "site"
+    shutil.copytree(ROOT / "static", root / "static")
+    shutil.copytree(ROOT / "content", root / "content")
+
+    def version(out: Path) -> str:
+        return re.search(r"/site\.js\?v=([0-9a-f]{10})", (out / "index.html").read_text(encoding="utf-8"))[1]
+
+    first = version(build.build(root, tmp_path / "one"))
+    (root / "static" / "site.js").write_text('"use strict";\nconsole.log("changed");\n', encoding="utf-8")
+    assert version(build.build(root, tmp_path / "two")) != first
+
+
+def test_entrance_motion_plays_once_and_page_changes_use_view_transitions() -> None:
+    css = (ROOT / "static" / "styles.css").read_text(encoding="utf-8")
+    motion = css[css.index("/* ---------- 动效 ---------- */"):]
+    motion = motion[:motion.index("@media (prefers-reduced-motion: reduce)")]
+    # 每条 animation 声明都必须挂在 html:not(.seen) 下，否则站内每翻一页都会重播
+    for line in motion.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("@keyframes") or stripped.startswith("from") or stripped.startswith("to"):
+            continue
+        if "animation:" in stripped or "animation-delay:" in stripped:
+            assert stripped.startswith("html:not(.seen) "), stripped
+    assert "@view-transition { navigation: auto; }" in motion
+    assert "@media (prefers-reduced-motion: no-preference)" in motion
+    # 滚动显现不再依赖 .js 类（它在脚本到达后才出现，会让首屏内的块先闪一下）
+    assert ".js [data-reveal]" not in css
+    assert "[data-reveal].is-pending" in css
+
+
+def test_boot_and_site_scripts_are_small_and_safe() -> None:
+    boot = (ROOT / "static" / "boot.js").read_text(encoding="utf-8")
+    site = (ROOT / "static" / "site.js").read_text(encoding="utf-8")
+    assert 'classList.add("seen")' in boot and "try {" in boot and "catch" in boot
+    for text in (boot, site):
+        assert "eval(" not in text and "innerHTML" not in text and "document.write" not in text
+    # 预取只针对同源页面，跨域链接只预连接，不能把用户页面地址发给第三方
+    assert 'hint("prefetch"' in site and 'hint("preconnect", url.origin)' in site
+    assert "saveData" in site
+
+
+def test_hosting_marks_only_versioned_scripts_and_styles_immutable() -> None:
+    rules = _vercel_header_rules()
+    immutable = [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]
+    assert rules["/styles.css"]["headers"] == immutable
+    for source in ("/site.js", "/boot.js"):
+        assert rules[source]["headers"] == immutable
+        # 没有 ?v= 的请求（例如旧版本页面）不能被缓存一年
+        assert rules[source]["has"] == [{"type": "query", "key": "v"}]
+    # 页面本身仍然每次校验
+    assert not any("html" in source or source == "/" for source in rules if "Cache-Control" in json.dumps(rules[source]))
