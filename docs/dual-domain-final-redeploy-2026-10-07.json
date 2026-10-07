@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://character.baikai.site/",
+    "status": 200,
+    "canonical": "https://character.baikai.site/",
+    "ok": true
+  },
+  {
+    "url": "https://knowledge.baikai.site/",
+    "status": 200,
+    "canonical": "https://knowledge.baikai.site/",
+    "ok": true
+  },
+  {
+    "url": "https://finunity.baikai.site/",
+    "status": 200,
+    "canonical": "https://finunity.baikai.site/",
+    "ok": true
+  }
+]

@@ -101,11 +101,17 @@ def test_run_returns_one_line_per_failure_and_nothing_when_all_is_well():
     assert monitor.run(checks[:1], ("a.example",), fetcher, lambda host: 90.0, report=lambda line: None) == []
 
 
-def test_the_default_configuration_covers_every_site_and_the_old_domain():
+def test_the_default_configuration_covers_both_independent_domain_deployments():
     names = " ".join(check.name for check in monitor.SITES)
-    for expected in ("主站", "角色站", "知识站", "衡仓", "看板", "旧域名"):
+    for expected in ("主站", "角色站", "知识站", "衡仓", "看板"):
         assert expected in names
-    assert "baikai.site" in monitor.CERT_HOSTS and "halfopen.dev" in monitor.CERT_HOSTS
+    for root in ("baikai.site", "halfopen.dev"):
+        for prefix in ("", "character.", "knowledge.", "finunity.", "dashboards."):
+            host = prefix + root
+            checks = [check for check in monitor.SITES if check.url == f"https://{host}/"]
+            assert len(checks) == 1 and checks[0].status == 200
+            assert checks[0].redirect_to is None
+            assert host in monitor.CERT_HOSTS
 
 
 # --- fetch() and notify() against a real local server ------------------------------------------------

@@ -1,3 +1,5 @@
+> 2026-10-07 当前部署：baikai.site / halfopen.dev 相同内容分别部署并开放搜索。迁站策略已撤销；详见 [双域名部署与验收](docs/DUAL_DOMAIN_DEPLOYMENT_2026-10-07.md)。旧记录保留原验收日期。
+
 # 半開 · 个人站
 
 个人作品与职业经历的入口。纯静态，无登录、无后端，可部署在 Cloudflare Pages 或 Vercel。设计规则见 [DESIGN.md](DESIGN.md)。

@@ -1,4 +1,4 @@
-"""Uptime, health and certificate check for the five halfopen.dev sites (standard library only).
+"""Uptime, health and certificate check for the both domain deployments (standard library only).
 
     python tools/monitor.py          # exit 0 when every check passes, 1 otherwise
     python tools/monitor.py --list   # print what is checked
@@ -62,8 +62,16 @@ SITES: tuple[Check, ...] = (
     Check("角色站 API", "https://character.halfopen.dev/api/status", contains='"mode": "public"'),
     Check("知识站 live", "https://knowledge.halfopen.dev/health/live", json_status=("live", "ok")),
     Check("衡仓 Android API ready", "https://finunity-api.halfopen.dev/health/ready", json_status=("ready", "degraded")),
-    # The old domain must keep redirecting for at least a year (Google's site-move guidance).
-    Check("旧域名 301", "https://baikai.site/", status=301, redirect_to="https://halfopen.dev/"),
+    # Both domains are live sites; only www normalization redirects within its domain.
+    Check("baikai 主站", "https://baikai.site/", contains=CANONICAL),
+    Check("baikai 角色站", "https://character.baikai.site/", contains=CANONICAL),
+    Check("baikai 知识站", "https://knowledge.baikai.site/", contains=CANONICAL),
+    Check("baikai 衡仓", "https://finunity.baikai.site/", contains=CANONICAL),
+    Check("baikai 看板", "https://dashboards.baikai.site/", contains=CANONICAL),
+    Check("baikai 衡仓 API", "https://finunity.baikai.site/health/ready", json_status=("ready", "degraded")),
+    Check("baikai 角色 API", "https://character.baikai.site/api/status", contains='"mode": "public"'),
+    Check("baikai 知识 live", "https://knowledge.baikai.site/health/live", json_status=("live", "ok")),
+    Check("baikai Android API", "https://finunity-api.baikai.site/health/ready", json_status=("ready", "degraded")),
 )
 CERT_HOSTS: tuple[str, ...] = (
     "halfopen.dev",

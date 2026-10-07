@@ -1,3 +1,5 @@
+> 历史记录：2026-10-07 已撤销域名迁站，当前以 [双域名部署记录](DUAL_DOMAIN_DEPLOYMENT_2026-10-07.md) 为准；以下原日期及验收不作本次复测。
+
 # 2026-10-03 前端统一迁移到 Vercel
 
 正式地址：https://halfopen.dev/；Vercel 项目 `personal-site`，生产 READY 部署 `dpl_HWA7wkVF17Mz2ZHiHX8vnwxJv6mv`。主站原已使用 Vercel，本轮没有重发主站或改变其 UI；核对全部子站入口与 16 公开页。

@@ -1,10 +1,10 @@
 ---
 project_id: personal-site
-updated: 2026-10-06
+updated: 2026-10-07
 status: active
 overview: 纯静态中英文个人作品与职业经历站，展示求职方向、代表项目和验证过程。
-progress: "主站内容与可靠性改动已通过独立发布工作树提交推送，生产部署命令成功并返回 READY。按用户要求停止额外测试和上线验证；历史验收仍保留原日期。"
-next: "CI、监控通知送达、真实用户访问与 Search Console 复盘按后续任务推进。"
+progress: "双域公开前端已上线，页面与 API 边界通过；本项目构建域名参数和发布说明已更新，Git 持续双发布待完成。"
+next: "审阅并发布双域构建配置，完成同版本双项目发布自动化；后续观察 Google 重新抓取与收录。"
 evidence:
 - DESIGN.md
 - README.md
@@ -25,6 +25,11 @@ evidence:
 - docs/DOMAIN_MIGRATION_2026-10-03.md
 - docs/VERCEL_FRONTEND_MIGRATION_2026-10-03.md
 - docs/acceptance/2026-10-05-reliability.md
+- docs/DUAL_DOMAIN_DEPLOYMENT_2026-10-07.md
+- docs/dual-domain-http-2026-10-07.json
+- docs/dual-domain-final-redeploy-2026-10-07.json
+- docs/dual-domain-platform-http-2026-10-07.json
+- docs/DUAL_DOMAIN_CHANGE_SCOPE_2026-10-07.md
 ---
 
 # 半開个人站 · 项目概览与进度

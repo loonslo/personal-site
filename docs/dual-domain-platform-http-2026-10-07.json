@@ -1,0 +1,1566 @@
+{
+  "personal-site": [
+    {
+      "url": "https://halfopen.dev/",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://halfopen.dev/robots.txt",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://halfopen.dev/sitemap.xml",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://halfopen.dev/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/about/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/about/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/about/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/projects/knowledge/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/projects/knowledge/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/projects/knowledge/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/projects/alpha-research/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/projects/alpha-research/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/projects/alpha-research/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/projects/finunity/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/projects/finunity/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/projects/finunity/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/writing/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/writing/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/writing/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/writing/rag-hybrid-search/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/writing/rag-hybrid-search/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/writing/rag-hybrid-search/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/writing/testing-to-ai-development/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/writing/testing-to-ai-development/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/writing/testing-to-ai-development/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/en/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/about/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/en/about/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/about/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/projects/knowledge/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/en/projects/knowledge/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/projects/knowledge/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/projects/alpha-research/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/en/projects/alpha-research/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/projects/alpha-research/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/projects/finunity/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/en/projects/finunity/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/projects/finunity/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/writing/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/en/writing/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/writing/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/writing/rag-hybrid-search/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/en/writing/rag-hybrid-search/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/writing/rag-hybrid-search/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/writing/testing-to-ai-development/",
+      "status": 200,
+      "canonical": "https://halfopen.dev/en/writing/testing-to-ai-development/",
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/en/writing/testing-to-ai-development/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/does-not-exist-domain-check",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/server.py",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://halfopen.dev/settings.demo.example.toml",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://baikai.site/robots.txt",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://baikai.site/sitemap.xml",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://baikai.site/",
+      "status": 200,
+      "canonical": "https://baikai.site/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/about/",
+      "status": 200,
+      "canonical": "https://baikai.site/about/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/about/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/projects/knowledge/",
+      "status": 200,
+      "canonical": "https://baikai.site/projects/knowledge/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/projects/knowledge/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/projects/alpha-research/",
+      "status": 200,
+      "canonical": "https://baikai.site/projects/alpha-research/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/projects/alpha-research/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/projects/finunity/",
+      "status": 200,
+      "canonical": "https://baikai.site/projects/finunity/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/projects/finunity/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/writing/",
+      "status": 200,
+      "canonical": "https://baikai.site/writing/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/writing/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/writing/rag-hybrid-search/",
+      "status": 200,
+      "canonical": "https://baikai.site/writing/rag-hybrid-search/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/writing/rag-hybrid-search/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/writing/testing-to-ai-development/",
+      "status": 200,
+      "canonical": "https://baikai.site/writing/testing-to-ai-development/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/writing/testing-to-ai-development/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/",
+      "status": 200,
+      "canonical": "https://baikai.site/en/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/about/",
+      "status": 200,
+      "canonical": "https://baikai.site/en/about/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/about/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/projects/knowledge/",
+      "status": 200,
+      "canonical": "https://baikai.site/en/projects/knowledge/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/projects/knowledge/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/projects/alpha-research/",
+      "status": 200,
+      "canonical": "https://baikai.site/en/projects/alpha-research/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/projects/alpha-research/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/projects/finunity/",
+      "status": 200,
+      "canonical": "https://baikai.site/en/projects/finunity/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/projects/finunity/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/writing/",
+      "status": 200,
+      "canonical": "https://baikai.site/en/writing/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/writing/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/writing/rag-hybrid-search/",
+      "status": 200,
+      "canonical": "https://baikai.site/en/writing/rag-hybrid-search/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/writing/rag-hybrid-search/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/writing/testing-to-ai-development/",
+      "status": 200,
+      "canonical": "https://baikai.site/en/writing/testing-to-ai-development/",
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/en/writing/testing-to-ai-development/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/does-not-exist-domain-check",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/server.py",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://baikai.site/settings.demo.example.toml",
+      "status": 404,
+      "ok": true
+    }
+  ],
+  "dashboards": [
+    {
+      "url": "https://dashboards.halfopen.dev/",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/robots.txt",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/sitemap.xml",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/",
+      "status": 200,
+      "canonical": "https://dashboards.halfopen.dev/",
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/dashboards/index-decision/",
+      "status": 200,
+      "canonical": "https://dashboards.halfopen.dev/dashboards/index-decision/",
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/dashboards/index-decision/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/dashboards/short-flow/",
+      "status": 200,
+      "canonical": "https://dashboards.halfopen.dev/dashboards/short-flow/",
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/dashboards/short-flow/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/guides/money-flow/",
+      "status": 200,
+      "canonical": "https://dashboards.halfopen.dev/guides/money-flow/",
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/guides/money-flow/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/guides/index-valuation/",
+      "status": 200,
+      "canonical": "https://dashboards.halfopen.dev/guides/index-valuation/",
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/guides/index-valuation/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/does-not-exist-domain-check",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/server.py",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.halfopen.dev/settings.demo.example.toml",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://dashboards.baikai.site/robots.txt",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://dashboards.baikai.site/sitemap.xml",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://dashboards.baikai.site/",
+      "status": 200,
+      "canonical": "https://dashboards.baikai.site/",
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/dashboards/index-decision/",
+      "status": 200,
+      "canonical": "https://dashboards.baikai.site/dashboards/index-decision/",
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/dashboards/index-decision/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/dashboards/short-flow/",
+      "status": 200,
+      "canonical": "https://dashboards.baikai.site/dashboards/short-flow/",
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/dashboards/short-flow/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/guides/money-flow/",
+      "status": 200,
+      "canonical": "https://dashboards.baikai.site/guides/money-flow/",
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/guides/money-flow/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/guides/index-valuation/",
+      "status": 200,
+      "canonical": "https://dashboards.baikai.site/guides/index-valuation/",
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/guides/index-valuation/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/does-not-exist-domain-check",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/server.py",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://dashboards.baikai.site/settings.demo.example.toml",
+      "status": 404,
+      "ok": true
+    }
+  ],
+  "character": [
+    {
+      "url": "https://character.halfopen.dev/",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://character.halfopen.dev/robots.txt",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://character.halfopen.dev/sitemap.xml",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://character.halfopen.dev/",
+      "status": 200,
+      "canonical": "https://character.halfopen.dev/",
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/en/",
+      "status": 200,
+      "canonical": "https://character.halfopen.dev/en/",
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/en/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/templates/oc/",
+      "status": 200,
+      "canonical": "https://character.halfopen.dev/templates/oc/",
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/templates/oc/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/en/templates/oc/",
+      "status": 200,
+      "canonical": "https://character.halfopen.dev/en/templates/oc/",
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/en/templates/oc/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/templates/novel-character/",
+      "status": 200,
+      "canonical": "https://character.halfopen.dev/templates/novel-character/",
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/templates/novel-character/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/en/templates/novel-character/",
+      "status": 200,
+      "canonical": "https://character.halfopen.dev/en/templates/novel-character/",
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/en/templates/novel-character/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/does-not-exist-domain-check",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/server.py",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/settings.demo.example.toml",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://character.baikai.site/robots.txt",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://character.baikai.site/sitemap.xml",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://character.baikai.site/",
+      "status": 200,
+      "canonical": "https://character.baikai.site/",
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/en/",
+      "status": 200,
+      "canonical": "https://character.baikai.site/en/",
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/en/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/templates/oc/",
+      "status": 200,
+      "canonical": "https://character.baikai.site/templates/oc/",
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/templates/oc/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/en/templates/oc/",
+      "status": 200,
+      "canonical": "https://character.baikai.site/en/templates/oc/",
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/en/templates/oc/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/templates/novel-character/",
+      "status": 200,
+      "canonical": "https://character.baikai.site/templates/novel-character/",
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/templates/novel-character/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/en/templates/novel-character/",
+      "status": 200,
+      "canonical": "https://character.baikai.site/en/templates/novel-character/",
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/en/templates/novel-character/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/does-not-exist-domain-check",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/server.py",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/settings.demo.example.toml",
+      "status": 404,
+      "ok": true
+    }
+  ],
+  "knowledge": [
+    {
+      "url": "https://knowledge.halfopen.dev/",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/robots.txt",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/sitemap.xml",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/",
+      "status": 200,
+      "canonical": "https://knowledge.halfopen.dev/",
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/en/",
+      "status": 200,
+      "canonical": "https://knowledge.halfopen.dev/en/",
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/en/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/guides/windows-setup/",
+      "status": 200,
+      "canonical": "https://knowledge.halfopen.dev/guides/windows-setup/",
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/guides/windows-setup/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/en/guides/windows-setup/",
+      "status": 200,
+      "canonical": "https://knowledge.halfopen.dev/en/guides/windows-setup/",
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/en/guides/windows-setup/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/guides/source-citations/",
+      "status": 200,
+      "canonical": "https://knowledge.halfopen.dev/guides/source-citations/",
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/guides/source-citations/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/en/guides/source-citations/",
+      "status": 200,
+      "canonical": "https://knowledge.halfopen.dev/en/guides/source-citations/",
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/en/guides/source-citations/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/does-not-exist-domain-check",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/server.py",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/settings.demo.example.toml",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/",
+      "status": 200,
+      "ok": true,
+      "server": "nginx/1.29.4"
+    },
+    {
+      "url": "https://knowledge.baikai.site/robots.txt",
+      "status": 200,
+      "ok": true,
+      "server": "nginx/1.29.4"
+    },
+    {
+      "url": "https://knowledge.baikai.site/sitemap.xml",
+      "status": 200,
+      "ok": true,
+      "server": "nginx/1.29.4"
+    },
+    {
+      "url": "https://knowledge.baikai.site/",
+      "status": 200,
+      "canonical": "https://knowledge.baikai.site/",
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/en/",
+      "status": 200,
+      "canonical": "https://knowledge.baikai.site/en/",
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/en/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/guides/windows-setup/",
+      "status": 200,
+      "canonical": "https://knowledge.baikai.site/guides/windows-setup/",
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/guides/windows-setup/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/en/guides/windows-setup/",
+      "status": 200,
+      "canonical": "https://knowledge.baikai.site/en/guides/windows-setup/",
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/en/guides/windows-setup/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/guides/source-citations/",
+      "status": 200,
+      "canonical": "https://knowledge.baikai.site/guides/source-citations/",
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/guides/source-citations/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/en/guides/source-citations/",
+      "status": 200,
+      "canonical": "https://knowledge.baikai.site/en/guides/source-citations/",
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/en/guides/source-citations/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/does-not-exist-domain-check",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/server.py",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/settings.demo.example.toml",
+      "status": 404,
+      "ok": true
+    }
+  ],
+  "finunity-web": [
+    {
+      "url": "https://finunity.halfopen.dev/",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://finunity.halfopen.dev/robots.txt",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://finunity.halfopen.dev/sitemap.xml",
+      "status": 200,
+      "ok": true,
+      "server": "Vercel"
+    },
+    {
+      "url": "https://finunity.halfopen.dev/privacy",
+      "status": 200,
+      "canonical": "https://finunity.halfopen.dev/privacy",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/privacy",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/privacy-en.html",
+      "status": 200,
+      "canonical": "https://finunity.halfopen.dev/privacy-en.html",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/privacy-en.html",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/terms",
+      "status": 200,
+      "canonical": "https://finunity.halfopen.dev/terms",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/terms",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/terms-en.html",
+      "status": 200,
+      "canonical": "https://finunity.halfopen.dev/terms-en.html",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/terms-en.html",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/android-privacy",
+      "status": 200,
+      "canonical": "https://finunity.halfopen.dev/android-privacy",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/android-privacy",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/android-privacy-en.html",
+      "status": 200,
+      "canonical": "https://finunity.halfopen.dev/android-privacy-en.html",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/android-privacy-en.html",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/",
+      "status": 200,
+      "canonical": "https://finunity.halfopen.dev/",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/en/",
+      "status": 200,
+      "canonical": "https://finunity.halfopen.dev/en/",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/en/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/guides/multi-currency/",
+      "status": 200,
+      "canonical": "https://finunity.halfopen.dev/guides/multi-currency/",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/guides/multi-currency/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/en/guides/multi-currency/",
+      "status": 200,
+      "canonical": "https://finunity.halfopen.dev/en/guides/multi-currency/",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/en/guides/multi-currency/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/guides/holding-import/",
+      "status": 200,
+      "canonical": "https://finunity.halfopen.dev/guides/holding-import/",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/guides/holding-import/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/en/guides/holding-import/",
+      "status": 200,
+      "canonical": "https://finunity.halfopen.dev/en/guides/holding-import/",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/en/guides/holding-import/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/does-not-exist-domain-check",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/server.py",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/settings.demo.example.toml",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/",
+      "status": 200,
+      "ok": true,
+      "server": "nginx/1.29.4"
+    },
+    {
+      "url": "https://finunity.baikai.site/robots.txt",
+      "status": 200,
+      "ok": true,
+      "server": "nginx/1.29.4"
+    },
+    {
+      "url": "https://finunity.baikai.site/sitemap.xml",
+      "status": 200,
+      "ok": true,
+      "server": "nginx/1.29.4"
+    },
+    {
+      "url": "https://finunity.baikai.site/privacy",
+      "status": 200,
+      "canonical": "https://finunity.baikai.site/privacy",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/privacy",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/privacy-en.html",
+      "status": 200,
+      "canonical": "https://finunity.baikai.site/privacy-en.html",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/privacy-en.html",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/terms",
+      "status": 200,
+      "canonical": "https://finunity.baikai.site/terms",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/terms",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/terms-en.html",
+      "status": 200,
+      "canonical": "https://finunity.baikai.site/terms-en.html",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/terms-en.html",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/android-privacy",
+      "status": 200,
+      "canonical": "https://finunity.baikai.site/android-privacy",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/android-privacy",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/android-privacy-en.html",
+      "status": 200,
+      "canonical": "https://finunity.baikai.site/android-privacy-en.html",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/android-privacy-en.html",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/",
+      "status": 200,
+      "canonical": "https://finunity.baikai.site/",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/en/",
+      "status": 200,
+      "canonical": "https://finunity.baikai.site/en/",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/en/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/guides/multi-currency/",
+      "status": 200,
+      "canonical": "https://finunity.baikai.site/guides/multi-currency/",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/guides/multi-currency/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/en/guides/multi-currency/",
+      "status": 200,
+      "canonical": "https://finunity.baikai.site/en/guides/multi-currency/",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/en/guides/multi-currency/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/guides/holding-import/",
+      "status": 200,
+      "canonical": "https://finunity.baikai.site/guides/holding-import/",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/guides/holding-import/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/en/guides/holding-import/",
+      "status": 200,
+      "canonical": "https://finunity.baikai.site/en/guides/holding-import/",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/en/guides/holding-import/",
+      "method": "HEAD",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/does-not-exist-domain-check",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/server.py",
+      "status": 404,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/settings.demo.example.toml",
+      "status": 404,
+      "ok": true
+    }
+  ],
+  "api": [
+    {
+      "url": "https://finunity.halfopen.dev/health/ready",
+      "status": 200,
+      "expected": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity-api.halfopen.dev/health/ready",
+      "status": 200,
+      "expected": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/api/status",
+      "status": 200,
+      "expected": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/health/live",
+      "status": 200,
+      "expected": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.halfopen.dev/health/ready",
+      "status": 503,
+      "expected": 503,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.halfopen.dev/api/v1/ledger/summary",
+      "status": 401,
+      "expected": 401,
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/api/characters",
+      "status": 401,
+      "expected": 401,
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/api/register",
+      "origin": "https://character.halfopen.dev",
+      "status": 400,
+      "expected": 400,
+      "ok": true
+    },
+    {
+      "url": "https://character.halfopen.dev/api/register",
+      "origin": "https://untrusted.invalid",
+      "status": 403,
+      "expected": 403,
+      "ok": true
+    },
+    {
+      "url": "https://www.halfopen.dev/about/?domain-check=1",
+      "status": 308,
+      "location": "https://halfopen.dev/about/?domain-check=1",
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/health/ready",
+      "status": 200,
+      "expected": 200,
+      "ok": true
+    },
+    {
+      "url": "https://finunity-api.baikai.site/health/ready",
+      "status": 200,
+      "expected": 200,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/api/status",
+      "status": 200,
+      "expected": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/health/live",
+      "status": 200,
+      "expected": 200,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge.baikai.site/health/ready",
+      "status": 503,
+      "expected": 503,
+      "ok": true
+    },
+    {
+      "url": "https://finunity.baikai.site/api/v1/ledger/summary",
+      "status": 401,
+      "expected": 401,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/api/characters",
+      "status": 401,
+      "expected": 401,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/api/register",
+      "origin": "https://character.baikai.site",
+      "status": 400,
+      "expected": 400,
+      "ok": true
+    },
+    {
+      "url": "https://character.baikai.site/api/register",
+      "origin": "https://untrusted.invalid",
+      "status": 403,
+      "expected": 403,
+      "ok": true
+    },
+    {
+      "url": "https://www.baikai.site/about/?domain-check=1",
+      "status": 308,
+      "location": "https://baikai.site/about/?domain-check=1",
+      "ok": true
+    },
+    {
+      "url": "https://character-api.halfopen.dev/health/live",
+      "status": 403,
+      "expected": 403,
+      "ok": true
+    },
+    {
+      "url": "https://knowledge-api.halfopen.dev/health/live",
+      "status": 403,
+      "expected": 403,
+      "ok": true
+    },
+    {
+      "url": "https://finunity-web-api.halfopen.dev/health/live",
+      "status": 403,
+      "expected": 403,
+      "ok": true
+    }
+  ]
+}

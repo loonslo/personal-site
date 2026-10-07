@@ -1,0 +1,452 @@
+[
+  {
+    "url": "https://halfopen.dev/",
+    "status": 200,
+    "ok": true,
+    "server": "Vercel"
+  },
+  {
+    "url": "https://halfopen.dev/robots.txt",
+    "status": 200,
+    "ok": true,
+    "server": "Vercel"
+  },
+  {
+    "url": "https://halfopen.dev/sitemap.xml",
+    "status": 200,
+    "ok": true,
+    "server": "Vercel"
+  },
+  {
+    "url": "https://halfopen.dev/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/about/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/about/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/about/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/projects/knowledge/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/projects/knowledge/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/projects/knowledge/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/projects/alpha-research/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/projects/alpha-research/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/projects/alpha-research/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/projects/finunity/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/projects/finunity/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/projects/finunity/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/writing/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/writing/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/writing/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/writing/rag-hybrid-search/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/writing/rag-hybrid-search/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/writing/rag-hybrid-search/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/writing/testing-to-ai-development/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/writing/testing-to-ai-development/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/writing/testing-to-ai-development/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/en/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/about/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/en/about/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/about/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/projects/knowledge/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/en/projects/knowledge/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/projects/knowledge/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/projects/alpha-research/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/en/projects/alpha-research/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/projects/alpha-research/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/projects/finunity/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/en/projects/finunity/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/projects/finunity/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/writing/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/en/writing/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/writing/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/writing/rag-hybrid-search/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/en/writing/rag-hybrid-search/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/writing/rag-hybrid-search/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/writing/testing-to-ai-development/",
+    "status": 200,
+    "canonical": "https://halfopen.dev/en/writing/testing-to-ai-development/",
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/en/writing/testing-to-ai-development/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/does-not-exist-domain-check",
+    "status": 404,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/server.py",
+    "status": 404,
+    "ok": true
+  },
+  {
+    "url": "https://halfopen.dev/settings.demo.example.toml",
+    "status": 404,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/",
+    "status": 200,
+    "ok": true,
+    "server": "Vercel"
+  },
+  {
+    "url": "https://baikai.site/robots.txt",
+    "status": 200,
+    "ok": true,
+    "server": "Vercel"
+  },
+  {
+    "url": "https://baikai.site/sitemap.xml",
+    "status": 200,
+    "ok": true,
+    "server": "Vercel"
+  },
+  {
+    "url": "https://baikai.site/",
+    "status": 200,
+    "canonical": "https://baikai.site/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/about/",
+    "status": 200,
+    "canonical": "https://baikai.site/about/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/about/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/projects/knowledge/",
+    "status": 200,
+    "canonical": "https://baikai.site/projects/knowledge/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/projects/knowledge/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/projects/alpha-research/",
+    "status": 200,
+    "canonical": "https://baikai.site/projects/alpha-research/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/projects/alpha-research/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/projects/finunity/",
+    "status": 200,
+    "canonical": "https://baikai.site/projects/finunity/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/projects/finunity/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/writing/",
+    "status": 200,
+    "canonical": "https://baikai.site/writing/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/writing/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/writing/rag-hybrid-search/",
+    "status": 200,
+    "canonical": "https://baikai.site/writing/rag-hybrid-search/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/writing/rag-hybrid-search/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/writing/testing-to-ai-development/",
+    "status": 200,
+    "canonical": "https://baikai.site/writing/testing-to-ai-development/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/writing/testing-to-ai-development/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/",
+    "status": 200,
+    "canonical": "https://baikai.site/en/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/about/",
+    "status": 200,
+    "canonical": "https://baikai.site/en/about/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/about/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/projects/knowledge/",
+    "status": 200,
+    "canonical": "https://baikai.site/en/projects/knowledge/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/projects/knowledge/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/projects/alpha-research/",
+    "status": 200,
+    "canonical": "https://baikai.site/en/projects/alpha-research/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/projects/alpha-research/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/projects/finunity/",
+    "status": 200,
+    "canonical": "https://baikai.site/en/projects/finunity/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/projects/finunity/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/writing/",
+    "status": 200,
+    "canonical": "https://baikai.site/en/writing/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/writing/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/writing/rag-hybrid-search/",
+    "status": 200,
+    "canonical": "https://baikai.site/en/writing/rag-hybrid-search/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/writing/rag-hybrid-search/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/writing/testing-to-ai-development/",
+    "status": 200,
+    "canonical": "https://baikai.site/en/writing/testing-to-ai-development/",
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/en/writing/testing-to-ai-development/",
+    "method": "HEAD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/does-not-exist-domain-check",
+    "status": 404,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/server.py",
+    "status": 404,
+    "ok": true
+  },
+  {
+    "url": "https://baikai.site/settings.demo.example.toml",
+    "status": 404,
+    "ok": true
+  }
+]
