@@ -1,10 +1,10 @@
 ---
 project_id: personal-site
-updated: 2026-10-08
+updated: 2026-10-11
 status: active
 overview: 纯静态中英文个人作品与职业经历站，展示求职方向、代表项目和验证过程。
-progress: "双域公开前端已上线，页面与 API 边界通过；本项目构建域名参数和发布说明已更新，Git 持续双发布待完成。"
-next: "审阅并发布双域构建配置，完成同版本双项目发布自动化；后续观察 Google 重新抓取与收录。"
+progress: "双域公开前端与页面切换、缓存改造已在 2026-10-08 发布；当时遵照用户要求跳过测试与线上核验，CLI 部署均为 READY，见 docs/RELEASE_CACHE_NAVIGATION_2026-10-08.md。2026-10-11 完成参考博客研究与线上页面结构核对，建议和未验证项见 docs/BLOG_REFERENCE_REVIEW_2026-10-11.md；本次重新部署与线上响应核验待完成。"
+next: "完成本次同版本双域 Production 部署和 CI/线上核验并记录；之后结合 docs/BLOG_REFERENCE_REVIEW_2026-10-11.md 与 docs/REDESIGN_PLAN_2026-10-08.md 继续评审改版方案，按其中视觉检查点实施；后续观察 Google 重新抓取与收录。"
 evidence:
 - docs/RELEASE_CACHE_NAVIGATION_2026-10-08.md
 - DESIGN.md
@@ -31,6 +31,12 @@ evidence:
 - docs/dual-domain-final-redeploy-2026-10-07.json
 - docs/dual-domain-platform-http-2026-10-07.json
 - docs/DUAL_DOMAIN_CHANGE_SCOPE_2026-10-07.md
+- docs/acceptance/2026-10-08-navigation-performance.md
+- docs/acceptance/2026-10-08-navigation-performance/old-switch-60ms.jpg
+- docs/acceptance/2026-10-08-navigation-performance/new-switch-60ms.jpg
+- docs/BLOG_REFERENCE_REVIEW_2026-10-11.md
+- docs/REDESIGN_PLAN_2026-10-08.md
+- docs/acceptance/2026-10-11-navigation-release.md
 ---
 
 # 半開个人站 · 项目概览与进度
@@ -70,3 +76,7 @@ Vercel Production 部署 dpl_AxFoSJwpMhxUhNh2iZ1YAksNJ3D6 已 READY，生产别�
 ## 2026-10-08 缓存与导航优化发布
 
 本批按用户要求提交、推送并发布两域前端；本轮跳过测试与生产业务验收。实际发布结果见 docs/RELEASE_CACHE_NAVIGATION_2026-10-08.md。
+
+## 2026-10-11 参考博客研究
+
+完成参考博客内容结构研究，核对本站首页、文章列表和详情结构及四个参考站桌面截图。记录见 docs/BLOG_REFERENCE_REVIEW_2026-10-11.md；新增建议尚未定稿或实施。没有修改页面代码，也未进行移动端与深色模式验收。
