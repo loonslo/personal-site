@@ -3,8 +3,8 @@ project_id: personal-site
 updated: 2026-10-11
 status: active
 overview: 纯静态中英文个人作品与职业经历站，展示求职方向、代表项目和验证过程。
-progress: "双域公开前端与页面切换、缓存改造已在 2026-10-08 发布；当时遵照用户要求跳过测试与线上核验，CLI 部署均为 READY，见 docs/RELEASE_CACHE_NAVIGATION_2026-10-08.md。2026-10-11 完成参考博客研究与线上页面结构核对，建议和未验证项见 docs/BLOG_REFERENCE_REVIEW_2026-10-11.md；本次重新部署与线上响应核验待完成。"
-next: "完成本次同版本双域 Production 部署和 CI/线上核验并记录；之后结合 docs/BLOG_REFERENCE_REVIEW_2026-10-11.md 与 docs/REDESIGN_PLAN_2026-10-08.md 继续评审改版方案，按其中视觉检查点实施；后续观察 Google 重新抓取与收录。"
+progress: "双域公开前端与页面切换、缓存改造已于 2026-10-11 再次部署到 Production。GitHub Actions CI 对提交 889f84de8743abd76439db7918b8d0b6c9d11723 结论 success；两个 Vercel Production 均 READY。2026-10-11 Windows HTTP 核对两域首页 200/self-canonical/CSP/HSTS，版本化 site.js immutable 缓存、不带版本参数时重新校验均通过；移动端布局、浏览器动画行为、Safari/Firefox 与国内网络未验证。详见 docs/acceptance/2026-10-11-navigation-release.md。2026-10-11 完成参考博客研究，建议与边界见 docs/BLOG_REFERENCE_REVIEW_2026-10-11.md。"
+next: "结合 docs/BLOG_REFERENCE_REVIEW_2026-10-11.md 与 docs/REDESIGN_PLAN_2026-10-08.md 评审改版方案，确认首页文案、正在做条目与产品顺序后按视觉检查点分批实施；完成同版本双项目发布自动化；后续观察 Google 重新抓取与收录。"
 evidence:
 - docs/RELEASE_CACHE_NAVIGATION_2026-10-08.md
 - DESIGN.md
