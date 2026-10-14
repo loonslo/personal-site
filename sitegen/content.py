@@ -12,19 +12,51 @@ from typing import Any
 from urllib.parse import urlsplit
 
 import mistune
+from mistune.toc import add_toc_hook
 
 STATUSES = ("building", "intro", "open", "live")
 STATUS_LABELS = {"building": "建设中", "intro": "仅介绍", "open": "开源", "live": "在线"}
 LINK_TYPES = ("page", "external", "none")
 _SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 _SITE_KEYS = (
-    "name", "tagline", "poem", "identity", "intro", "job",
-    "description", "base_url", "project_links", "email", "accounts",
+    "name", "tagline", "poem", "identity", "headline", "intro",
+    "description", "base_url", "sponsored_links", "email", "accounts",
 )
 _URL_CONTROL_OR_SPACE = re.compile(r"[\x00-\x20\x7f\\]")
 _DNS_LABEL = re.compile(r"^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$", re.IGNORECASE)
 
-_markdown = mistune.create_markdown(escape=True, plugins=["table", "strikethrough", "url"])
+_STATIC = Path(__file__).resolve().parents[1] / "static"
+_PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
+
+
+def _png_size(path: Path) -> tuple[int, int] | None:
+    """读 PNG 头里的宽高；文件缺失或不是 PNG 时返回 None。"""
+    try:
+        with path.open("rb") as file:
+            head = file.read(24)
+    except OSError:
+        return None
+    if head[:8] != _PNG_SIGNATURE or head[12:16] != b"IHDR":
+        return None
+    return int.from_bytes(head[16:20], "big"), int.from_bytes(head[20:24], "big")
+
+
+class _Renderer(mistune.HTMLRenderer):
+    """站内截图放在 static/shots/，渲染时补上宽高和懒加载，避免图片出现时页面跳动。"""
+
+    def image(self, text: str, url: str, title: str | None = None) -> str:
+        html = super().image(text, url, title)
+        if not url.startswith("/shots/"):
+            return html
+        path = (_STATIC / url.lstrip("/")).resolve()
+        size = _png_size(path) if path.is_relative_to(_STATIC) else None
+        if size is None:
+            return html
+        return html.replace("<img ", f'<img width="{size[0]}" height="{size[1]}" loading="lazy" decoding="async" ', 1)
+
+
+_markdown = mistune.create_markdown(renderer=_Renderer(escape=True), plugins=["table", "strikethrough", "url"])
+add_toc_hook(_markdown, min_level=2, max_level=2)
 
 
 def _valid_https_url(value: object, *, origin_only: bool = False) -> bool:
@@ -83,6 +115,7 @@ class Link:
     type: str
     href: str = ""
     label: str = ""
+    short_label: str = ""
 
 
 @dataclass(frozen=True)
@@ -93,6 +126,9 @@ class Project:
     status: str
     link: Link
     tags: tuple[str, ...] = ()
+    app: Link | None = None
+    featured: bool = False
+    home_summary: str = ""
 
 
 @dataclass(frozen=True)
@@ -100,6 +136,7 @@ class Doc:
     slug: str
     meta: dict[str, str] = field(default_factory=dict)
     html: str = ""
+    headings: tuple[tuple[str, str], ...] = ()
 
     @property
     def title(self) -> str:
@@ -140,7 +177,10 @@ def render_markdown(text: str) -> str:
 
 def load_doc(path: Path) -> Doc:
     meta, body = parse_frontmatter(path.read_text(encoding="utf-8"))
-    return Doc(slug=path.stem, meta=meta, html=render_markdown(body))
+    html, state = _markdown.parse(body)
+    html = html.replace("<table>", '<div class="table-wrap"><table>').replace("</table>", "</table></div>")
+    headings = tuple((item[1], item[2]) for item in state.env.get("toc_items", []))
+    return Doc(slug=path.stem, meta=meta, html=html, headings=headings)
 
 
 def load_docs(folder: Path) -> list[Doc]:
@@ -148,8 +188,23 @@ def load_docs(folder: Path) -> list[Doc]:
         return []
     docs = [load_doc(p) for p in sorted(folder.glob("*.md"))]
     for doc in docs:
-        if doc.date is None:
+        if not doc.meta.get("date"):
             raise ContentError(f"{folder / (doc.slug + '.md')}: 文章缺少 date")
+        try:
+            published = doc.date
+        except ValueError as exc:
+            raise ContentError(f"{doc.slug}: date 必须是 ISO 日期") from exc
+        if doc.meta.get("type") not in ("tutorial", "practice", "essay"):
+            raise ContentError(f"{doc.slug}: type 必须是 tutorial/practice/essay")
+        if not doc.meta.get("summary", "").strip():
+            raise ContentError(f"{doc.slug}: 文章缺少 summary")
+        if doc.meta.get("updated"):
+            try:
+                updated = date.fromisoformat(doc.meta["updated"])
+            except ValueError as exc:
+                raise ContentError(f"{doc.slug}: updated 必须是 ISO 日期") from exc
+            if updated < published:
+                raise ContentError(f"{doc.slug}: updated 不得早于 date")
     return sorted(docs, key=lambda d: d.date or date.min, reverse=True)
 
 
@@ -175,16 +230,19 @@ def load_site(path: Path) -> dict[str, Any]:
             raise ContentError(f"{path}: accounts 第 {i} 项的 href 必须是字符串")
         if href and not _valid_https_url(href):
             raise ContentError(f"{path}: accounts 第 {i} 项的 href 必须是有效的 HTTPS 链接")
-    if not isinstance(site["project_links"], list):
-        raise ContentError(f"{path}: project_links 必须是列表")
-    for i, link in enumerate(site["project_links"], start=1):
+    for key in ("headline", "identity", "intro", "description"):
+        if not isinstance(site[key], str) or not site[key].strip():
+            raise ContentError(f"{path}: {key} 必须是非空字符串")
+    if not isinstance(site["sponsored_links"], list):
+        raise ContentError(f"{path}: sponsored_links 必须是列表")
+    for i, link in enumerate(site["sponsored_links"], start=1):
         if not isinstance(link, dict):
-            raise ContentError(f"{path}: project_links 第 {i} 项必须是对象")
+            raise ContentError(f"{path}: sponsored_links 第 {i} 项必须是对象")
         label, href = link.get("label"), link.get("href")
         if not isinstance(label, str) or not label.strip():
-            raise ContentError(f"{path}: project_links 第 {i} 项的 label 必须是非空字符串")
+            raise ContentError(f"{path}: sponsored_links 第 {i} 项的 label 必须是非空字符串")
         if not isinstance(href, str) or not _valid_https_url(href):
-            raise ContentError(f"{path}: project_links 第 {i} 项的 href 必须是有效的 HTTPS 链接")
+            raise ContentError(f"{path}: sponsored_links 第 {i} 项的 href 必须是有效的 HTTPS 链接")
     return site
 
 
@@ -220,6 +278,18 @@ def load_projects(path: Path, pages_dir: Path) -> list[Project]:
             raise ContentError(f"{where}: 缺少介绍页 {pages_dir / (slug + '.md')}")
         if kind == "none" and status != "building":
             raise ContentError(f"{where}: 只有“建设中”的项目可以没有链接")
+        app = item.get("app")
+        if app is not None:
+            if not isinstance(app, dict) or not _valid_https_url(app.get("href")):
+                raise ContentError(f"{where}: app 必须提供有效的 HTTPS 链接")
+            if not isinstance(app.get("label"), str) or not app["label"].strip():
+                raise ContentError(f"{where}: app.label 必须是非空字符串")
+            if not isinstance(app.get("short_label", ""), str):
+                raise ContentError(f"{where}: app.short_label 必须是字符串")
+        if not isinstance(item.get("featured", False), bool):
+            raise ContentError(f"{where}: featured 必须是布尔值")
+        if not isinstance(item.get("home_summary", ""), str):
+            raise ContentError(f"{where}: home_summary 必须是字符串")
         projects.append(
             Project(
                 slug=slug,
@@ -228,6 +298,11 @@ def load_projects(path: Path, pages_dir: Path) -> list[Project]:
                 status=status,
                 link=Link(type=kind, href=link.get("href", ""), label=link.get("label", "")),
                 tags=tuple(item.get("tags", [])),
+                app=Link(type="external", href=app["href"], label=app["label"], short_label=app.get("short_label", "").strip()) if app else None,
+                featured=item.get("featured", False),
+                home_summary=item.get("home_summary", ""),
             )
         )
+    if sum(p.featured for p in projects) > 3:
+        raise ContentError(f"{path}: 首页最多精选三个产品")
     return projects

@@ -85,10 +85,11 @@ def build(root: Path = ROOT, out: Path | None = None, drafts: bool = False) -> P
                 for p in en_projects if p.link.type == "page"}
     en_all_posts = content.load_docs(en_root / "writing")
     en_posts = [d for d in en_all_posts if drafts or not d.draft]
-    zh_public_slugs = [d.slug for d in all_posts if not d.draft]
-    en_public_slugs = [d.slug for d in en_all_posts if not d.draft]
-    if zh_public_slugs != en_public_slugs:
-        raise BuildError("每篇已发布的中文文章都需要同 slug 的英文译文")
+    for locale_projects, locale_posts in ((projects, all_posts), (en_projects, en_all_posts)):
+        slugs = {p.slug for p in locale_projects}
+        for doc in locale_posts:
+            if doc.meta.get("project") and doc.meta["project"] not in slugs:
+                raise BuildError(f"{doc.slug}: project 不存在：{doc.meta['project']}")
     en_about = content.load_doc(en_root / "about.md")
 
     _prepare_output(out)
@@ -98,8 +99,8 @@ def build(root: Path = ROOT, out: Path | None = None, drafts: bool = False) -> P
     css_href = _asset_href(out, "styles.css")
     boot_href = _asset_href(out, "boot.js")
     site_js_href = _asset_href(out, "site.js")
-    zh_paths = {"/", "/about/"}
-    en_paths = {"/", "/about/"}
+    zh_paths = {"/", "/about/", "/projects/"}
+    en_paths = {"/", "/about/", "/projects/"}
     zh_paths.update(f"/projects/{p.slug}/" for p in projects if p.slug in pages)
     en_paths.update(f"/projects/{p.slug}/" for p in en_projects if p.slug in en_pages)
     if posts:
@@ -131,24 +132,25 @@ def build(root: Path = ROOT, out: Path | None = None, drafts: bool = False) -> P
         localize = lambda path: f"{locale_prefix}{path}" if locale_prefix else path
         _write(locale_root / "index.html", render.home(ctx, locale_projects, locale_posts))
         _write(locale_root / "about" / "index.html", render.about_page(ctx, locale_about))
-        paths.extend([localize("/"), localize("/about/")])
+        _write(locale_root / "projects" / "index.html", render.projects_index(ctx, locale_projects))
+        paths.extend([localize("/"), localize("/about/"), localize("/projects/")])
         for project in locale_projects:
             if project.slug in locale_pages:
                 route = f"/projects/{project.slug}/"
                 _write(locale_root / "projects" / project.slug / "index.html",
-                       render.project_page(ctx, project, locale_pages[project.slug]))
+                       render.project_page(ctx, project, locale_pages[project.slug], locale_posts))
                 paths.append(localize(route))
         if locale_posts:
             _write(locale_root / "writing" / "index.html", render.writing_index(ctx, locale_posts))
             paths.append(localize("/writing/"))
             for doc in locale_posts:
-                _write(locale_root / "writing" / doc.slug / "index.html", render.post_page(ctx, doc))
+                _write(locale_root / "writing" / doc.slug / "index.html", render.post_page(ctx, doc, locale_posts, locale_projects))
                 paths.append(localize(f"/writing/{doc.slug}/"))
             _write(locale_root / "feed.xml", render.atom(ctx, locale_posts))
-    _write(out / "404.html", render.not_found(ctx))
     sitemap_ctx = render.Context(site=site, show_writing=bool(posts), css_href=css_href,
                                  year=date.today().year, locale="zh", other_paths=frozenset(en_paths), person_site=site,
                                  boot_href=boot_href, site_js_href=site_js_href)
+    _write(out / "404.html", render.not_found(sitemap_ctx))
     _write(out / "sitemap.xml", render.sitemap(sitemap_ctx, paths))
     _write(out / "robots.txt", render.robots(sitemap_ctx))
     _write_version(out)

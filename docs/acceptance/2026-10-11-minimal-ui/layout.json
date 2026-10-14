@@ -1,0 +1,546 @@
+[
+  {
+    "mode": "light",
+    "width": 320,
+    "route": "/",
+    "client": 305,
+    "latestBottom": 448.34375,
+    "overflow": [],
+    "scroll": 305,
+    "writingTop": 997.328125
+  },
+  {
+    "mode": "light",
+    "width": 320,
+    "route": "/en/",
+    "client": 305,
+    "latestBottom": 477.9375,
+    "overflow": [],
+    "scroll": 305,
+    "writingTop": 1133.671875
+  },
+  {
+    "mode": "light",
+    "width": 320,
+    "route": "/projects/",
+    "client": 305,
+    "overflow": [],
+    "scroll": 305
+  },
+  {
+    "mode": "light",
+    "width": 320,
+    "route": "/en/projects/",
+    "client": 305,
+    "overflow": [],
+    "scroll": 305
+  },
+  {
+    "mode": "light",
+    "width": 320,
+    "route": "/writing/",
+    "client": 305,
+    "overflow": [],
+    "scroll": 305
+  },
+  {
+    "mode": "light",
+    "width": 320,
+    "route": "/about/",
+    "client": 305,
+    "overflow": [],
+    "scroll": 305
+  },
+  {
+    "mode": "light",
+    "width": 320,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 305,
+    "overflow": [],
+    "scroll": 305
+  },
+  {
+    "mode": "light",
+    "width": 320,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 305,
+    "overflow": [],
+    "scroll": 305
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/",
+    "client": 360,
+    "latestBottom": 376.859375,
+    "overflow": [],
+    "scroll": 360,
+    "writingTop": 899.59375
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/en/",
+    "client": 360,
+    "latestBottom": 477.9375,
+    "overflow": [],
+    "scroll": 360,
+    "writingTop": 1079.421875
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/projects/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/en/projects/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/writing/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/about/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/",
+    "client": 753,
+    "latestBottom": 337.359375,
+    "overflow": [],
+    "scroll": 753,
+    "writingTop": 717.84375
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/en/",
+    "client": 753,
+    "latestBottom": 337.359375,
+    "overflow": [],
+    "scroll": 753,
+    "writingTop": 798.84375
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/projects/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/en/projects/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/writing/",
+    "client": 768,
+    "overflow": [],
+    "scroll": 768
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/about/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/",
+    "client": 1265,
+    "latestBottom": 349.359375,
+    "overflow": [],
+    "scroll": 1265,
+    "writingTop": 735.046875
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/en/",
+    "client": 1265,
+    "latestBottom": 349.359375,
+    "overflow": [],
+    "scroll": 1265,
+    "writingTop": 764.828125
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/projects/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/en/projects/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/writing/",
+    "client": 1280,
+    "overflow": [],
+    "scroll": 1280
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/about/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "dark",
+    "width": 320,
+    "route": "/",
+    "client": 305,
+    "latestBottom": 448.34375,
+    "overflow": [],
+    "scroll": 305,
+    "writingTop": 997.328125
+  },
+  {
+    "mode": "dark",
+    "width": 320,
+    "route": "/en/",
+    "client": 305,
+    "latestBottom": 477.9375,
+    "overflow": [],
+    "scroll": 305,
+    "writingTop": 1133.671875
+  },
+  {
+    "mode": "dark",
+    "width": 320,
+    "route": "/projects/",
+    "client": 305,
+    "overflow": [],
+    "scroll": 305
+  },
+  {
+    "mode": "dark",
+    "width": 320,
+    "route": "/en/projects/",
+    "client": 305,
+    "overflow": [],
+    "scroll": 305
+  },
+  {
+    "mode": "dark",
+    "width": 320,
+    "route": "/writing/",
+    "client": 305,
+    "overflow": [],
+    "scroll": 305
+  },
+  {
+    "mode": "dark",
+    "width": 320,
+    "route": "/about/",
+    "client": 305,
+    "overflow": [],
+    "scroll": 305
+  },
+  {
+    "mode": "dark",
+    "width": 320,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 305,
+    "overflow": [],
+    "scroll": 305
+  },
+  {
+    "mode": "dark",
+    "width": 320,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 305,
+    "overflow": [],
+    "scroll": 305
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/",
+    "client": 360,
+    "latestBottom": 376.859375,
+    "overflow": [],
+    "scroll": 360,
+    "writingTop": 899.59375
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/en/",
+    "client": 360,
+    "latestBottom": 477.9375,
+    "overflow": [],
+    "scroll": 360,
+    "writingTop": 1079.421875
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/projects/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/en/projects/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/writing/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/about/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/",
+    "client": 753,
+    "latestBottom": 337.359375,
+    "overflow": [],
+    "scroll": 753,
+    "writingTop": 717.84375
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/en/",
+    "client": 753,
+    "latestBottom": 337.359375,
+    "overflow": [],
+    "scroll": 753,
+    "writingTop": 798.84375
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/projects/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/en/projects/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/writing/",
+    "client": 768,
+    "overflow": [],
+    "scroll": 768
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/about/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/",
+    "client": 1265,
+    "latestBottom": 349.359375,
+    "overflow": [],
+    "scroll": 1265,
+    "writingTop": 735.046875
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/en/",
+    "client": 1265,
+    "latestBottom": 349.359375,
+    "overflow": [],
+    "scroll": 1265,
+    "writingTop": 764.828125
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/projects/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/en/projects/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/writing/",
+    "client": 1280,
+    "overflow": [],
+    "scroll": 1280
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/about/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  }
+]

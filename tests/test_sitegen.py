@@ -5,6 +5,7 @@ import json
 import re
 import shutil
 import socket
+from html import escape as html_escape
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -60,10 +61,10 @@ def _write_site_config(path: Path, *, base_url: str = "https://example.com", acc
                 "poem": ["line"],
                 "identity": "identity",
                 "intro": "intro",
-                "job": "job",
+                "headline": "headline",
                 "description": "description",
                 "base_url": base_url,
-                "project_links": [{"label": "project", "href": "https://project.example.com"}],
+                "sponsored_links": [{"label": "project", "href": "https://project.example.com"}],
                 "email": "",
                 "accounts": [{"label": "account", "handle": "user", "href": account_href}],
             }
@@ -98,13 +99,13 @@ def test_site_base_url_must_be_an_https_origin(tmp_path: Path) -> None:
 
 
 @pytest.mark.parametrize("href", ["javascript:alert(1)", "http://project.example.com", "https://127.0.0.1/"])
-def test_site_rejects_unsafe_project_links(tmp_path: Path, href: str) -> None:
+def test_site_rejects_unsafe_sponsored_links(tmp_path: Path, href: str) -> None:
     path = tmp_path / "site.json"
     _write_site_config(path)
     site = json.loads(path.read_text(encoding="utf-8"))
-    site["project_links"][0]["href"] = href
+    site["sponsored_links"][0]["href"] = href
     path.write_text(json.dumps(site), encoding="utf-8")
-    with pytest.raises(content.ContentError, match="project_links.*HTTPS"):
+    with pytest.raises(content.ContentError, match="sponsored_links.*HTTPS"):
         content.load_site(path)
 
 
@@ -153,6 +154,8 @@ def test_external_checker_rejects_non_web_ports_before_resolving(
         ({"slug": "a", "status": "open", "link": {"type": "external", "href": "http://x.y"}}, "https://"),
         ({"slug": "a", "status": "intro", "link": {"type": "page"}}, "缺少介绍页"),
         ({"slug": "a", "status": "open", "link": {"type": "none"}}, "建设中"),
+        ({"slug": "a", "status": "building", "link": {"type": "none"},
+          "app": {"href": "https://x.y", "label": "试用", "short_label": 3}}, "short_label"),
     ],
 )
 def test_project_validation_rejects_bad_items(tmp_path: Path, item: dict, message: str) -> None:
@@ -212,23 +215,29 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
     assert "文章" in index.split("<main")[0]
     assert re.search(r'<script src="/site\.js\?v=[0-9a-f]{10}" defer></script>', index)
     assert "<script>" not in index
-    assert "<title>半開｜AI 应用与全栈开发作品集</title>" in index
+    assert "<title>半開｜个人产品与开发札记</title>" in index
     assert '<h1 class="hero__lead">' in index
-    assert "十年互联网经验" in index
-    assert "从软件工程走向 AI 应用开发" in index
-    assert "做过软件测试、Python 开发和产品工作。" in index
-    assert "关注 AI Agent、自动化工作流" in index
-    # 首页不再有底部“经历与联系”区块；进入经历页靠导航和首屏链接
-    assert 'id="about-title"' not in index
-    assert "先说边界，再看结果" not in index
-    assert '<a class="text-link" href="/about/">经历与联系</a>' in index
-    names = ["个人知识服务", "WorldQuant Alpha 研究工具", "AI 应用开发学习仓库", "衡仓", "投资看板", "角色设定卡"]
-    # 只在项目列表内比较顺序：站点 description 里也会出现项目名
+    assert "我是半開" in index
+    assert "软件测试出身" in index
+    assert "写开发过程" in index
+    assert 'class="hero__job"' not in index
+    hero = index.split('<section class="hero">')[1].split('</section>')[0]
+    assert 'href="/writing/rag-hybrid-search/"' in hero
+    assert "RAG 混合检索怎么做" in hero
+    assert 'class="scroll"' not in index
+    assert 'class="hero__actions"' not in hero
+    names = ["衡仓", "投资看板", "角色设定卡"]
     listing = index.split('<ol class="index">')[1].split("</ol>")[0]
+    assert listing.count('class="index__item"') == 3
+    assert 'class="index__no"' not in listing
     assert [listing.index(name) for name in names] == sorted(listing.index(name) for name in names)
+    assert "WorldQuant Alpha 研究工具" not in listing
+    catalog = (out / "projects/index.html").read_text(encoding="utf-8")
+    assert "WorldQuant Alpha 研究工具" in catalog
+    assert "AI 应用开发学习仓库" in catalog
     assert "其他个人项目" not in index
     about = (out / "about" / "index.html").read_text(encoding="utf-8")
-    assert "经历与求职方向 · 半開" in about
+    assert "关于我 · 半開" in about
     assert "职业经历与角色" in about
     assert 'id="contact"' in about
     assert (out / "site.js").exists()
@@ -239,30 +248,35 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
     assert (preview / "feed.xml").exists()
 
 
-def test_project_navigation_links_open_in_new_tabs(tmp_path: Path) -> None:
+def test_navigation_and_sponsored_links_are_separated(tmp_path: Path) -> None:
     site = content.load_site(ROOT / "content" / "site.json")
     out = build.build(ROOT, tmp_path / "dist")
     index = (out / "index.html").read_text(encoding="utf-8")
-    for link in site["project_links"]:
-        assert (
-            f'<a href="{link["href"]}" target="_blank" rel="noopener">'
-            f'{link["label"]}<span class="sr-only">（在新窗口打开）</span>'
-        ) in index
+    nav = index.split('<nav class="nav"')[1].split('</nav>')[0]
+    assert 'href="/projects/"' in nav
+    assert 'href="/writing/"' in nav
+    assert 'href="/about/"' in nav
+    assert 'https://' not in nav
+    footer = index.split('<footer')[1]
+    for link in site["sponsored_links"]:
+        assert f'href="{link["href"]}" target="_blank" rel="sponsored noopener"' in footer
+        assert link["href"] not in index.split('<footer')[0]
+    assert "推广" in footer
 
 
-def test_about_page_puts_job_and_contact_in_side_column(tmp_path: Path) -> None:
+def test_about_page_puts_contact_in_side_column(tmp_path: Path) -> None:
     site = content.load_site(ROOT / "content" / "site.json")
     out = build.build(ROOT, tmp_path / "dist")
     about = (out / "about" / "index.html").read_text(encoding="utf-8")
     assert '<article class="wrap page about">' in about
     _, aside_open, rest = about.partition('<aside class="about__aside"')
-    assert aside_open, "求职与联系应放在侧栏里"
+    assert aside_open, "联系应放在侧栏里"
     aside, _, tail = rest.partition("</aside>")
-    assert "正在找工作" in aside
-    assert site["job"] in aside
+    assert "正在找工作" not in about
+    assert "求职方向" not in about
     assert 'id="contact"' in aside
     assert site["email"] in aside
-    # 侧栏在正文之后：窄屏单列时仍是 标题 → 正文 → 求职与联系
+    # 侧栏在正文之后：窄屏单列时仍是 标题 → 正文 → 联系
     assert about.index('class="prose"') < about.index('<aside class="about__aside"')
     assert tail.lstrip().startswith("</article>")
 
@@ -468,3 +482,114 @@ def test_hosting_marks_only_versioned_scripts_and_styles_immutable() -> None:
         assert rules[source]["has"] == [{"type": "query", "key": "v"}]
     # 页面本身仍然每次校验
     assert not any("html" in source or source == "/" for source in rules if "Cache-Control" in json.dumps(rules[source]))
+
+
+# ---- 主站到三个子站的交接：卡片承诺、深链、名称、截图 ----------------------------------------------
+
+SAMPLE_ENTRANCES = {
+    "zh": {
+        "finunity": "https://finunity.halfopen.dev/app?from=portfolio&lang=zh",
+        "character": "https://character.halfopen.dev/workspace/?start=guide&from=portfolio&lang=zh",
+    },
+    "en": {
+        "finunity": "https://finunity.halfopen.dev/app?from=portfolio&lang=en",
+        "character": "https://character.halfopen.dev/workspace/?start=guide&from=portfolio&lang=en",
+    },
+}
+
+
+def _projects(locale: str) -> dict[str, content.Project]:
+    base = ROOT / "content" / ("en" if locale == "en" else "")
+    return {p.slug: p for p in content.load_projects(base / "projects.json", base / "projects")}
+
+
+@pytest.mark.parametrize("locale", ["zh", "en"])
+def test_sample_sites_are_entered_through_a_marked_deep_link(locale: str) -> None:
+    projects = _projects(locale)
+    for slug, href in SAMPLE_ENTRANCES[locale].items():
+        app = projects[slug].app
+        assert app is not None and app.href == href
+        # 按钮写点了会发生什么，不带登录门槛的措辞；短标签只用在首页的紧凑行
+        assert "登录" not in app.label and "sign in" not in app.label.lower()
+        assert app.short_label and len(app.short_label) <= len(app.label)
+    # 没有示例的看板仍是普通入口，不带来源标记，也没有短标签
+    dashboards = projects["dashboards"].app
+    assert dashboards is not None and "from=portfolio" not in dashboards.href and not dashboards.short_label
+
+
+@pytest.mark.parametrize(("locale", "prefix", "generic"), [("zh", "", "打开 ↗"), ("en", "en/", "Open ↗")])
+def test_cards_and_project_pages_promise_what_the_sample_pages_deliver(
+    tmp_path: Path, locale: str, prefix: str, generic: str
+) -> None:
+    out = build.build(ROOT, tmp_path / "dist")
+    projects = _projects(locale)
+    home = (out / prefix / "index.html").read_text(encoding="utf-8")
+    listing = home.split('<ol class="index">')[1].split("</ol>")[0]
+    catalog = (out / prefix / "projects" / "index.html").read_text(encoding="utf-8")
+    for slug in SAMPLE_ENTRANCES[locale]:
+        app = projects[slug].app
+        assert app is not None
+        href = f'href="{html_escape(app.href)}"'
+        assert href in listing and f"{app.short_label} ↗" in listing, "首页卡片：短标签加深链"
+        assert href in catalog and f"{app.label} ↗" in catalog, "产品列表：完整标签加深链"
+        page = (out / prefix / "projects" / slug / "index.html").read_text(encoding="utf-8")
+        assert f'class="button" {href}' in page and f"{app.label} ↗" in page, "项目页按钮：完整标签加深链"
+    assert generic in listing, "没有短标签的入口保持通用文字"
+
+
+def test_knowledge_is_not_linked_to_its_demo_until_the_demo_is_open(tmp_path: Path) -> None:
+    """知识库演示的示例资料批准并部署前，主站不放去子站的入口。演示开放后，删除这条测试并补上入口。"""
+    out = build.build(ROOT, tmp_path / "dist")
+    for page in out.rglob("*.html"):
+        assert "knowledge.halfopen.dev" not in page.read_text(encoding="utf-8"), page.relative_to(out)
+    for locale in ("zh", "en"):
+        knowledge = _projects(locale)["knowledge"]
+        assert knowledge.status == "intro" and knowledge.app is None
+
+
+@pytest.mark.parametrize(
+    ("locale", "prefix", "names"),
+    [
+        ("zh", "", {"knowledge": "Knowledge 本地知识库", "finunity": "衡仓", "character": "角色设定卡"}),
+        ("en", "en/", {"knowledge": "Knowledge", "finunity": "Hengcang", "character": "Character Atelier"}),
+    ],
+)
+def test_each_project_keeps_one_name_across_card_page_title_and_about(
+    tmp_path: Path, locale: str, prefix: str, names: dict[str, str]
+) -> None:
+    out = build.build(ROOT, tmp_path / "dist")
+    projects = _projects(locale)
+    about = (out / prefix / "about" / "index.html").read_text(encoding="utf-8")
+    for slug, name in names.items():
+        assert projects[slug].name == name
+        page = (out / prefix / "projects" / slug / "index.html").read_text(encoding="utf-8")
+        assert f"<title>{name} · 半開</title>" in page
+        assert f'<h1 class="page-title">{name}</h1>' in page
+        assert f'<a href="/{prefix}projects/{slug}/">{name}</a>' in about
+
+
+def test_project_screenshots_carry_their_size_and_exist(tmp_path: Path) -> None:
+    out = build.build(ROOT, tmp_path / "dist")
+    for rel in ("projects/finunity", "en/projects/finunity", "projects/character", "en/projects/character"):
+        page = (out / rel / "index.html").read_text(encoding="utf-8")
+        shots = [tag for tag in re.findall(r"<img [^>]*>", page) if 'src="/shots/' in tag]
+        assert shots, rel
+        for tag in shots:
+            src = re.search(r'src="(/shots/[^"]+)"', tag).group(1)
+            width = int(re.search(r'width="(\d+)"', tag).group(1))
+            height = int(re.search(r'height="(\d+)"', tag).group(1))
+            assert (width, height) == content._png_size(out / src.lstrip("/")), src
+            assert 'loading="lazy"' in tag and re.search(r'alt="[^"]{20,}"', tag), "要有懒加载和说明性的替代文字"
+        # 说明文字写在图片后面，同属一个段落，样式把它排成图下小字
+        assert re.search(r"<p><img [^>]*/>\s*<em>[^<]+</em></p>", page), rel
+
+
+def test_markdown_images_only_get_a_size_for_real_local_screenshots() -> None:
+    sized = content.render_markdown("![图](/shots/finunity-overview.zh.png)")
+    assert 'width="1280" height="980"' in sized and 'loading="lazy"' in sized
+    for src in ("/shots/missing.png", "https://example.com/a.png", "/styles.css", "/shots/../styles.css",
+                "/shots/../../README.md"):
+        assert "width=" not in content.render_markdown(f"![x]({src})"), src
+    # 不是 PNG 或不存在的文件读不出尺寸
+    assert content._png_size(ROOT / "static" / "favicon.svg") is None
+    assert content._png_size(ROOT / "static" / "shots" / "nope.png") is None

@@ -1,7 +1,9 @@
 ---
 title: From software testing to AI application development: choosing and validating projects
+type: essay
+updated: 2026-10-11
 date: 2026-10-03
-summary: Turn API testing, test data and failure analysis into a complete AI project, with repeatable checks for success, failure and recovery and clear evidence boundaries.
+summary: Choose AI projects that form a complete workflow, then validate success, failure and recovery paths using your testing experience.
 draft: false
 ---
 
@@ -61,4 +63,4 @@ This is an adaptable sequence, not a fixed learning timetable:
 
 My [AI application study repository](https://github.com/loonslo/langchain-learning) indicates the learning direction; the [project cases](/en/#projects) show how I present engineering work. Repository availability depends on its current permissions, and these pages do not offer private source downloads.
 
-For a concrete retrieval chain and a synthetic ranking example, continue with [hybrid RAG retrieval](/en/writing/rag-hybrid-search/). My responsibilities, career direction and contact details are on [experience and contact](/en/about/#contact).
+For a concrete retrieval chain and a synthetic ranking example, continue with [hybrid RAG retrieval](/en/writing/rag-hybrid-search/). My experience and contact details are on [about me](/en/about/#contact).

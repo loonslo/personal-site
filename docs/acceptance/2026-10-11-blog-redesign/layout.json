@@ -1,0 +1,386 @@
+[
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/projects/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/writing/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/about/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/en/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/en/projects/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 375,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/projects/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/writing/",
+    "client": 768,
+    "overflow": [],
+    "scroll": 768
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/about/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/en/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/en/projects/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "light",
+    "width": 768,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/projects/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/writing/",
+    "client": 1280,
+    "overflow": [],
+    "scroll": 1280
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/about/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/en/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/en/projects/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "light",
+    "width": 1280,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/projects/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/writing/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/about/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/en/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/en/projects/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 375,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 360,
+    "overflow": [],
+    "scroll": 360
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/projects/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/writing/",
+    "client": 768,
+    "overflow": [],
+    "scroll": 768
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/about/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/en/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/en/projects/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "dark",
+    "width": 768,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 753,
+    "overflow": [],
+    "scroll": 753
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/projects/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/writing/",
+    "client": 1280,
+    "overflow": [],
+    "scroll": 1280
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/writing/rag-hybrid-search/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/about/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/en/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/en/projects/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  },
+  {
+    "mode": "dark",
+    "width": 1280,
+    "route": "/en/writing/rag-hybrid-search/",
+    "client": 1265,
+    "overflow": [],
+    "scroll": 1265
+  }
+]

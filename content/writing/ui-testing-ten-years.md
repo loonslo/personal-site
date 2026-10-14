@@ -1,5 +1,6 @@
 ---
 title: 十年软件测试自动化到底变了什么？2026 年还要不要重新做 UI 测试
+type: essay
 date: 2026-09-23
 summary: 这十年变的不是 Selenium，而是脚本周围的整套测试系统；Computer Use 适合探索，核心回归仍要靠确定性的自动化框架。
 draft: true

@@ -58,30 +58,16 @@ def og_image(site: dict, serif_path: str, sans_path: str) -> Image.Image:
     w, h = 1200, 630
     img = paper(w, h)
     d = ImageDraw.Draw(img)
-    d.ellipse((760, -260, 1400, 380), outline=LINE, width=2)
 
-    serif_big = ImageFont.truetype(serif_path, 170)
-    serif_line = ImageFont.truetype(serif_path, 30)
-    serif_lead = ImageFont.truetype(serif_path, 46)
+    serif_lead = ImageFont.truetype(serif_path, 64)
     sans = ImageFont.truetype(sans_path, 26)
 
-    name_x = 1030
-    vertical_text(d, name_x, 110, site["name"], serif_big, INK, 0.08)
     stamp = seal(56)
-    img.paste(stamp, (name_x - 28, 110 + int(170 * 1.08) * len(site["name"]) + 10), stamp)
-
-    parts = [p.strip("，。 ") for p in site["tagline"].split("，") if p.strip("，。 ")]
-    for i, part in enumerate(parts):
-        x = name_x - 150 - i * 70
-        d.line((x + 35, 70, x + 35, 560), fill=LINE, width=1)
-        vertical_text(d, x, 200 + i * 60, part, serif_line, INK2, 0.6)
-
-    lead_lines = ["十年软件从业，测试出身，", "正在转 AI 应用开发。"]
-    y = 230
-    for line in lead_lines:
-        d.text((90, y), line, font=serif_lead, fill=INK)
-        y += 74
-    d.text((92, y + 30), "所有项目都从这里进。", font=sans, fill=INK2)
+    img.paste(stamp, (90, 90), stamp)
+    d.text((90, 210), site["headline"], font=serif_lead, fill=INK)
+    for i, line in enumerate(site["intro"].splitlines()):
+        d.text((94, 325 + i * 48), line, font=sans, fill=INK2)
+    d.text((94, 535), site["tagline"], font=sans, fill=INK2)
     return img
 
 

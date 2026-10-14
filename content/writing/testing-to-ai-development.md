@@ -1,7 +1,9 @@
 ---
 title: 测试工程师转 AI 应用开发：项目怎么选、怎么验证
+type: essay
+updated: 2026-10-11
 date: 2026-10-03
-summary: 从测试工程师已有的接口、数据和故障分析经验出发，选择能完成闭环的 AI 项目，并用成功、失败、恢复和证据记录展示开发能力。
+summary: 从测试经验出发，选择能完成闭环的 AI 项目，并用成功、失败和恢复路径验证开发成果。
 draft: false
 ---
 
@@ -61,4 +63,4 @@ draft: false
 
 可以从[我的 AI 应用开发学习仓库](https://github.com/loonslo/langchain-learning)了解学习方向；项目组织方式见站内[项目案例](/#projects)。仓库可访问范围以其当前权限为准，公开页面不会提供私有源码下载。
 
-如果正在做知识库项目，下一篇[混合检索实践](/writing/rag-hybrid-search/)给出具体链路与合成排名示例。我的职责、当前求职方向和联系方式在[经历与联系](/about/#contact)。
+如果正在做知识库项目，下一篇[混合检索实践](/writing/rag-hybrid-search/)给出具体链路与合成排名示例。我的经历和联系方式在[关于我](/about/#contact)。

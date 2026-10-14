@@ -1,12 +1,12 @@
 ---
 status_note: Runnable prototype; in a personal pilot
-updated: 2026-10-03
+updated: 2026-10-14
 flow: Snapshot and parse sources | Keyword index + semantic index | Hybrid retrieval | Evidence window | Cited streaming answer
 ---
 
 ## Why I built it
 
-My notes were spread across several libraries, so answering one question often meant searching in multiple places. The material is private, so I did not want to send it to an online service. I built a locally run knowledge assistant that keeps source files on the machine and requires answers to include citations that lead back to the original text.
+My notes were spread across several libraries, so answering one question often meant searching in multiple places. The material is private, so I did not want to send it to an online service. I built a local knowledge base that keeps source files on the machine and requires answers to include citations that lead back to the original text.
 
 ## Design
 
@@ -31,8 +31,8 @@ Separated source parsing, retrieval, answering, and citations into verifiable st
 - **Available:** keyword retrieval, hybrid search, streaming multi-turn Q&A, source citations and invalidation notices, personal notes, and backup export and recovery.
 - **Still incomplete:** end-to-end validation of semantic retrieval, automatic ingestion of images with OCR, MCP integration with a real client, and installation checks on a clean computer.
 - **Distribution and licence:** PolyForm Noncommercial 1.0.0; the source remains private and no public download Release is available. The portable base package is for internal acceptance and includes no local models. Semantic retrieval and generation require ready dependencies and models.
-- **Online entry:** a separate anonymous read-only demo. Search remains disabled while its examples are unapproved. It accepts no uploads and generates no conversations; it is separate from the complete local application.
+- **Online demo:** in preparation. The synthetic sample documents have not been approved for public release, so there is no entry link here for now; one will be added when it opens. It will be a separate anonymous read-only demo that accepts no uploads and generates no conversations, and it is not the complete local application.
 
 ## Read more
 
-See [hybrid RAG retrieval](/en/writing/rag-hybrid-search/) for the retrieval chain, failure diagnosis and a synthetic ranking example, and [moving from testing to AI development](/en/writing/testing-to-ai-development/) for project validation. The [public explanation and demo status](https://knowledge.halfopen.dev/en/) describes the current distribution boundaries.
+See [hybrid RAG retrieval](/en/writing/rag-hybrid-search/) for the retrieval chain, failure diagnosis and a synthetic ranking example, and [moving from testing to AI development](/en/writing/testing-to-ai-development/) for project validation.

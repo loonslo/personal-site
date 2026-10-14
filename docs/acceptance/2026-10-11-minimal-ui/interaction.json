@@ -1,0 +1,13 @@
+{
+  "productFocus": {
+    "href": "/projects/finunity/",
+    "outline": "solid"
+  },
+  "appFocus": {
+    "hitHref": "https://finunity.halfopen.dev",
+    "href": "https://finunity.halfopen.dev",
+    "outline": "solid"
+  },
+  "productUrl": "http://127.0.0.1:8787/projects/finunity/",
+  "articleUrl": "http://127.0.0.1:8787/writing/rag-hybrid-search/"
+}

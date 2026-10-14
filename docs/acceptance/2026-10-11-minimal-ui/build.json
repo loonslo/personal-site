@@ -1,0 +1,21 @@
+{
+  "checks": [
+    {
+      "domain": "halfopen.dev",
+      "public_pages": 22,
+      "canonical_hreflang": "passed",
+      "internal_link_errors": 0
+    },
+    {
+      "domain": "baikai.site",
+      "public_pages": 22,
+      "canonical_hreflang": "passed",
+      "internal_link_errors": 0
+    }
+  ],
+  "variant_files_rewritten": 27,
+  "home_bytes": 7772,
+  "css_bytes": 25670,
+  "previous_home_bytes": 9715,
+  "previous_css_bytes": 27968
+}

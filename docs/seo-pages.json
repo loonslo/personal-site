@@ -4,7 +4,7 @@
     {
       "path": "/",
       "language": "zh-CN",
-      "title": "半開｜AI 应用与全栈开发作品集",
+      "title": "半開｜个人产品与开发札记",
       "canonical": "https://halfopen.dev/",
       "index": true,
       "expected_status": 200,
@@ -18,7 +18,7 @@
     {
       "path": "/about/",
       "language": "zh-CN",
-      "title": "经历与求职方向 · 半開",
+      "title": "关于我 · 半開",
       "canonical": "https://halfopen.dev/about/",
       "index": true,
       "expected_status": 200,
@@ -32,7 +32,7 @@
     {
       "path": "/projects/knowledge/",
       "language": "zh-CN",
-      "title": "个人知识服务 · 半開",
+      "title": "Knowledge 本地知识库 · 半開",
       "canonical": "https://halfopen.dev/projects/knowledge/",
       "index": true,
       "expected_status": 200,
@@ -116,7 +116,7 @@
     {
       "path": "/en/",
       "language": "en",
-      "title": "半開 | AI Applications & Full-Stack Development Portfolio",
+      "title": "半開 | Personal Tools & Development Notes",
       "canonical": "https://halfopen.dev/en/",
       "index": true,
       "expected_status": 200,
@@ -130,7 +130,7 @@
     {
       "path": "/en/about/",
       "language": "en",
-      "title": "Experience & Career Direction · 半開",
+      "title": "About · 半開",
       "canonical": "https://halfopen.dev/en/about/",
       "index": true,
       "expected_status": 200,
@@ -144,7 +144,7 @@
     {
       "path": "/en/projects/knowledge/",
       "language": "en",
-      "title": "Private Knowledge Assistant · 半開",
+      "title": "Knowledge · 半開",
       "canonical": "https://halfopen.dev/en/projects/knowledge/",
       "index": true,
       "expected_status": 200,
@@ -223,6 +223,90 @@
         "zh-CN": "https://halfopen.dev/writing/testing-to-ai-development/",
         "en": "https://halfopen.dev/en/writing/testing-to-ai-development/",
         "x-default": "https://halfopen.dev/writing/testing-to-ai-development/"
+      }
+    },
+    {
+      "path": "/projects/",
+      "language": "zh-CN",
+      "title": "产品 · 半開",
+      "canonical": "https://halfopen.dev/projects/",
+      "index": true,
+      "expected_status": 200,
+      "source": "projects/index.html",
+      "hreflang": {
+        "zh-CN": "https://halfopen.dev/projects/",
+        "en": "https://halfopen.dev/en/projects/",
+        "x-default": "https://halfopen.dev/projects/"
+      }
+    },
+    {
+      "path": "/en/projects/",
+      "language": "en",
+      "title": "Projects · 半開",
+      "canonical": "https://halfopen.dev/en/projects/",
+      "index": true,
+      "expected_status": 200,
+      "source": "en/projects/index.html",
+      "hreflang": {
+        "zh-CN": "https://halfopen.dev/projects/",
+        "en": "https://halfopen.dev/en/projects/",
+        "x-default": "https://halfopen.dev/projects/"
+      }
+    },
+    {
+      "path": "/projects/dashboards/",
+      "language": "zh-CN",
+      "title": "投资看板 · 半開",
+      "canonical": "https://halfopen.dev/projects/dashboards/",
+      "index": true,
+      "expected_status": 200,
+      "source": "projects/dashboards/index.html",
+      "hreflang": {
+        "zh-CN": "https://halfopen.dev/projects/dashboards/",
+        "en": "https://halfopen.dev/en/projects/dashboards/",
+        "x-default": "https://halfopen.dev/projects/dashboards/"
+      }
+    },
+    {
+      "path": "/en/projects/dashboards/",
+      "language": "en",
+      "title": "Investment Dashboards · 半開",
+      "canonical": "https://halfopen.dev/en/projects/dashboards/",
+      "index": true,
+      "expected_status": 200,
+      "source": "en/projects/dashboards/index.html",
+      "hreflang": {
+        "zh-CN": "https://halfopen.dev/projects/dashboards/",
+        "en": "https://halfopen.dev/en/projects/dashboards/",
+        "x-default": "https://halfopen.dev/projects/dashboards/"
+      }
+    },
+    {
+      "path": "/projects/character/",
+      "language": "zh-CN",
+      "title": "角色设定卡 · 半開",
+      "canonical": "https://halfopen.dev/projects/character/",
+      "index": true,
+      "expected_status": 200,
+      "source": "projects/character/index.html",
+      "hreflang": {
+        "zh-CN": "https://halfopen.dev/projects/character/",
+        "en": "https://halfopen.dev/en/projects/character/",
+        "x-default": "https://halfopen.dev/projects/character/"
+      }
+    },
+    {
+      "path": "/en/projects/character/",
+      "language": "en",
+      "title": "Character Atelier · 半開",
+      "canonical": "https://halfopen.dev/en/projects/character/",
+      "index": true,
+      "expected_status": 200,
+      "source": "en/projects/character/index.html",
+      "hreflang": {
+        "zh-CN": "https://halfopen.dev/projects/character/",
+        "en": "https://halfopen.dev/en/projects/character/",
+        "x-default": "https://halfopen.dev/projects/character/"
       }
     }
   ]

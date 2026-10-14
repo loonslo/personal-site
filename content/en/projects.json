@@ -1,50 +1,111 @@
 [
   {
     "slug": "knowledge",
-    "name": "Private Knowledge Assistant",
-    "summary": "A locally run assistant for private knowledge: hybrid retrieval, streaming answers, and traceable sources.",
+    "name": "Knowledge",
+    "summary": "For people whose knowledge is scattered across notes, manuals and PDFs: build a small, well-defined library on your own Windows computer, search a keyword and see which source and which passage of the original it comes from. Files stay on your machine; this is a prototype in a personal pilot.",
     "status": "intro",
-    "link": {"type": "page"},
-    "tags": ["RAG", "FastAPI", "SQLite FTS5", "Chroma"]
+    "link": {
+      "type": "page"
+    },
+    "tags": [
+      "RAG",
+      "FastAPI",
+      "SQLite FTS5",
+      "Chroma"
+    ]
   },
   {
     "slug": "alpha-research",
     "name": "WorldQuant Alpha Research Toolkit",
     "summary": "An engineered workflow for WorldQuant BRAIN Alpha research: candidate generation, multi-metric evaluation, and human-approved submissions.",
     "status": "intro",
-    "link": {"type": "page"},
-    "tags": ["Python", "LangGraph", "Quantitative Research"]
+    "link": {
+      "type": "page"
+    },
+    "tags": [
+      "Python",
+      "LangGraph",
+      "Quantitative Research"
+    ]
   },
   {
     "slug": "langchain-learning",
     "name": "AI Application Development Study Repo",
     "summary": "Learning notes and milestone projects in AI application development: LangChain, RAG, LangGraph, evaluation, and engineering practice.",
     "status": "open",
-    "link": {"type": "external", "href": "https://github.com/loonslo/langchain-learning", "label": "GitHub"},
-    "tags": ["LangChain", "RAG", "LangGraph", "Evaluation"]
+    "link": {
+      "type": "external",
+      "href": "https://github.com/loonslo/langchain-learning",
+      "label": "GitHub"
+    },
+    "tags": [
+      "LangChain",
+      "RAG",
+      "LangGraph",
+      "Evaluation"
+    ]
   },
   {
     "slug": "finunity",
     "name": "Hengcang",
-    "summary": "A multi-currency household asset ledger: an Android app and a web workbench share one ledger service, tracking accounts, holdings, and cash flows across a three-bucket plan. The web workbench requires sign-in.",
+    "summary": "For households with several accounts and currencies: pool everything into one ledger and see how far the Growth, Balanced and Defensive groups are from their targets. The web app lets you try a sample ledger without signing up; your own ledger needs an account. The Android app is open source.",
     "status": "live",
-    "link": {"type": "page"},
-    "tags": ["Kotlin", "Jetpack Compose", "FastAPI", "React"]
+    "link": {
+      "type": "page"
+    },
+    "tags": [
+      "Kotlin",
+      "Jetpack Compose",
+      "FastAPI",
+      "React"
+    ],
+    "featured": true,
+    "home_summary": "A multi-currency household ledger: see how far three asset groups are from target. The sample needs no sign-up; your own ledger does.",
+    "app": {
+      "href": "https://finunity.halfopen.dev/app?from=portfolio&lang=en",
+      "label": "Try the sample (no sign-up)",
+      "short_label": "Try the sample"
+    }
   },
   {
     "slug": "dashboards",
     "name": "Investment Dashboards",
     "summary": "Two public read-only dashboards: index allocation and recurring-investment watch, plus A-share short-term money flow. Scheduled jobs refresh the data snapshots that ship with the code.",
     "status": "live",
-    "link": {"type": "external", "href": "https://dashboards.halfopen.dev", "label": "Open dashboards"},
-    "tags": ["Python", "SQLite", "Cloudflare Workers"]
+    "link": {
+      "type": "page"
+    },
+    "tags": [
+      "Python",
+      "SQLite",
+      "Vercel"
+    ],
+    "featured": true,
+    "home_summary": "Read-only snapshots of index allocation and A-share fund flows.",
+    "app": {
+      "href": "https://dashboards.halfopen.dev",
+      "label": "Open app"
+    }
   },
   {
     "slug": "character",
-    "name": "Character Profiles",
-    "summary": "A workspace for character creation material: text profiles, reference images, and shared pose or expression templates in one place, with optional local LLM help for prompt refinement and image generation.",
+    "name": "Character Atelier",
+    "summary": "For people who write novels or draw original characters: turn a character's looks, personality and background into one complete profile card. A few choices are enough, and trying it needs no sign-up; saving it to your own library needs an account.",
     "status": "live",
-    "link": {"type": "external", "href": "https://character.halfopen.dev", "label": "Open site"},
-    "tags": ["Python", "SQLite", "LLM"]
+    "link": {
+      "type": "page"
+    },
+    "tags": [
+      "Python",
+      "SQLite",
+      "LLM"
+    ],
+    "featured": true,
+    "home_summary": "For novelists and original-character artists: turn looks, personality and background into one profile card. No sign-up to try.",
+    "app": {
+      "href": "https://character.halfopen.dev/workspace/?start=guide&from=portfolio&lang=en",
+      "label": "Try the five-step guide (no sign-up)",
+      "short_label": "Try the sample"
+    }
   }
 ]

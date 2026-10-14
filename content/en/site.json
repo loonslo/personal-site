@@ -9,22 +9,37 @@
     "Life need not be complete,",
     "just right with a little left over."
   ],
-  "identity": "10 years in tech, moving from software engineering into AI application development.",
-  "intro": "My work spans software testing, Python development, and product management.\nI focus on AI agents, workflow automation, and how software is built in the age of AI.",
-  "job": "Seeking roles in AI application or full-stack development, with an interest in AI testing and evaluation. Resume available by email.",
-  "description": "半開's portfolio of AI applications and full-stack work: a private knowledge assistant, WorldQuant Alpha research tools, the Hengcang asset ledger, investment dashboards, and a character profile studio, built with RAG, LangGraph, FastAPI, React, and Kotlin, with project plans and validation notes.",
-  "skills": ["Python", "RAG", "LangGraph", "FastAPI", "React", "TypeScript"],
-  "home_title": "半開 | AI Applications & Full-Stack Development Portfolio",
-  "base_url": "https://halfopen.dev",
-  "project_links": [
-    {"label": "Character Profiles", "href": "https://character.halfopen.dev"},
-    {"label": "Knowledge Base Demo", "href": "https://knowledge.halfopen.dev"},
-    {"label": "Hengcang", "href": "https://finunity.halfopen.dev"},
-    {"label": "Investment Dashboards", "href": "https://dashboards.halfopen.dev"}
+  "identity": "Ten years in tech across software testing, Python development, and product work. I build personal tools and write about the process.",
+  "intro": "From software testing to AI applications and personal tools.\nI write about building, learning, and checking what works.",
+  "description": "Personal tools and development notes by 半開: a household asset ledger, investment dashboards, character profiles, and writing on AI applications and software development.",
+  "skills": [
+    "Python",
+    "RAG",
+    "LangGraph",
+    "FastAPI",
+    "React",
+    "TypeScript"
   ],
+  "home_title": "半開 | Personal Tools & Development Notes",
+  "base_url": "https://halfopen.dev",
   "email": "alanswill2007@gmail.com",
   "accounts": [
-    {"label": "GitHub", "handle": "loonslo", "href": "https://github.com/loonslo"},
-    {"label": "Xiaohongshu", "handle": "测试阿甲", "href": ""}
+    {
+      "label": "GitHub",
+      "handle": "loonslo",
+      "href": "https://github.com/loonslo"
+    },
+    {
+      "label": "Xiaohongshu",
+      "handle": "测试阿甲",
+      "href": ""
+    }
+  ],
+  "headline": "Hello, I’m 半開.",
+  "sponsored_links": [
+    {
+      "label": "AI Membership Deal",
+      "href": "https://prodclub.xyz/r/2QFJWC"
+    }
   ]
 }

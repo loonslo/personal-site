@@ -6,7 +6,7 @@ import json
 import re
 from dataclasses import dataclass
 from datetime import date
-from html import escape
+from html import escape, unescape
 from typing import Any
 from xml.sax.saxutils import escape as xml_escape
 
@@ -41,23 +41,26 @@ class Context:
 
     def language_href(self, path: str) -> str:
         target_locale = "en" if self.locale == "zh" else "zh"
-        target_path = path if path in self.other_paths else "/"
+        target_path = path if path in self.other_paths else (
+            "/writing/" if path.startswith("/writing/") and "/writing/" in self.other_paths else
+            "/projects/" if path.startswith("/projects/") and "/projects/" in self.other_paths else "/"
+        )
         return self.page_href(target_path, locale=target_locale)
 
 
 _COPY: dict[str, dict[str, Any]] = {
     "zh": {
-        "html_lang": "zh-CN", "nav_label": "主导航", "nav_work": "作品",
-        "nav_writing": "文章", "nav_about": "经历", "language": "EN",
+        "html_lang": "zh-CN", "nav_label": "主导航", "nav_work": "产品",
+        "nav_writing": "文章", "nav_about": "关于", "language": "EN",
         "switch_language": "切换到英文", "skip": "跳到正文", "home_aria": "，回到首页",
-        "new_window": "（在新窗口打开）", "footer_rss": "RSS", "home_eyebrow": "个人作品集",
-        "cta_work": "看代表作品", "cta_about": "经历与联系", "projects_heading": "个人项目",
-        "projects_desc": "从问题、实现到验证，查看我实际做过的事。", "writing_heading": "文章",
+        "new_window": "（在新窗口打开）", "footer_rss": "订阅 RSS", "home_eyebrow": "产品与开发札记",
+        "cta_work": "看产品", "cta_about": "关于我", "projects_heading": "精选产品",
+        "projects_desc": "一些自己会用的工具。", "writing_heading": "文章",
         "writing_desc": "做的过程和想明白的事。", "all_writing": "全部文章",
-        "project_page": "介绍", "project_go": "前往", "not_open": "尚未开放",
-        "flow_label": "方案流程", "crumb_label": "位置", "projects": "项目",
-        "back_projects": "回到项目目录", "status": "状态", "technology": "技术",
-        "updated": "更新", "about_aside": "求职与联系", "job_heading": "正在找工作",
+        "project_page": "开发记录", "project_go": "前往", "not_open": "尚未开放",
+        "flow_label": "方案流程", "crumb_label": "位置", "projects": "产品",
+        "back_projects": "回到产品列表", "status": "状态", "technology": "技术",
+        "updated": "更新", "about_aside": "联系",
         "contact_heading": "联系与账号", "email": "邮箱", "missing": "待补",
         "writing_list_desc": "半開的文章列表。", "back_writing": "回到文章列表",
         "not_found_title": "这朵花还没开。", "not_found_desc": "你要找的页面不存在，或者还在路上。",
@@ -65,19 +68,19 @@ _COPY: dict[str, dict[str, Any]] = {
         "statuses": {"building": "建设中", "intro": "仅介绍", "open": "开源", "live": "在线"},
     },
     "en": {
-        "html_lang": "en", "nav_label": "Main navigation", "nav_work": "Work",
+        "html_lang": "en", "nav_label": "Main navigation", "nav_work": "Products",
         "nav_writing": "Writing", "nav_about": "About", "language": "中文",
         "switch_language": "Switch language to Chinese", "skip": "Skip to content",
         "home_aria": ", back to home", "new_window": " (opens in a new tab)",
-        "footer_rss": "RSS", "home_eyebrow": "Selected work & projects",
-        "cta_work": "Selected work", "cta_about": "About & contact", "projects_heading": "Projects",
-        "projects_desc": "A look at the problems, implementation, and validation behind my work.",
+        "footer_rss": "Subscribe via RSS", "home_eyebrow": "Tools & development notes",
+        "cta_work": "Explore tools", "cta_about": "About me", "projects_heading": "Selected tools",
+        "projects_desc": "A few tools I use myself.",
         "writing_heading": "Writing", "writing_desc": "Notes on what I build and learn.",
-        "all_writing": "All articles", "project_page": "Case study", "project_go": "Visit",
+        "all_writing": "All articles", "project_page": "Development notes", "project_go": "Visit",
         "not_open": "Not yet available", "flow_label": "Project workflow", "crumb_label": "Breadcrumb",
         "projects": "Projects", "back_projects": "Back to all projects", "status": "Status",
-        "technology": "Technologies", "updated": "Updated", "about_aside": "Career and contact",
-        "job_heading": "Open to opportunities", "contact_heading": "Contact & profiles",
+        "technology": "Technologies", "updated": "Updated", "about_aside": "Contact",
+        "contact_heading": "Contact & profiles",
         "email": "Email", "missing": "Not provided", "writing_list_desc": "Articles by 半開.",
         "back_writing": "Back to all articles", "not_found_title": "This page is still taking shape.",
         "not_found_desc": "The page may have moved, or it may not exist yet.", "back_home": "Back to home",
@@ -85,6 +88,21 @@ _COPY: dict[str, dict[str, Any]] = {
             "open": "Open source", "live": "Live"},
     },
 }
+
+_COPY["zh"].update({
+    "all_products": "全部产品与案例", "live_products": "在线产品", "other_projects": "案例与开源",
+    "products_lead": "打开工具，或看看它们为什么做、怎么做、怎么验证。",
+    "latest_writing": "文章", "read_writing": "读文章", "recent_article": "最近写的", "open_product": "打开", "toc": "本文目录",
+    "related_product": "相关产品", "continue_reading": "继续阅读", "process_notes": "过程记录",
+    "sponsored": "推广", "types": {"tutorial": "教程", "practice": "实践", "essay": "随笔"},
+})
+_COPY["en"].update({
+    "all_products": "All tools & case studies", "live_products": "Online tools", "other_projects": "Case studies & open source",
+    "products_lead": "Open a tool, or explore why it exists, how it works, and how it was checked.",
+    "latest_writing": "Writing", "read_writing": "Read articles", "recent_article": "Latest article", "open_product": "Open", "toc": "On this page",
+    "related_product": "Related tool", "continue_reading": "Continue reading", "process_notes": "Process notes",
+    "sponsored": "Sponsored", "types": {"tutorial": "Tutorial", "practice": "Practice", "essay": "Essay"},
+})
 
 
 def _e(text: str) -> str:
@@ -141,11 +159,9 @@ def layout(ctx: Context, *, title: str, description: str, path: str, body: str, 
     )
     url, og_image = ctx.base + ctx.page_href(path), ctx.base + "/og-image.png"
     nav_items = [
-        (copy["nav_work"], ctx.page_href("/#projects"), "projects", False),
+        (copy["nav_work"], ctx.page_href("/projects/"), "projects", False),
         (copy["nav_writing"], ctx.page_href("/writing/"), "writing", False),
         (copy["nav_about"], ctx.page_href("/about/"), "about", False),
-        (("特价AI会员" if ctx.locale == "zh" else "AI Membership Deal"), "https://prodclub.xyz/r/2QFJWC", "", True),
-        *[(link["label"], link["href"], "", True) for link in site["project_links"]],
     ]
     new_window_text = f'<span class="sr-only">{_e(copy["new_window"])}</span>'
     nav = "".join(
@@ -171,6 +187,11 @@ def layout(ctx: Context, *, title: str, description: str, path: str, body: str, 
         f'<a href="{_e(a["href"])}" rel="me">{_e(a["label"])}</a>' for a in site["accounts"] if a.get("href")
     )
     rss = f'<a href="{ctx.page_href("/feed.xml")}">{_e(copy["footer_rss"])}</a>' if ctx.show_writing else ""
+    sponsored = "".join(
+        f'<a href="{_e(link["href"])}" target="_blank" rel="sponsored noopener">{_e(link["label"])}</a>'
+        for link in site["sponsored_links"]
+    )
+    sponsored = f'<p class="site-footer__sponsored"><span>{_e(copy["sponsored"])}</span>{sponsored}</p>' if sponsored else ""
     alternates = ""
     if path != "/404.html" and path in ctx.other_paths:
         zh_url = ctx.base + ctx.page_href(path, locale="zh")
@@ -189,7 +210,7 @@ def layout(ctx: Context, *, title: str, description: str, path: str, body: str, 
 <meta name="description" content="{_e(description)}">
 {('<meta name="robots" content="noindex">' if path == '/404.html' else f'<link rel="canonical" href="{_e(url)}">')}
 {alternates}
-<meta property="og:type" content="website">
+<meta property="og:type" content="{'article' if active == 'writing' and path != '/writing/' else 'website'}">
 <meta property="og:site_name" content="{_e(name)}">
 <meta property="og:title" content="{_e(full_title)}">
 <meta property="og:description" content="{_e(description)}">
@@ -221,6 +242,7 @@ def layout(ctx: Context, *, title: str, description: str, path: str, body: str, 
   <div class="wrap site-footer__inner">
     <p class="site-footer__brand">{seal("seal--xs")}<span>{_e(name)}</span><span class="site-footer__tagline">{_e(site["tagline"])}</span></p>
     <p class="site-footer__links">{accounts}{rss}<span>© {ctx.year}</span></p>
+    {sponsored}
   </div>
 </footer>
 </body>
@@ -228,40 +250,33 @@ def layout(ctx: Context, *, title: str, description: str, path: str, body: str, 
 """
 
 
-def _project_row(index: int, p: Project, ctx: Context) -> str:
+def _project_row(index: int, p: Project, ctx: Context, *, compact: bool = False) -> str:
     copy = ctx.copy
-    no = f'<span class="index__no">{index:02d}</span>'
-    tags = f'<span class="index__tags">{_e(" · ".join(p.tags))}</span>' if p.tags else ""
-    main = (
-        f'<span class="index__main"><span class="index__name">{_e(p.name)}</span>'
-        f'<span class="index__summary">{_e(p.summary)}</span>{tags}</span>'
-    )
+    no = "" if compact else f'<span class="index__no">{index:02d}</span>'
+    tags = f'<span class="index__tags">{_e(" · ".join(p.tags))}</span>' if p.tags and not compact else ""
+    href = ctx.page_href(f"/projects/{p.slug}/") if p.link.type == "page" else p.link.href
+    external = ' target="_blank" rel="noopener"' if p.link.type == "external" else ""
+    notice = f'<span class="sr-only">{_e(copy["new_window"])}</span>' if external else ""
+    title = f'<a class="index__name index__link" href="{_e(href)}"{external}>{_e(p.name)}{notice}</a>' if href else f'<span class="index__name">{_e(p.name)}</span>'
+    summary = p.home_summary if compact and p.home_summary else p.summary
+    main = f'<div class="index__main">{title}<span class="index__summary">{_e(summary)}</span>{tags}</div>'
     status = f'<span class="index__status">{moon(p.status)}<span>{copy["statuses"][p.status]}</span></span>'
-    if p.link.type == "page":
-        go = f'<span class="index__go">{copy["project_page"]}<span class="index__arrow" aria-hidden="true">→</span></span>'
-        inner = f'{no}{main}<span class="index__aside">{status}{go}</span>'
-        href = ctx.page_href(f"/projects/{p.slug}/")
-        return f'<li class="index__item" data-reveal><a class="index__row" href="{href}">{inner}</a></li>'
-    if p.link.type == "external":
-        label = _e(p.link.label or copy["project_go"])
-        go = (
-            f'<span class="index__go">{label}<span class="index__arrow" aria-hidden="true">↗</span>'
-            f'<span class="sr-only">{_e(copy["new_window"])}</span></span>'
-        )
-        inner = f'{no}{main}<span class="index__aside">{status}{go}</span>'
-        return (
-            f'<li class="index__item" data-reveal><a class="index__row" href="{_e(p.link.href)}" '
-            f'target="_blank" rel="noopener">{inner}</a></li>'
-        )
-    go = f'<span class="index__go">{copy["not_open"]}</span>'
-    inner = f'{no}{main}<span class="index__aside">{status}{go}</span>'
-    return f'<li class="index__item" data-reveal><div class="index__row is-static">{inner}</div></li>'
+    label = copy["project_page"] if p.link.type == "page" else p.link.label or copy["project_go"]
+    go = f'<span class="index__go" aria-hidden="true">{_e(label)} →</span>' if href else f'<span class="index__go">{copy["not_open"]}</span>'
+    if compact:
+        status = "" if p.status == "live" else status
+        go = ""
+    app_label = (p.app.short_label or copy["open_product"]) if p.app and compact else p.app.label if p.app else ""
+    app = (f'<a class="index__app" href="{_e(p.app.href)}" target="_blank" rel="noopener">'
+           f'{_e(app_label)} ↗<span class="sr-only"> · {_e(p.name)}{_e(copy["new_window"])}</span></a>') if p.app else ""
+    return f'<li class="index__item" data-reveal><div class="index__row{" index__row--compact" if compact else ""}{" is-static" if not href else ""}">{no}{main}<div class="index__aside">{status}{go}{app}</div></div></li>'
 
 
 def _post_rows(posts: list[Doc], ctx: Context) -> str:
     rows = "".join(
         f'<li data-reveal><a class="post-row" href="{ctx.page_href(f"/writing/{d.slug}/")}">'
-        f'<time datetime="{d.date.isoformat() if d.date else ""}">{_fmt(d.date)}</time>'
+        f'<span class="post-row__meta"><time datetime="{d.date.isoformat() if d.date else ""}">{_fmt(d.date)}</time>'
+        f'<span class="post-type">{_e(ctx.copy["types"][d.meta["type"]])}</span></span>'
         f'<span class="post-row__title">{_e(d.title)}</span>'
         f'<span class="post-row__summary">{_e(d.meta.get("summary", ""))}</span></a></li>'
         for d in posts
@@ -272,41 +287,29 @@ def _post_rows(posts: list[Doc], ctx: Context) -> str:
 def home(ctx: Context, projects: list[Project], posts: list[Doc]) -> str:
     site = ctx.site
     copy = ctx.copy
-    name = _e(site["name"])
-    intro = "<br>".join(_localized_phrases(line, ctx.locale) for line in site["intro"].splitlines())
-    tagline_separator = ";" if ctx.locale == "en" else "，"
-    couplet = "".join(
-        f'<p class="scroll__line">{_e(part)}</p>'
-        for part in (s.strip("，。;,. ") for s in site["tagline"].split(tagline_separator))
-        if part
-    )
-    rows = "".join(_project_row(i, p, ctx) for i, p in enumerate(projects, 1))
+    intro = "<br>".join(_e(line) for line in site["intro"].splitlines())
+    recent = (f'<p class="hero__recent"><span>{_e(copy["recent_article"])}</span>'
+              f'<a href="{ctx.page_href(f"/writing/{posts[0].slug}/")}">{_e(posts[0].title)}</a></p>') if posts else ""
+    rows = "".join(_project_row(i, p, ctx, compact=True) for i, p in enumerate((p for p in projects if p.featured), 1))
     writing = ""
     if posts:
         writing = f"""
 <section class="section" id="writing" aria-labelledby="writing-title">
   <div class="wrap">
     <div class="section__head">
-      <h2 class="section__title" id="writing-title">{_e(copy["writing_heading"])}</h2>
-      <p class="section__desc">{_e(copy["writing_desc"])}</p>
+      <h2 class="section__title" id="writing-title">{_e(copy["latest_writing"])}</h2>
     </div>
     {_post_rows(posts[:5], ctx)}
     <p class="section__more"><a class="text-link" href="{ctx.page_href("/writing/")}">{_e(copy["all_writing"])}</a></p>
   </div>
 </section>"""
-    body = f"""
+    body = f"""<div class="home">
 <section class="hero">
   <div class="wrap hero__grid">
     <div class="hero__text">
-      <p class="hero__eyebrow">{name} · {_e(copy["home_eyebrow"])}</p>
-      <h1 class="hero__lead">{_localized_phrases(site["identity"], ctx.locale)}</h1>
+      <h1 class="hero__lead">{_e(site["headline"])}</h1>
       <p class="hero__intro">{intro}</p>
-      <p class="hero__job">{_e(site["job"])}</p>
-      <p class="hero__actions"><a class="button" href="#projects">{_e(copy["cta_work"])}</a><a class="text-link" href="{ctx.page_href("/about/")}">{_e(copy["cta_about"])}</a></p>
-    </div>
-    <div class="scroll">
-      <p class="scroll__name">{name}{seal("scroll__seal")}</p>
-      {couplet}
+      {recent}
     </div>
   </div>
 </section>
@@ -315,16 +318,27 @@ def home(ctx: Context, projects: list[Project], posts: list[Doc]) -> str:
   <div class="wrap">
     <div class="section__head">
       <h2 class="section__title" id="projects-title">{_e(copy["projects_heading"])}</h2>
-      <p class="section__desc">{_e(copy["projects_desc"])}</p>
     </div>
     <ol class="index">{rows}</ol>
+    <p class="section__more"><a class="text-link" href="{ctx.page_href('/projects/')}">{_e(copy['all_products'])}</a></p>
   </div>
 </section>
-{writing}"""
-    return layout(ctx, title=site["name"], description=site["description"], path="/", body=body, active="projects")
+{writing}</div>"""
+    return layout(ctx, title=site["name"], description=site["description"], path="/", body=body)
 
 
-def project_page(ctx: Context, p: Project, doc: Doc) -> str:
+def projects_index(ctx: Context, projects: list[Project]) -> str:
+    sections = []
+    for key, group in (("live_products", [p for p in projects if p.status == "live"]),
+                       ("other_projects", [p for p in projects if p.status != "live"])):
+        if group:
+            rows = "".join(_project_row(i, p, ctx) for i, p in enumerate(group, 1))
+            sections.append(f'<section class="products-group"><h2 class="section__title">{_e(ctx.copy[key])}</h2><ol class="index">{rows}</ol></section>')
+    body = f'<section class="wrap page"><header class="page-head"><h1 class="page-title">{_e(ctx.copy["projects"])}</h1><p class="page-lead">{_e(ctx.copy["products_lead"])}</p></header>{"".join(sections)}</section>'
+    return layout(ctx, title=ctx.copy["projects"], description=ctx.copy["products_lead"], path="/projects/", body=body, active="projects")
+
+
+def project_page(ctx: Context, p: Project, doc: Doc, posts: list[Doc] | None = None) -> str:
     copy = ctx.copy
     steps = [s.strip() for s in doc.meta.get("flow", "").split("|") if s.strip()]
     flow = (
@@ -336,9 +350,12 @@ def project_page(ctx: Context, p: Project, doc: Doc) -> str:
     note = f"<span>· {_e(doc.meta['status_note'])}</span>" if doc.meta.get("status_note") else ""
     tags = f'<div><dt>{_e(copy["technology"])}</dt><dd>{_e(" · ".join(p.tags))}</dd></div>' if p.tags else ""
     updated = f'<div><dt>{_e(copy["updated"])}</dt><dd>{_fmt(doc.date)}</dd></div>' if doc.date else ""
-    home_projects = ctx.page_href("/#projects")
+    home_projects = ctx.page_href("/projects/")
+    app = f'<p class="project-actions"><a class="button" href="{_e(p.app.href)}" target="_blank" rel="noopener">{_e(p.app.label)} ↗<span class="sr-only">{_e(copy["new_window"])}</span></a></p>' if p.app else ""
+    related = [d for d in (posts or []) if d.meta.get("project") == p.slug]
+    process = f'<section class="reading-next"><h2>{_e(copy["process_notes"])}</h2>{_post_rows(related, ctx)}</section>' if related else ""
     body = f"""
-<article class="wrap page">
+<article class="wrap page project">
   <nav class="crumbs" aria-label="{_e(copy["crumb_label"])}"><a href="{home_projects}">{_e(copy["projects"])}</a><span aria-hidden="true">/</span><span>{_e(p.name)}</span></nav>
   <header class="page-head">
     <h1 class="page-title">{_e(p.name)}</h1>
@@ -346,10 +363,11 @@ def project_page(ctx: Context, p: Project, doc: Doc) -> str:
     <dl class="meta">
       <div><dt>{_e(copy["status"])}</dt><dd>{moon(p.status)}<span>{copy["statuses"][p.status]}</span>{note}</dd></div>
       {updated}{tags}
-    </dl>
+    </dl>{app}
   </header>
   {flow}
   <div class="prose">{doc.html}</div>
+  {process}
   <p class="page-back"><a class="text-link" href="{home_projects}">{_e(copy["back_projects"])}</a></p>
 </article>"""
     return layout(ctx, title=p.name, description=p.summary, path=f"/projects/{p.slug}/", body=body, active="projects")
@@ -365,18 +383,11 @@ def about_page(ctx: Context, doc: Doc) -> str:
         value = f'<a href="{_e(a["href"])}" rel="me">{handle}</a>' if a.get("href") else f"<span>{handle}</span>"
         contacts.append((_e(a["label"]), value))
     contact_html = "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in contacts)
-    # 右侧竖排诗句挂轴（呼应首页 hero 的品牌记忆点）按需求移除展示，只注释、不删除。
-    # 右栏现在放求职与联系：宽屏时在正文右侧并随滚动吸附，窄屏落到正文之后（见 styles.css“关于页”）。
-    # 恢复挂轴时，把下面这段放进 .about__aside 顶部（.poem 样式仍保留在 styles.css）：
-    #   <p class="poem">{poem}{seal("poem__seal")}</p>
-    # 其中 poem = "".join(f'<span class="poem__line">{_e(line)}</span>' for line in site["poem"])
     body = f"""
 <article class="wrap page about">
-  <header class="page-head"><h1 class="page-title">{_e(doc.title)}</h1></header>
+  <header class="page-head"><h1 class="page-title">{_e(doc.title)}</h1><p class="page-lead">{_e(site['identity'])}</p></header>
   <div class="prose">{doc.html}</div>
   <aside class="about__aside" aria-label="{_e(copy["about_aside"])}">
-    <h2 class="about__heading">{_e(copy["job_heading"])}</h2>
-    <p class="job"><span class="job__dot" aria-hidden="true"></span>{_e(site["job"])}</p>
     <h2 class="about__heading" id="contact">{_e(copy["contact_heading"])}</h2>
     <dl class="contact">{contact_html}</dl>
   </aside>
@@ -388,29 +399,40 @@ def writing_index(ctx: Context, posts: list[Doc]) -> str:
     copy = ctx.copy
     body = f"""
 <section class="wrap page">
-  <header class="page-head"><h1 class="page-title">{_e(copy["writing_heading"])}</h1><p class="page-lead">{_e(copy["writing_desc"])}</p></header>
+  <header class="page-head"><h1 class="page-title">{_e(copy["writing_heading"])}</h1><p class="page-lead">{_e(copy["writing_desc"])}</p><p class="writing-subscribe"><a href="{ctx.page_href('/feed.xml')}">{_e(copy['footer_rss'])} ↗</a></p></header>
   {_post_rows(posts, ctx)}
 </section>"""
     return layout(ctx, title=copy["writing_heading"], description=copy["writing_list_desc"], path="/writing/", body=body, active="writing")
 
 
-def post_page(ctx: Context, doc: Doc) -> str:
+def post_page(ctx: Context, doc: Doc, posts: list[Doc] | None = None, projects: list[Project] | None = None) -> str:
     copy = ctx.copy
     writing_href = ctx.page_href("/writing/")
+    toc = ""
+    if len(doc.headings) >= 3:
+        items = "".join(f'<li><a href="#{_e(anchor)}">{_e(unescape(re.sub(r"<[^>]+>", "", title)))}</a></li>' for anchor, title in doc.headings)
+        toc = f'<nav class="toc" aria-label="{_e(copy["toc"])}"><details open><summary>{_e(copy["toc"])}</summary><ol>{items}</ol></details></nav>'
+    product = next((p for p in (projects or []) if p.slug == doc.meta.get("project")), None)
+    related = f'<section class="reading-next"><h2>{_e(copy["related_product"])}</h2><ol class="index">{_project_row(1, product, ctx, compact=True)}</ol></section>' if product else ""
+    next_posts = [p for p in (posts or []) if p.slug != doc.slug][:2]
+    more = f'<section class="reading-next"><h2>{_e(copy["continue_reading"])}</h2>{_post_rows(next_posts, ctx)}</section>' if next_posts else ""
+    updated = doc.meta.get("updated", "")
+    update_note = f' · {_e(copy["updated"])} <time datetime="{_e(updated)}">{_fmt(date.fromisoformat(updated))}</time>' if updated and updated != doc.meta.get("date") else ""
     body = f"""
 <article class="wrap page post">
   <nav class="crumbs" aria-label="{_e(copy["crumb_label"])}"><a href="{writing_href}">{_e(copy["writing_heading"])}</a></nav>
   <header class="page-head">
     <h1 class="page-title">{_e(doc.title)}</h1>
-    <p class="post__date"><time datetime="{doc.date.isoformat() if doc.date else ""}">{_fmt(doc.date)}</time></p>
+    <p class="post__date"><time datetime="{doc.date.isoformat() if doc.date else ""}">{_fmt(doc.date)}</time> · {_e(copy['types'][doc.meta['type']])}{update_note}</p>
+    <p class="page-lead post__summary">{_e(doc.meta.get('summary', ''))}</p>
   </header>
-  <div class="prose">{doc.html}</div>
+  <div class="post__layout">{toc}<div class="prose">{doc.html}</div></div>
+  {related}{more}
+  <section class="author-note"><h2>{_e(ctx.site['name'])}</h2><p>{_e(ctx.site['identity'])}</p><p><a class="text-link" href="{ctx.page_href('/about/#contact')}">{_e(copy['cta_about'])}</a><a href="{ctx.page_href('/feed.xml')}">{_e(copy['footer_rss'])}</a></p></section>
   <p class="page-back"><a class="text-link" href="{writing_href}">{_e(copy["back_writing"])}</a></p>
 </article>"""
-    return layout(
-        ctx, title=doc.title, description=doc.meta.get("summary", doc.title),
-        path=f"/writing/{doc.slug}/", body=body, active="writing",
-    )
+    return layout(ctx, title=doc.title, description=doc.meta.get("summary", doc.title),
+                  path=f"/writing/{doc.slug}/", body=body, active="writing")
 
 
 def not_found(ctx: Context) -> str:
@@ -444,12 +466,13 @@ def atom(ctx: Context, posts: list[Doc]) -> str:
     stamp = lambda d: f"{d.isoformat()}T00:00:00+08:00"  # noqa: E731
     entries = "".join(
         f"<entry><title>{xml_escape(d.title)}</title><link href=\"{base}{writing_path}{d.slug}/\"/>"
-        f"<id>{base}{writing_path}{d.slug}/</id><updated>{stamp(d.date)}</updated>"
+        f"<id>{base}{writing_path}{d.slug}/</id><published>{stamp(d.date)}</published>"
+        f"<updated>{stamp(date.fromisoformat(d.meta['updated']) if d.meta.get('updated') else d.date)}</updated>"
         f"<summary>{xml_escape(d.meta.get('summary', ''))}</summary></entry>"
         for d in posts
         if d.date
     )
-    updated = stamp(max(d.date for d in posts if d.date))
+    updated = stamp(max(date.fromisoformat(d.meta["updated"]) if d.meta.get("updated") else d.date for d in posts if d.date))
     return (
         '<?xml version="1.0" encoding="utf-8"?>\n'
         f'<feed xmlns="http://www.w3.org/2005/Atom"><title>{name}</title>'

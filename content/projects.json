@@ -1,50 +1,111 @@
 [
   {
     "slug": "knowledge",
-    "name": "个人知识服务",
-    "summary": "本地运行的私有知识库问答：混合检索、流式问答，回答都带可回溯的来源。",
+    "name": "Knowledge 本地知识库",
+    "summary": "给资料散落在笔记、说明书和 PDF 里的人：在自己的 Windows 电脑上建一个范围明确的小库，搜到关键词，就能看到它出自哪份资料的哪一段原文。资料留在本机，目前是个人试点中的原型。",
     "status": "intro",
-    "link": {"type": "page"},
-    "tags": ["RAG", "FastAPI", "SQLite FTS5", "Chroma"]
+    "link": {
+      "type": "page"
+    },
+    "tags": [
+      "RAG",
+      "FastAPI",
+      "SQLite FTS5",
+      "Chroma"
+    ]
   },
   {
     "slug": "alpha-research",
     "name": "WorldQuant Alpha 研究工具",
     "summary": "把 WorldQuant BRAIN 的 Alpha 研究流程工程化：候选生成、多指标评估、人工确认提交。",
     "status": "intro",
-    "link": {"type": "page"},
-    "tags": ["Python", "LangGraph", "量化研究"]
+    "link": {
+      "type": "page"
+    },
+    "tags": [
+      "Python",
+      "LangGraph",
+      "量化研究"
+    ]
   },
   {
     "slug": "langchain-learning",
     "name": "AI 应用开发学习仓库",
     "summary": "AI 应用开发的学习与阶段项目：LangChain、RAG、LangGraph、评测和工程化实践。",
     "status": "open",
-    "link": {"type": "external", "href": "https://github.com/loonslo/langchain-learning", "label": "GitHub"},
-    "tags": ["LangChain", "RAG", "LangGraph", "评测"]
+    "link": {
+      "type": "external",
+      "href": "https://github.com/loonslo/langchain-learning",
+      "label": "GitHub"
+    },
+    "tags": [
+      "LangChain",
+      "RAG",
+      "LangGraph",
+      "评测"
+    ]
   },
   {
     "slug": "finunity",
     "name": "衡仓",
-    "summary": "多币种家庭资产账本：Android 应用与 Web 工作台共用一套账本服务，按三桶规划跟踪账户、持仓和资金流。Web 端需登录。",
+    "summary": "给有多个账户、多种币种的家庭：把资产汇总成一份账本，按进取、稳健、防守三类对照目标，一眼看出差多少。网页版可以不注册试用示例账本，用自己的账本需要注册登录；Android 应用已开源。",
     "status": "live",
-    "link": {"type": "page"},
-    "tags": ["Kotlin", "Jetpack Compose", "FastAPI", "React"]
+    "link": {
+      "type": "page"
+    },
+    "tags": [
+      "Kotlin",
+      "Jetpack Compose",
+      "FastAPI",
+      "React"
+    ],
+    "featured": true,
+    "home_summary": "多币种家庭资产账本：三类资产离目标差多少，一眼看清。示例不用注册，自己的账本需登录。",
+    "app": {
+      "href": "https://finunity.halfopen.dev/app?from=portfolio&lang=zh",
+      "label": "试用示例（不用注册）",
+      "short_label": "试用示例"
+    }
   },
   {
     "slug": "dashboards",
     "name": "投资看板",
     "summary": "两块公开只读看板：指数配置与定投观察，以及 A 股短线资金流。数据由定时任务刷新成快照，随代码一起发布。",
     "status": "live",
-    "link": {"type": "external", "href": "https://dashboards.halfopen.dev", "label": "打开看板"},
-    "tags": ["Python", "SQLite", "Cloudflare Workers"]
+    "link": {
+      "type": "page"
+    },
+    "tags": [
+      "Python",
+      "SQLite",
+      "Vercel"
+    ],
+    "featured": true,
+    "home_summary": "指数配置与 A 股资金流的只读快照。",
+    "app": {
+      "href": "https://dashboards.halfopen.dev",
+      "label": "打开产品"
+    }
   },
   {
     "slug": "character",
     "name": "角色设定卡",
-    "summary": "整理角色创作资料的工作台：文字设定、参考图和共享的姿势表情模板放在一处，本机可接大模型做提示词完善与出图。",
+    "summary": "给写小说、画原创角色的人：把角色的外貌、性格、背景整理成一张设定卡。选几个选项就能得到，试用不用注册；想保存到自己的角色库，需要注册登录。",
     "status": "live",
-    "link": {"type": "external", "href": "https://character.halfopen.dev", "label": "打开站点"},
-    "tags": ["Python", "SQLite", "LLM"]
+    "link": {
+      "type": "page"
+    },
+    "tags": [
+      "Python",
+      "SQLite",
+      "LLM"
+    ],
+    "featured": true,
+    "home_summary": "给写小说、画原创角色的人：把外貌、性格、背景整理成一张设定卡。试用不用注册。",
+    "app": {
+      "href": "https://character.halfopen.dev/workspace/?start=guide&from=portfolio&lang=zh",
+      "label": "试用五步引导（不用注册）",
+      "short_label": "试用示例"
+    }
   }
 ]

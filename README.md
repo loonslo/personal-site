@@ -2,7 +2,7 @@
 
 # 半開 · 个人站
 
-个人作品与职业经历的入口。纯静态，无登录、无后端，可部署在 Cloudflare Pages 或 Vercel。设计规则见 [DESIGN.md](DESIGN.md)。
+个人产品与开发札记的入口。首页为简洁单列，先交代作者背景与写作主题并给出最新文章入口，再展示精选产品和文章列表。纯静态，无登录、无后端，可部署在 Cloudflare Pages 或 Vercel。设计规则见 [DESIGN.md](DESIGN.md)。
 
 ## 本地预览
 
@@ -20,25 +20,23 @@ py -3 -m http.server 8787 --bind 127.0.0.1 --directory dist
 | 中文站点信息、项目目录、介绍页、经历页与文章 | `content/site.json`、`content/projects.json`、`content/projects/`、`content/about.md`、`content/writing/` |
 | 英文站点信息、项目目录、介绍页、经历页与文章译文 | `content/en/site.json`、`content/en/projects.json`、`content/en/projects/`、`content/en/about.md`、`content/en/writing/` |
 
-首页“个人项目”按 `content/projects.json` 的顺序展示，目前依次为 knowledge、WorldQuant、langchain-learning、衡仓、投资看板、角色设定卡。企业项目案例在核实职责和脱敏边界后再加入。
+首页仅展示 `featured: true` 的三项产品：衡仓、投资看板、角色设定卡；完整目录位于 `/projects/`，保留案例和学习仓库。`home_summary` 为首页短说明，`summary` 为完整产品说明。状态和使用边界沿用项目事实，不代表本次已重验产品。
 
-中文使用根路径（例如 `/about/`），英文使用 `/en/` 前缀（例如 `/en/about/`）。页眉语言入口会切换到对应页面；新增或发布中文项目/文章时，应同步添加英文内容并保留相同 slug。草稿仍不进入默认构建。
+中文使用根路径，英文使用 `/en/` 前缀。产品 slug 与顺序保持双语一致；文章可以只写一种语言，相同 slug 视为互译。缺少文章译文时，语言入口回到目标语言文章列表，没有文章则回首页。草稿不进入默认构建。
 
-### 首页、经历页与结构化数据
+### 首页、关于页与公开配置
 
-- `identity` 是简短职业定位的唯一文案来源；`intro` 写职业经历与关注方向，支持用 `\n` 分行。首页 `description` 介绍代表作品；经历页的 frontmatter `summary` 介绍职责、证据与联系入口。
-- 技术栈列表在 `site.json` 的 `skills` 维护，与页面可见技术栈同步更新。验证数据沿用项目介绍页的口径，保留题集、历史记录和未完成验收的边界。
-- 每页静态 HTML 的 `<head>` 输出同一个 Person JSON-LD 实体，使用稳定的 `base_url/#person` 标识。姓名、身份、`knowsAbout`、邮箱与 `sameAs` 复用公开配置；未填写的邮箱和账号链接会被省略。
-- 小红书须填写核实过的 HTTPS 个人主页链接；仅凭昵称无法确认唯一账号。填入 `accounts[].href` 后，`rel="me"` 与 `sameAs` 自动同步。
-- 右上角在线项目入口维护在 `project_links`；每项使用名称与 HTTPS 地址，在全站导航中以新标签页打开。
-- JSON-LD 是不可执行的数据块，现有 `script-src 'self'` 保持不变。本地验收 CSP 时需使用带安全响应头的预览服务；上面的普通 `http.server` 不会应用 `_headers` 或 `vercel.json`。
+- `headline` 是首页主句；`intro` 支持换行，说明身份与写作主题；首屏文章入口从本语言已构建文章中取最新一篇。`identity` 用于关于页、文章作者说明和 Person JSON-LD。`home_title`、`description` 管理首页元数据。
+- 页眉仅产品、文章、关于、语言切换。`sponsored_links` 管理页脚推广链接，自动标注推广并添加 `rel="sponsored noopener"`。
+- `skills`、邮箱及 `accounts` 复用到公开 Person 信息；未核实的账号链接保持空白，不生成链接或 `sameAs`。
+- 页面资源内容哈希、首访动画与预取行为保留。CSP 本地核对需带响应头服务；普通 `http.server` 不会应用 `_headers` 或 `vercel.json`。
 
 ### 项目字段
 
 ```json
 {
   "slug": "knowledge",
-  "name": "个人知识服务",
+  "name": "Knowledge 本地知识库",
   "summary": "一句话说清解决什么问题。",
   "status": "intro",
   "link": {"type": "page"},
@@ -48,7 +46,11 @@ py -3 -m http.server 8787 --bind 127.0.0.1 --directory dist
 
 - `status`：`building` 建设中 ○ / `intro` 仅介绍 ◐ / `open` 开源 ◕ / `live` 在线 ●
 - `link.type`：`page` 站内介绍页（需要 `content/projects/<slug>.md`）/ `external` 外部链接（`href` 必须是 https）/ `none` 暂不开放（只有“建设中”可用）
-- 需要登录的在线项目，在 `summary` 里写明“需登录”
+- `app`：可选的产品直达入口，`{"label": "试用示例（不用注册）", "short_label": "试用示例", "href": "https://..."}`；与站内开发记录形成两个独立链接。`label` 用在项目页和产品列表，`short_label`（可选）用在首页的紧凑行，缺省时显示“打开”。按钮文字写点了会发生什么，不写“打开站点”。
+- 带示例的子站（衡仓、角色设定卡）把 `app.href` 直接指向示例入口，并带 `from=portfolio` 和 `lang`（中文页 `zh`，英文页 `en`，子站据此显示同一种界面语言）：子站只对带这个标记的访客显示“半開 的作品 · 返回作品集”窄栏，标记只存在于对方标签页的 sessionStorage，不记录个人信息。入口改动后要同步子站的实际路由。
+- `featured`：布尔值，首页最多三项；`home_summary`：首页用途和使用边界的短说明。
+- 只有登录后才能用的在线项目，在 `summary` 和 `home_summary` 里写明“需登录”；提供免注册示例的，写“示例不用注册，自己的数据需登录”。名称在卡片、项目页、子站标题里保持一致，英文名可以不同但三处一致。
+- 项目页里的截图放在 `static/shots/`（只收 PNG，构建时自动补上宽高与懒加载），Markdown 写成 `![替代文字](/shots/名字.png)`，下一行用 `*斜体*` 写说明，两者在同一段里，页面会把它排成图下小字。截图必须来自真实界面，示例数据要写明是虚构的。
 
 ### 介绍页与文章
 
@@ -62,7 +64,7 @@ flow: 第一步 | 第二步 | 第三步
 ---
 ```
 
-文章用 `title`、`date`、`summary`，想先不发布就加 `draft: true`。介绍页必须有一节“怎么验证的”。
+文章必填 `title`、`date`、`summary`、`type`；`type` 为 `tutorial` / `practice` / `essay`（教程 / 实践 / 随笔）。可选 `project` 指向产品 slug，`updated` 记录实质更新日期且不早于发布日期；未发布加 `draft: true`。不少于三个二级标题时自动生成可折叠目录，短文不显示目录。文章与产品互相展示相关记录，推荐只使用本语言已构建文章。介绍页必须有一节“怎么验证的”。
 
 ## 构建与检查
 
@@ -182,3 +184,16 @@ Personal-site-only remote fast-forward push completed: 2c07885 (main); parent wo
 ## 2026-10-03 Vercel 前端迁移验收
 
 2026-10-03 前端统一 Vercel：主站与四个子站正式 HTTPS 页面均由 Vercel 提供，45 公开页及应用入口、旧域名跳转、API 权限/缓存共 171 项线上检查通过。Cloudflare 看板公开域名与 workers.dev/预览入口均关闭，定时发布改为 Vercel；后端留在原 Ubuntu，未改账号数据或模型权限。 实现与检查范围见 [验收正本](docs/VERCEL_FRONTEND_MIGRATION_2026-10-03.md)。
+
+## 2026-10-08 页面切换与缓存
+
+构建时 `styles.css`、`boot.js`、`site.js` 的地址都带 `?v=<内容哈希>`，`vercel.json` 只对带 `?v` 的地址设 `immutable`，页面仍每次校验。入场动画只在会话首访播放，站内翻页用跨页过渡；悬停、触摸或聚焦链接时预取同源页面、预连接各子站。`tests/test_front_scripts.py` 用 Node 执行前端脚本，没有 node 时跳过。
+
+验证数字、未验证项和发布注意见 [docs/acceptance/2026-10-08-navigation-performance.md](docs/acceptance/2026-10-08-navigation-performance.md)；本机改动，未提交、未部署。
+
+
+## 2026-10-11 博客改版（本地）
+
+依据参考评审完成紧凑首页、三项精选产品、完整产品页、简化导航、文章目录与阅读路径，并允许单语文章。实际验收与未验证项见 [改版验收](docs/acceptance/2026-10-11-blog-redesign.md)。历史章节保留原日期，不代表本次已重新部署。
+
+同日依据用户的简洁风格要求进一步压缩装饰、收成单列、明确身份与写作主题，让真实文章入口出现在首屏。最终版见 [简洁优化验收](docs/acceptance/2026-10-11-minimal-ui.md)，尚未发布。

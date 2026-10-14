@@ -1,13 +1,16 @@
 ---
 title: Building hybrid RAG retrieval with keywords, vectors and traceable citations
+project: knowledge
+type: tutorial
+updated: 2026-10-11
 date: 2026-10-03
-summary: Start with a keyword baseline, then add real vector retrieval, rank fusion, access and revision checks, evidence budgets and citation validation using a synthetic example.
+summary: Combine keyword and vector retrieval, preserve traceable sources, and diagnose failures along the retrieval pipeline.
 draft: false
 ---
 
 A fluent answer without a source and a missing exact version number are different failures. I investigate the retrieval chain before changing the prompt: keep an explainable keyword baseline, add semantic retrieval, and retain a path from each answer citation to the original text.
 
-This walkthrough uses the approach behind my local [Knowledge project](/en/projects/knowledge/). Documents and questions below are fictional. The code demonstrates rank fusion only; it performs neither embedding nor answer generation. The [online read-only demo](https://knowledge.halfopen.dev/en/) is separate from the local application: public search stays disabled while examples are unapproved or its index is not ready.
+This walkthrough uses the approach behind my local [Knowledge project](/en/projects/knowledge/). Documents and questions below are fictional. The code demonstrates rank fusion only; it performs neither embedding nor answer generation. The online read-only demo, still in preparation, is separate from the local application: public search stays disabled while examples are unapproved or its index is not ready.
 
 ## 1. Define the question and the accessible corpus
 
@@ -78,4 +81,4 @@ A legal number or lexical overlap cannot establish that every claim is supported
 
 Measure evidence coverage and ranking separately from answer support and citation completeness, and record latency. A top-five retrieval hit is not answer accuracy. Separate tuning queries from acceptance queries so familiar examples do not become the whole evaluation.
 
-Read the [Knowledge case study](/en/projects/knowledge/) for project boundaries, or continue with [moving from testing to AI application development](/en/writing/testing-to-ai-development/). For project discussions and opportunities, see [experience and contact](/en/about/#contact).
+Read the [Knowledge case study](/en/projects/knowledge/) for project boundaries, or continue with [moving from testing to AI application development](/en/writing/testing-to-ai-development/). For project discussions, see [about me](/en/about/#contact).
