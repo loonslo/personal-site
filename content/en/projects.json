@@ -2,7 +2,7 @@
   {
     "slug": "knowledge",
     "name": "Knowledge",
-    "summary": "For people whose knowledge is scattered across notes, manuals and PDFs: build a small, well-defined library on your own Windows computer, search a keyword and see which source and which passage of the original it comes from. Files stay on your machine; this is a prototype in a personal pilot.",
+    "summary": "For people whose knowledge is scattered across notes, manuals and PDFs: build a small, well-defined library on your own Windows computer, search a keyword and see which source and which passage of the original it comes from. Files stay on your machine; this is a prototype in a personal pilot. A read-only sample on the web needs no sign-up and shows keyword search on synthetic documents.",
     "status": "intro",
     "link": {
       "type": "page"
@@ -12,7 +12,12 @@
       "FastAPI",
       "SQLite FTS5",
       "Chroma"
-    ]
+    ],
+    "app": {
+      "href": "https://knowledge.halfopen.dev/chat?from=portfolio&lang=en",
+      "label": "Try the sample search (no sign-up)",
+      "short_label": "Try the sample"
+    }
   },
   {
     "slug": "alpha-research",

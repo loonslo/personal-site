@@ -2,7 +2,7 @@
   {
     "slug": "knowledge",
     "name": "Knowledge 本地知识库",
-    "summary": "给资料散落在笔记、说明书和 PDF 里的人：在自己的 Windows 电脑上建一个范围明确的小库，搜到关键词，就能看到它出自哪份资料的哪一段原文。资料留在本机，目前是个人试点中的原型。",
+    "summary": "给资料散落在笔记、说明书和 PDF 里的人：在自己的 Windows 电脑上建一个范围明确的小库，搜到关键词，就能看到它出自哪份资料的哪一段原文。资料留在本机，目前是个人试点中的原型；网页上的只读示例不用注册，用合成资料演示关键词检索。",
     "status": "intro",
     "link": {
       "type": "page"
@@ -12,7 +12,12 @@
       "FastAPI",
       "SQLite FTS5",
       "Chroma"
-    ]
+    ],
+    "app": {
+      "href": "https://knowledge.halfopen.dev/chat?from=portfolio&lang=zh",
+      "label": "试用示例检索（不用注册）",
+      "short_label": "试用示例"
+    }
   },
   {
     "slug": "alpha-research",

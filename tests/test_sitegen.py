@@ -490,12 +490,15 @@ SAMPLE_ENTRANCES = {
     "zh": {
         "finunity": "https://finunity.halfopen.dev/app?from=portfolio&lang=zh",
         "character": "https://character.halfopen.dev/workspace/?start=guide&from=portfolio&lang=zh",
+        "knowledge": "https://knowledge.halfopen.dev/chat?from=portfolio&lang=zh",
     },
     "en": {
         "finunity": "https://finunity.halfopen.dev/app?from=portfolio&lang=en",
         "character": "https://character.halfopen.dev/workspace/?start=guide&from=portfolio&lang=en",
+        "knowledge": "https://knowledge.halfopen.dev/chat?from=portfolio&lang=en",
     },
 }
+FEATURED = ("finunity", "character")  # the home page lists three featured products; Knowledge is in the catalogue
 
 
 def _projects(locale: str) -> dict[str, content.Project]:
@@ -530,21 +533,27 @@ def test_cards_and_project_pages_promise_what_the_sample_pages_deliver(
         app = projects[slug].app
         assert app is not None
         href = f'href="{html_escape(app.href)}"'
-        assert href in listing and f"{app.short_label} ↗" in listing, "首页卡片：短标签加深链"
+        if slug in FEATURED:
+            assert href in listing and f"{app.short_label} ↗" in listing, "首页卡片：短标签加深链"
         assert href in catalog and f"{app.label} ↗" in catalog, "产品列表：完整标签加深链"
         page = (out / prefix / "projects" / slug / "index.html").read_text(encoding="utf-8")
         assert f'class="button" {href}' in page and f"{app.label} ↗" in page, "项目页按钮：完整标签加深链"
     assert generic in listing, "没有短标签的入口保持通用文字"
 
 
-def test_knowledge_is_not_linked_to_its_demo_until_the_demo_is_open(tmp_path: Path) -> None:
-    """知识库演示的示例资料批准并部署前，主站不放去子站的入口。演示开放后，删除这条测试并补上入口。"""
+def test_every_link_to_the_knowledge_demo_goes_through_the_marked_entrance(tmp_path: Path) -> None:
+    """演示开放后，主站所有指向 knowledge 演示站的链接都走带来源和语言参数的 /chat 入口，不直接落到子站根目录。"""
     out = build.build(ROOT, tmp_path / "dist")
+    seen = 0
     for page in out.rglob("*.html"):
-        assert "knowledge.halfopen.dev" not in page.read_text(encoding="utf-8"), page.relative_to(out)
+        language = "en" if page.relative_to(out).parts[0] == "en" else "zh"
+        for href in re.findall(r'href="(https://knowledge\.halfopen\.dev[^"]*)"', page.read_text(encoding="utf-8")):
+            seen += 1
+            assert href == f"https://knowledge.halfopen.dev/chat?from=portfolio&amp;lang={language}", (page.relative_to(out), href)
+    assert seen >= 4, "卡片、项目页按钮、产品列表和文章里应该都有入口"
     for locale in ("zh", "en"):
         knowledge = _projects(locale)["knowledge"]
-        assert knowledge.status == "intro" and knowledge.app is None
+        assert knowledge.status == "intro", "产品本身仍只是介绍；在线的只是只读示例"
 
 
 @pytest.mark.parametrize(
@@ -570,7 +579,8 @@ def test_each_project_keeps_one_name_across_card_page_title_and_about(
 
 def test_project_screenshots_carry_their_size_and_exist(tmp_path: Path) -> None:
     out = build.build(ROOT, tmp_path / "dist")
-    for rel in ("projects/finunity", "en/projects/finunity", "projects/character", "en/projects/character"):
+    for rel in ("projects/finunity", "en/projects/finunity", "projects/character", "en/projects/character",
+                "projects/knowledge", "en/projects/knowledge"):
         page = (out / rel / "index.html").read_text(encoding="utf-8")
         shots = [tag for tag in re.findall(r"<img [^>]*>", page) if 'src="/shots/' in tag]
         assert shots, rel
