@@ -1,10 +1,10 @@
 ---
 project_id: personal-site
-updated: 2026-10-11
+updated: 2026-10-14
 status: active
 overview: 纯静态中英文个人作品与职业经历站，展示求职方向、代表项目和验证过程。
-progress: "双域公开前端与页面切换、缓存改造已于 2026-10-11 再次部署到 Production。GitHub Actions CI 对提交 889f84de8743abd76439db7918b8d0b6c9d11723 结论 success；两个 Vercel Production 均 READY。2026-10-11 Windows HTTP 核对两域首页 200/self-canonical/CSP/HSTS，版本化 site.js immutable 缓存、不带版本参数时重新校验均通过；移动端布局、浏览器动画行为、Safari/Firefox 与国内网络未验证。详见 docs/acceptance/2026-10-11-navigation-release.md。2026-10-11 完成参考博客研究，建议与边界见 docs/BLOG_REFERENCE_REVIEW_2026-10-11.md。"
-next: "结合 docs/BLOG_REFERENCE_REVIEW_2026-10-11.md 与 docs/REDESIGN_PLAN_2026-10-08.md 评审改版方案，确认首页文案、正在做条目与产品顺序后按视觉检查点分批实施；完成同版本双项目发布自动化；后续观察 Google 重新抓取与收录。"
+progress: "2026-10-14 已按用户指令提交、推送并发布 2026-10-11 的改版与主站到三个子站的交接（提交 9148833），Knowledge 演示上线后当天补上演示入口（提交 5567bba）：衡仓、角色设定卡、Knowledge 的卡片文案与按钮、带来源和语言参数的深链、名称统一（知识库名称沿用默认值，用户已确认）、项目页真实截图。两个域名生产部署均 READY；干净检出 91 项 pytest、23 页站内链接 0 错误、GitHub Actions 成功；线上从卡片点进三个子站（中英文、两个域名）和布局检查通过。线上响应头逐项、Safari/Firefox/真机、真人测试、Search Console 收录观察和中国大陆可达性未验证。此前部署与产品业务结果为历史验收。"
+next: "观察 Google 对新标题与新项目页的收录（2～4 周）；补充小红书主页与 SITE_BLOCKLIST；子站访问计数方式待定（用户决定先不做）；中国大陆网络下的可达性仍待测；用真人做 5 秒与 30 秒测试。"
 evidence:
 - docs/RELEASE_CACHE_NAVIGATION_2026-10-08.md
 - DESIGN.md
@@ -37,6 +37,7 @@ evidence:
 - docs/BLOG_REFERENCE_REVIEW_2026-10-11.md
 - docs/REDESIGN_PLAN_2026-10-08.md
 - docs/acceptance/2026-10-11-navigation-release.md
+- docs/acceptance/2026-10-14-subsite-handoff.md
 ---
 
 # 半開个人站 · 项目概览与进度
@@ -80,3 +81,9 @@ Vercel Production 部署 dpl_AxFoSJwpMhxUhNh2iZ1YAksNJ3D6 已 READY，生产别�
 ## 2026-10-11 参考博客研究
 
 完成参考博客内容结构研究，核对本站首页、文章列表和详情结构及四个参考站桌面截图。记录见 docs/BLOG_REFERENCE_REVIEW_2026-10-11.md；新增建议尚未定稿或实施。没有修改页面代码，也未进行移动端与深色模式验收。
+
+## 2026-10-14 改版与三个子站交接发布
+
+用户明确要求提交、推送、部署。2026-10-11 的改版与本次交接以提交 `9148833` 发布，Knowledge 演示上线后当天以提交 `5567bba` 补上演示入口；两个域名生产部署均 READY，线上核对通过。发布顺序、两次发布的部署编号、线上核对、没有验证的事项与回滚见 [docs/acceptance/2026-10-14-subsite-handoff.md](docs/acceptance/2026-10-14-subsite-handoff.md)。
+
+只维护本项目进度；交付前在本项目内自检 frontmatter 必填字段、日期、状态与证据路径，不调用跨项目同步工具。

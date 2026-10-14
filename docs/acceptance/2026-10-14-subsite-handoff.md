@@ -88,6 +88,8 @@ python -c "import build; from pathlib import Path; build.build(Path('.'), Path('
 - 演示资料经用户有条件授权（确认不含个人隐私才公开）和逐篇核对后批准，服务器建库完成，演示线上可用（见 Knowledge 项目的发布记录）。
 - 补入口：卡片、项目页按钮、产品列表、RAG 文章都指向 `https://knowledge.halfopen.dev/chat?from=portfolio&lang=zh|en`，项目页顶部加在线示例截图（中英文各一张），`about` 页补一句“网页上有只读示例”。测试仍是 91 项（改写了“Knowledge 不链接演示”这条，并把 Knowledge 项目页加入截图尺寸检查）。
 - 因为英文入口要落在英文界面，Knowledge 子站同日补了 `?lang=en|zh` 支持（前端提交 `0d65a7e`，两个域名已重新部署并在线上核对）。
+- 代码提交：`5567bbada3810bc36f4bb5b56841ce9b8b9f92bb`（上一提交 `9148833`），已推送到 `main`；GitHub Actions CI 成功。halfopen.dev：Git 集成自动部署，Production，READY，`dpl_gnhuNo5yga6X9bVmWKCS6L8fyrkg`；baikai.site：CLI 部署，Production，READY，`dpl_732UMqpXFwtCLiGLKKf4e42vzFDR`。
+- 线上核对：产品列表里的“试用示例检索（不用注册）”按钮在两个域名、中英文共 4 条路径上打开对应演示，界面语言、窄栏文字和返回链接正确；两个域名各 10 个页面 × 1280/390 宽度的布局检查没有溢出、失败请求或页面错误（390 宽度下 `/en/projects/finunity/` 的一张懒加载图片被脚本标为未完成，两次都是这一张，单独滚动到该图后加载正常）。
 
 ### 没有验证的
 
