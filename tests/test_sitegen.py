@@ -196,6 +196,26 @@ def test_each_status_has_a_distinct_moon() -> None:
     assert len(shapes) == len(content.STATUSES)
 
 
+def _couplet_lines(hero_html: str) -> list[str]:
+    return re.findall(r'<span class="hero__couplet-line">([^<]*)</span>', hero_html)
+
+
+def _tagline_context(tagline: str, locale: str = "zh") -> render.Context:
+    return render.Context(site={"tagline": tagline}, show_writing=False, css_href="/styles.css", year=2026, locale=locale)
+
+
+def test_couplet_splits_the_tagline_by_locale_and_escapes_text() -> None:
+    assert _couplet_lines(render._couplet(_tagline_context("花看半开，酒饮微醉。"))) == ["花看半开", "酒饮微醉"]
+    assert _couplet_lines(render._couplet(_tagline_context("A, b; c.", "en"))) == ["A, b", "c"]
+    assert _couplet_lines(render._couplet(_tagline_context("只有一句。"))) == ["只有一句"]
+    assert render._couplet(_tagline_context("。，")) == ""
+    markup = render._couplet(_tagline_context("<b>x</b>，&y"))
+    assert "<b>" not in markup and "&lt;b&gt;x&lt;/b&gt;" in markup and "&amp;y" in markup
+    # 印章跟着题句走：有题句才落印，题句为空时整块省略
+    assert render._hero_mark(_tagline_context("花看半开，酒饮微醉。")).count("hero__seal") == 1
+    assert render._hero_mark(_tagline_context("。，")) == ""
+
+
 def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
     out = build.build(ROOT, tmp_path / "dist")
     for rel in ["index.html", "about/index.html", "projects/knowledge/index.html",
@@ -218,13 +238,23 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
     assert "<title>半開｜个人产品与开发札记</title>" in index
     assert '<h1 class="hero__lead">' in index
     assert "我是半開" in index
-    assert "软件测试出身" in index
+    assert "目前在做 AI 应用相关的开发。" in index
+    assert "软件测试出身" not in index
     assert "写开发过程" in index
     assert 'class="hero__job"' not in index
     hero = index.split('<section class="hero">')[1].split('</section>')[0]
     assert 'href="/writing/rag-hybrid-search/"' in hero
     assert "RAG 混合检索怎么做" in hero
     assert 'class="scroll"' not in index
+    # 个人介绍右侧是 tagline 的两行竖排小字加一方印（背后的月由 CSS 绘制），没有旧版的大题名
+    assert _couplet_lines(hero) == ["花看半开", "酒饮微醉"]
+    assert hero.count('class="seal hero__seal"') == 1
+    en_index = (out / "en" / "index.html").read_text(encoding="utf-8")
+    en_hero = en_index.split('<section class="hero">')[1].split('</section>')[0]
+    assert _couplet_lines(en_hero) == ["Let flowers bloom halfway", "leave room for the rest"]
+    assert en_hero.count('class="seal hero__seal"') == 1
+    assert "Currently building AI applications." in en_hero
+    assert "From software testing to AI applications and personal tools." not in en_index
     assert 'class="hero__actions"' not in hero
     names = ["衡仓", "投资看板", "角色设定卡"]
     listing = index.split('<ol class="index">')[1].split("</ol>")[0]

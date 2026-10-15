@@ -284,6 +284,20 @@ def _post_rows(posts: list[Doc], ctx: Context) -> str:
     return f'<ul class="posts">{rows}</ul>'
 
 
+def _couplet(ctx: Context) -> str:
+    """个人介绍右侧的两行竖排小字：tagline 按分句拆开，样式见 .hero__couplet。"""
+    separator = ";" if ctx.locale == "en" else "，"
+    parts = (part.strip("，。;,. ") for part in ctx.site["tagline"].split(separator))
+    lines = "".join(f'<span class="hero__couplet-line">{_e(part)}</span>' for part in parts if part)
+    return f'<p class="hero__couplet">{lines}</p>' if lines else ""
+
+
+def _hero_mark(ctx: Context) -> str:
+    """题句下面落一方印；它们背后的月由 .hero__grid::before 绘制。没有题句时连印章一起省略。"""
+    couplet = _couplet(ctx)
+    return f'<div class="hero__mark">{couplet}{seal("hero__seal")}</div>' if couplet else ""
+
+
 def home(ctx: Context, projects: list[Project], posts: list[Doc]) -> str:
     site = ctx.site
     copy = ctx.copy
@@ -311,6 +325,7 @@ def home(ctx: Context, projects: list[Project], posts: list[Doc]) -> str:
       <p class="hero__intro">{intro}</p>
       {recent}
     </div>
+    {_hero_mark(ctx)}
   </div>
 </section>
 

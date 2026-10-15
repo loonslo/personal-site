@@ -246,11 +246,27 @@ main { flex: 1; }
 
 /* ---------- 首屏 ---------- */
 
-/* 首页沿同一条阅读轴排版；页眉印章是唯一的视觉标识。 */
+/* 首页沿同一条阅读轴排版：左边是个人介绍，右边是题句与印章，背后一轮极淡的月。 */
 body:has(.home) .wrap { --wrap: 840px; }
 html[lang="en"] .home { --serif: var(--book); }
-.hero { padding-block: var(--s7) var(--s6); }
-.hero__grid { display: block; }
+/* isolation 让月（z-index: -1）留在首屏区域内；overflow: clip 把月裁在首屏区域里 */
+.hero { isolation: isolate; padding-block: var(--s7) var(--s6); overflow: clip; }
+.hero__grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--s6); align-items: start; }
+/* 背后一轮极淡的月，不抢文字：直径跟着首屏区域的高度走（上下各留 12px），圆心落在题句与印章中间。
+   整轮月都在首屏区域内，不会被上下裁出平边；窄屏时右侧超出屏幕的部分由 .hero 裁掉。 */
+.hero__grid::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: calc(var(--s3) - var(--s7));
+  left: 100%;
+  height: calc(100% + var(--s7) + var(--s6) - 2 * var(--s3));
+  aspect-ratio: 1;
+  transform: translateX(-62%);
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: radial-gradient(circle at 34% 34%, color-mix(in srgb, var(--paper-deep) 90%, transparent) 0 42%, transparent 72%);
+}
 .hero__text { max-width: 36em; }
 .hero__lead {
   margin: 0 0 var(--s4);
@@ -262,6 +278,31 @@ html[lang="en"] .home { --serif: var(--book); }
 .hero__recent > span { display: block; color: var(--ink-3); font-size: 14px; margin-bottom: var(--s1); }
 .hero__recent a { text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; }
 .hero__recent a:hover { color: var(--cinnabar); }
+
+/* 个人介绍右侧的题句与印章：右边缘对齐页面右边缘；窄屏只留背后的月（页脚仍有这句话） */
+.hero__mark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--s4);
+  margin-top: var(--s3); /* 题句首字与主句“我是半開。”的字顶对齐 */
+}
+.hero__couplet {
+  margin: 0;
+  writing-mode: vertical-rl;
+  font: 400 15px/1 var(--serif);
+  letter-spacing: 0.5em;
+  color: var(--ink-2); /* 底下有月的淡底色，用 ink-2 保证对比度 */
+}
+.hero__couplet-line {
+  display: block;
+  padding-block-start: var(--s3);
+  border-block-start: 1px solid var(--line);
+}
+.hero__couplet-line + .hero__couplet-line { margin-block-start: var(--s3); padding-inline-start: var(--s5); }
+html[lang="en"] .hero__couplet { font-size: 13px; letter-spacing: 0.08em; }
+/* 印章图形在 48 单位的画布里四边各留 4 单位，负边距让可见的右边缘对齐题句的细线 */
+.hero__seal { width: 32px; height: 32px; margin-inline-end: -3px; }
 
 /* ---------- 区块 ---------- */
 
@@ -670,6 +711,7 @@ body:has(.post) { background-image: none; }
   /* 入场编排只在本会话首次访问时播放（boot.js 给 <html> 加 .seen）；
      站内再翻页由下面的跨页过渡接手。没有 JS 时不会有 .seen，始终播放。 */
   html:not(.seen) .hero__text { animation: rise 0.5s var(--ease) both; }
+  html:not(.seen) .hero__mark { animation: rise 0.5s var(--ease) both; }
   html:not(.seen) .page-head { animation: rise 0.8s var(--ease) both; }
   html:not(.seen) .page-head ~ * { animation: rise 0.8s var(--ease) 0.12s both; }
   html:not(.seen) .poem { animation: rise 0.9s var(--ease) 0.25s both; }
@@ -729,6 +771,13 @@ body:has(.post) { background-image: none; }
   .nav { justify-content: flex-start; gap: var(--s2) var(--s3); font-size: 14px; letter-spacing: 0.02em; }
 
   .hero { padding-block: var(--s6); }
+  .hero__grid { display: block; }
+  .hero__grid::before {
+    top: calc(var(--s3) - var(--s6));
+    height: calc(100% + 2 * var(--s6) - 2 * var(--s3));
+    transform: translateX(-45%);
+  }
+  .hero__mark { display: none; }
   .hero__lead { font-size: 28px; }
 
   .section { padding-block: var(--s6); }

@@ -2,7 +2,7 @@
 
 # 半開 · 个人站
 
-个人产品与开发札记的入口。首页为简洁单列，先交代作者背景与写作主题并给出最新文章入口，再展示精选产品和文章列表。纯静态，无登录、无后端，可部署在 Cloudflare Pages 或 Vercel。设计规则见 [DESIGN.md](DESIGN.md)。
+个人产品与开发札记的入口。首页为简洁单列，先用两句话交代目前在做什么与写作主题并给出最新文章入口（个人介绍右侧是竖排小字题句、印章和背后一轮极淡的月），再展示精选产品和文章列表。纯静态，无登录、无后端，可部署在 Cloudflare Pages 或 Vercel。设计规则见 [DESIGN.md](DESIGN.md)。
 
 ## 本地预览
 
@@ -26,7 +26,7 @@ py -3 -m http.server 8787 --bind 127.0.0.1 --directory dist
 
 ### 首页、关于页与公开配置
 
-- `headline` 是首页主句；`intro` 支持换行，说明身份与写作主题；首屏文章入口从本语言已构建文章中取最新一篇。`identity` 用于关于页、文章作者说明和 Person JSON-LD。`home_title`、`description` 管理首页元数据。
+- `headline` 是首页主句；`intro` 支持换行，一行一句，说明目前在做什么与写作主题；首屏文章入口从本语言已构建文章中取最新一篇。`tagline` 在首页个人介绍右侧排成两行竖排小字（中文按“，”、英文按“;”拆成两行，下面落一方印；窄屏只留背后的月），也用于页脚、RSS 副标题和分享图。`identity` 用于关于页、文章作者说明和 Person JSON-LD。**改了中文 `intro` 或 `tagline` 之后要运行 `py -3 tools/make_images.py` 重新生成 `static/og-image.png`**（分享图里印着这两句），再一起提交。`home_title`、`description` 管理首页元数据。
 - 页眉仅产品、文章、关于、语言切换。`sponsored_links` 管理页脚推广链接，自动标注推广并添加 `rel="sponsored noopener"`。
 - `skills`、邮箱及 `accounts` 复用到公开 Person 信息；未核实的账号链接保持空白，不生成链接或 `sameAs`。
 - 页面资源内容哈希、首访动画与预取行为保留。CSP 本地核对需带响应头服务；普通 `http.server` 不会应用 `_headers` 或 `vercel.json`。
