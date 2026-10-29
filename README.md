@@ -105,7 +105,7 @@ npx vercel link       # 首次部署时关联或创建 Vercel 项目
 npx vercel --prod
 ```
 
-首次部署后，将 `content/site.json` 的 `base_url` 改为 Vercel 生产域名，再重新部署；canonical、分享图和 sitemap 都依赖它。此项目由 CLI 上传源码并在 Vercel 构建，不依赖 Git 自动部署。
+首次部署后，将 `content/site.json` 的 `base_url` 改为 Vercel 生产域名，再重新部署；canonical、分享图和 sitemap 都依赖它。2026-10-29 已实测 `main` 推送触发 Vercel Production 自动部署，正式域为 `halfopen.dev`；CLI 仍可查询部署状态，正常发布不需重复手动上传。
 
 ### 防篡改发布
 
