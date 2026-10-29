@@ -229,7 +229,7 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
             assert (out / f"{locale}writing/{slug}/index.html").exists()
         assert not (out / f"{locale}writing/ui-testing-ten-years/index.html").exists()
         feed = (out / f"{locale}feed.xml").read_text(encoding="utf-8")
-        assert feed.count("<entry>") == 2
+        assert feed.count("<entry>") == 6
         assert "ui-testing-ten-years" not in feed
     index = (out / "index.html").read_text(encoding="utf-8")
     assert "文章" in index.split("<main")[0]
@@ -243,8 +243,8 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
     assert "写开发过程" in index
     assert 'class="hero__job"' not in index
     hero = index.split('<section class="hero">')[1].split('</section>')[0]
-    assert 'href="/writing/rag-hybrid-search/"' in hero
-    assert "RAG 混合检索怎么做" in hero
+    assert 'href="/writing/finunity-one-ledger/"' in hero
+    assert "数字为什么对不上" in hero
     assert 'class="scroll"' not in index
     # 个人介绍右侧是 tagline 的两行竖排小字加一方印（背后的月由 CSS 绘制），没有旧版的大题名
     assert _couplet_lines(hero) == ["花看半开", "酒饮微醉"]
@@ -257,8 +257,8 @@ def test_build_outputs_pages_and_skips_drafts(tmp_path: Path) -> None:
     assert "From software testing to AI applications and personal tools." not in en_index
     assert 'class="hero__actions"' not in hero
     names = ["衡仓", "投资看板", "角色设定卡"]
-    listing = index.split('<ol class="index">')[1].split("</ol>")[0]
-    assert listing.count('class="index__item"') == 3
+    listing = index.split('<ol class="index featured-grid">')[1].split("</ol>")[0]
+    assert listing.count('class="index__item product-card"') == 3
     assert 'class="index__no"' not in listing
     assert [listing.index(name) for name in names] == sorted(listing.index(name) for name in names)
     assert "WorldQuant Alpha 研究工具" not in listing
@@ -557,7 +557,7 @@ def test_cards_and_project_pages_promise_what_the_sample_pages_deliver(
     out = build.build(ROOT, tmp_path / "dist")
     projects = _projects(locale)
     home = (out / prefix / "index.html").read_text(encoding="utf-8")
-    listing = home.split('<ol class="index">')[1].split("</ol>")[0]
+    listing = home.split('<ol class="index featured-grid">')[1].split("</ol>")[0]
     catalog = (out / prefix / "projects" / "index.html").read_text(encoding="utf-8")
     for slug in SAMPLE_ENTRANCES[locale]:
         app = projects[slug].app

@@ -298,13 +298,34 @@ def _hero_mark(ctx: Context) -> str:
     return f'<div class="hero__mark">{couplet}{seal("hero__seal")}</div>' if couplet else ""
 
 
+def _featured_row(index: int, project: Project, ctx: Context) -> str:
+    en = ctx.locale == "en"
+    shots = {"finunity": ("finunity-overview", 1280, 980, "示例账本，数据虚构" if not en else "Demo ledger · fictional data"),
+             "character": ("character-guide", 1100, 882, "五步角色引导" if not en else "Five-step character guide")}
+    if project.slug in shots:
+        name, width, height, caption = shots[project.slug]
+        visual = (f'<figure class="product-preview"><a href="{ctx.page_href(f"/projects/{project.slug}/")}">'
+                  f'<img src="/shots/{name}.{ctx.locale}.png" width="{width}" height="{height}" loading="lazy" alt="{_e(project.name)} · {_e(caption)}"></a>'
+                  f'<figcaption>{_e(caption)}</figcaption></figure>')
+    elif project.slug == "dashboards":
+        title, left, right, caption = (("内容导览", "指数配置与定投", "A 股资金流", "只读快照 · 非实时行情") if not en else
+                                      ("What is inside", "Index allocation", "A-share fund flows", "Read-only snapshots · not live quotes"))
+        visual = f'<figure class="product-preview"><div class="product-map"><span>{title}</span><strong>{left}</strong><strong>{right}</strong></div><figcaption>{caption}</figcaption></figure>'
+    else:
+        visual = ""
+    row = _project_row(index, project, ctx, compact=True)
+    return row.replace('<li class="index__item" data-reveal>', '<li class="index__item product-card" data-reveal>' + visual, 1)
+
+
 def home(ctx: Context, projects: list[Project], posts: list[Doc]) -> str:
     site = ctx.site
     copy = ctx.copy
     intro = "<br>".join(_e(line) for line in site["intro"].splitlines())
+    notes = [p for p in posts if p.meta.get("series") == "dev-note"]
+    articles = [p for p in posts if p.meta.get("series") != "dev-note"]
     recent = (f'<p class="hero__recent"><span>{_e(copy["recent_article"])}</span>'
-              f'<a href="{ctx.page_href(f"/writing/{posts[0].slug}/")}">{_e(posts[0].title)}</a></p>') if posts else ""
-    rows = "".join(_project_row(i, p, ctx, compact=True) for i, p in enumerate((p for p in projects if p.featured), 1))
+              f'<a href="{ctx.page_href(f"/writing/{articles[0].slug}/")}">{_e(articles[0].title)}</a></p>') if articles else ""
+    rows = "".join(_featured_row(i, p, ctx) for i, p in enumerate((p for p in projects if p.featured), 1))
     writing = ""
     if posts:
         writing = f"""
@@ -313,10 +334,18 @@ def home(ctx: Context, projects: list[Project], posts: list[Doc]) -> str:
     <div class="section__head">
       <h2 class="section__title" id="writing-title">{_e(copy["latest_writing"])}</h2>
     </div>
-    {_post_rows(posts[:5], ctx)}
+    {_post_rows(articles[:5], ctx)}
     <p class="section__more"><a class="text-link" href="{ctx.page_href("/writing/")}">{_e(copy["all_writing"])}</a></p>
   </div>
 </section>"""
+    note_section = (f'<section class="section" aria-labelledby="notes-title"><div class="wrap"><h2 class="section__title" id="notes-title">'
+                    f'{"开发小记" if ctx.locale == "zh" else "Development notes"}</h2>{_post_rows(notes[:3], ctx)}</div></section>') if notes else ""
+    contact_title = "一起聊聊正在做的东西" if ctx.locale == "zh" else "Talk about what you are building"
+    contact_copy = ("欢迎交流 AI 应用开发、产品试用反馈，以及具体的开发合作。来信可以告诉我：你遇到什么问题，希望做到哪一步。" if ctx.locale == "zh" else
+                    "I welcome conversations about AI applications, product feedback and development collaborations. Tell me the problem you are working on and the next step you need.")
+    contact = (f'<section class="section home-contact"><div class="wrap"><h2 class="section__title">{contact_title}</h2><p>{contact_copy}</p>'
+               f'<a class="text-link" href="mailto:{_e(site["email"])}">{"发邮件" if ctx.locale == "zh" else "Send an email"} ↗</a> · '
+               f'<a class="text-link" href="{ctx.page_href("/about/")}">{"更多关于我" if ctx.locale == "zh" else "More about me"}</a></div></section>')
     body = f"""<div class="home">
 <section class="hero">
   <div class="wrap hero__grid">
@@ -334,11 +363,11 @@ def home(ctx: Context, projects: list[Project], posts: list[Doc]) -> str:
     <div class="section__head">
       <h2 class="section__title" id="projects-title">{_e(copy["projects_heading"])}</h2>
     </div>
-    <ol class="index">{rows}</ol>
+    <ol class="index featured-grid">{rows}</ol>
     <p class="section__more"><a class="text-link" href="{ctx.page_href('/projects/')}">{_e(copy['all_products'])}</a></p>
   </div>
 </section>
-{writing}</div>"""
+{writing}{note_section}{contact}</div>"""
     return layout(ctx, title=site["name"], description=site["description"], path="/", body=body)
 
 

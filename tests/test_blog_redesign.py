@@ -14,6 +14,23 @@ from sitegen import checks, content, render
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def test_home_shows_real_previews_separate_notes_and_bilingual_new_posts(tmp_path):
+    out = build.build(ROOT, tmp_path / "dist")
+    for prefix, locale in (("", "zh"), ("en/", "en")):
+        home = (out / prefix / "index.html").read_text(encoding="utf-8")
+        assert home.count('class="index__item product-card"') == 3
+        for shot in ("finunity-overview", "character-guide"):
+            assert f'/shots/{shot}.{locale}.png' in home
+        assert 'class="product-map"' in home
+        assert 'href="mailto:' in home
+        assert 'id="notes-title"' in home
+        for slug in ("finunity-one-ledger", "demo-before-signup", "character-guide-before-chat", "snapshot-needs-a-date"):
+            page = out / prefix / "writing" / slug / "index.html"
+            assert page.is_file()
+            assert f'/{prefix}writing/{slug}/' in home
+    assert checks.check_internal(out, checks.scan_pages(out)) == []
+
+
 class LinkNestingParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()

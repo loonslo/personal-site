@@ -1,4 +1,22 @@
 /* 半開 · 纸上留白。设计 token 与规则见 DESIGN.md */
+.featured-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.featured-grid .product-card { min-width: 0; border-top: 0; }
+.product-preview { margin: 0; }
+.product-preview img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; background: var(--paper-deep); border: 1px solid var(--line); border-radius: 6px; }
+.product-preview figcaption { margin-top: 8px; color: var(--ink-3); font-size: 12px; }
+.product-map { aspect-ratio: 4 / 3; display: flex; flex-direction: column; justify-content: center; gap: 16px; padding: 24px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper-deep); }
+.product-map span { color: var(--ink-3); font-size: 13px; }
+.product-map strong { border-top: 1px solid var(--line); padding-top: 12px; font-weight: 500; }
+.featured-grid .index__row--compact { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px 0; }
+.featured-grid .index__aside { margin-top: 0; }
+.featured-grid .index__main { display: block; width: 100%; }
+.featured-grid .index__summary { margin-top: var(--s2); }
+.featured-grid .product-card { display: flex; flex-direction: column; }
+.featured-grid .product-preview { width: 100%; }
+.featured-grid .index__row--compact { flex: 1; }
+.featured-grid .index__aside { margin-top: auto; }
+.home-contact p { max-width: 42em; margin: 20px 0; color: var(--ink-2); }
+@media (max-width: 900px) { .featured-grid { grid-template-columns: 1fr; } .product-preview { max-width: 560px; } }
 
 :root {
   --paper: #f4efe6;
